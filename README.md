@@ -91,63 +91,6 @@ Firebase Auth: Autenticação (neste projeto, simulada com login anônimo ou tok
 ├── script.js            # JS global (máscaras de formulário)
 └── README.md            # Este arquivo
 
-
-⚙️ Como Rodar o Projeto (Configuração do Firebase)
-
-Como este projeto depende de um banco de dados na nuvem, ele não funcionará totalmente apenas abrindo o index.html. Você precisa configurá-lo com seu próprio Firebase.
-
-Clone o Repositório
-
-git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-
-
-Crie um Projeto no Firebase
-
-Acesse o Console do Firebase.
-
-Crie um novo projeto.
-
-No menu lateral, vá para Cloud Firestore e crie um banco de dados.
-
-IMPORTANTE: Inicie no Modo de Teste (isso permite leitura e escrita sem regras de segurança complexas, o que é necessário para este projeto).
-
-Obtenha suas Credenciais do Firebase
-
-Nas "Configurações do Projeto" (ícone de engrenagem), role para baixo até "Seus aplicativos".
-
-Crie um novo "Aplicativo Web" (ícone </>).
-
-Copie o objeto firebaseConfig que será exibido.
-
-Configure o Código
-
-Abra o arquivo admin_dashboard.html.
-
-Encontre a seção <script type="module"> no final do arquivo.
-
-Localize a constante firebaseConfig no código:
-
-// ...
-const firebaseConfig = typeof __firebase_config !== 'undefined' 
-    ? JSON.parse(__firebase_config) 
-    : { apiKey: "YOUR_API_KEY", authDomain: "YOUR_AUTH_DOMAIN", projectId: "YOUR_PROJECT_ID" }; // Fallback
-// ...
-
-
-Substitua o objeto de Fallback (com "YOUR_API_KEY"...) pelo objeto firebaseConfig que você copiou do seu projeto Firebase.
-
-🚀 Testando a Funcionalidade
-
-Após configurar o Firebase, você pode testar o CRUD:
-
-Abra o arquivo login.html no seu navegador.
-
-Clique no botão "Simular Login (Admin)".
-
-Você será levado ao admin_dashboard.html.
-
-Clique em "+ Adicionar Novo Projeto", preencha o formulário e salve. O projeto deve aparecer instantaneamente na tabela (pois foi salvo no Firestore e lido em tempo real).
-
 Clique em "Excluir" em um projeto. Ele deve desaparecer da tabela e do seu banco de dados no Firestore.
 
 Para testar voluntários: Vá ao seu console do Firebase, crie manualmente a coleção /artifacts/default-app-id/public/data/volunteers e adicione um documento com os campos nome, email, telefone e status: "Pendente". Ele aparecerá na tabela de voluntários no dashboard, pronto para ser "Aprovado".
