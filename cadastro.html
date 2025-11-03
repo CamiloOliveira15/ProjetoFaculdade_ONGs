@@ -32,11 +32,9 @@
             <ul class="flex space-x-6 items-center">
                 <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
                 <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
-                <!-- Links para páginas não exigidas na Entrega 1 (opcional manter) -->
                 <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
                 <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
                 <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
-                <!-- Fim dos links opcionais -->
                 <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
             </ul>
         </nav>
@@ -46,7 +44,7 @@
     <main class="container mx-auto px-6 py-16">
         
         <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
-            <!-- AJUSTE: Imagem adicionada para cumprir o requisito -->
+            <!-- Imagem (Requisito da Entrega I) -->
             <img src="https://placehold.co/800x300/38b2ac/ffffff?text=Junte-se+a+Nós" alt="Banner de cadastro" class="w-full h-48 object-cover rounded-lg mb-10">
 
             <!-- Título -->
@@ -55,11 +53,10 @@
                 <p class="text-lg text-gray-700">Junte-se a nós como voluntário ou apoiador. Já tem uma conta? <a href="login.html" class="text-teal-600 hover:underline">Faça login</a>.</p>
             </section>
 
-            <!-- Formulário de Cadastro -->
-            <!-- AJUSTE: Removido o atributo 'novalidate' para ativar a validação nativa do navegador -->
+            <!-- Formulário de Cadastro (ativado para validação nativa) -->
             <form id="registration-form" action="#" method="POST">
                 
-                <!-- Dados Pessoais -->
+                <!-- Dados Pessoais (Agrupamento Lógico) -->
                 <fieldset class="mb-8">
                     <legend class="text-2xl font-semibold text-teal-700 mb-6 border-b border-teal-200 pb-2 w-full">Dados Pessoais</legend>
                     <div class="grid md:grid-cols-2 gap-6">
@@ -70,7 +67,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="Seu nome completo"
                                    required>
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                         
                         <!-- E-mail -->
@@ -80,7 +76,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="seu.email@dominio.com"
                                    required>
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- CPF -->
@@ -90,7 +85,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="000.000.000-00"
                                    required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                         
                         <!-- Telefone -->
@@ -100,7 +94,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="(00) 90000-0000"
                                    required pattern="\(\d{2}\) \d{4,5}-\d{4}">
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- Data de Nascimento -->
@@ -109,12 +102,11 @@
                             <input type="date" id="data-nascimento" name="data-nascimento"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    required>
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                     </div>
                 </fieldset>
 
-                <!-- Endereço -->
+                <!-- Endereço (Agrupamento Lógico) -->
                 <fieldset class="mb-8">
                     <legend class="text-2xl font-semibold text-teal-700 mb-6 border-b border-teal-200 pb-2 w-full">Endereço</legend>
                     <div class="grid md:grid-cols-3 gap-6">
@@ -125,7 +117,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="00000-000"
                                    required pattern="\d{5}-\d{3}">
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                         
                         <!-- Endereço (Rua) -->
@@ -135,7 +126,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="Ex: Rua das Flores, 123"
                                    required>
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- Cidade -->
@@ -145,7 +135,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="Sua cidade"
                                    required>
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- Estado -->
@@ -155,7 +144,6 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="UF"
                                    required maxlength="2">
-                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                     </div>
                 </fieldset>
@@ -194,7 +182,75 @@
         </div>
     </footer>
 
-    <!-- Link para o arquivo JavaScript global (que contém as máscaras) -->
+    <!-- Script #1: Máscaras (Externo) -->
     <script src="script.js" defer></script>
+
+    <!-- Script #2: Envio para AWS (Embutido) -->
+    <script>
+        // Adiciona um "ouvinte" para garantir que o HTML foi carregado
+        // antes de o script tentar encontrar o formulário.
+        document.addEventListener('DOMContentLoaded', () => {
+    
+            // Pega o formulário pelo ID
+            const form = document.getElementById('registration-form');
+    
+            // Adiciona uma verificação para garantir que o formulário existe na página
+            if (form) {
+                // Adiciona um 'ouvinte' para o evento de 'submit'
+                form.addEventListener('submit', async (event) => {
+                    
+                    // 1. Impede o envio padrão do formulário (que recarrega a página)
+                    event.preventDefault();
+                    
+                    // 2. Esta é a URL da sua API Gateway
+                    const apiUrl = 'https://yo8fe552ca.execute-api.us-west-2.amazonaws.com/v1/cadastro'; // <--- URL ATUALIZADA
+    
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Aguarde, a enviar...';
+    
+                    try {
+                        // 3. Cria um objeto com os dados do formulário
+                        const formData = new FormData(form);
+                        const data = Object.fromEntries(formData.entries());
+    
+                        // 4. Envia os dados para a API (Lambda)
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        });
+    
+                        const result = await response.json();
+    
+                        if (response.ok) { // Status 200-299
+                            // Sucesso!
+                            // (alert() não funciona bem em iframes, usar console.log)
+                            console.log('Cadastro realizado com sucesso!', result);
+                            // Numa aplicação real, você mostraria uma mensagem de sucesso na página.
+                            form.reset(); // Limpa o formulário
+                        } else {
+                            // Erro vindo do Lambda (ex: CPF em falta)
+                            console.error('Erro ao cadastrar (Lambda):', result);
+                        }
+    
+                    } catch (error) {
+                        // Erro de rede ou CORS
+                        console.error('Erro grave de conexão (Fetch/CORS). Verifique o console.', error);
+                    } finally {
+                        // Reativa o botão
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Finalizar Cadastro';
+                    }
+                });
+            } else {
+                console.error("Erro: O formulário com ID 'registration-form' não foi encontrado.");
+            }
+        }); // <-- Fecha o 'DOMContentLoaded'
+    </script>
+
 </body>
 </html>
+
