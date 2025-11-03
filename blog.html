@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog e Notícias - ONG Conecta Vidas</title>
+    <meta name="description" content="Acompanhe as últimas notícias e atualizações dos nossos projetos.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-teal-600">
+                <a href="index.html">ONG Conecta Vidas</a>
+            </div>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
+                <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
+                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
+                <li><a href="blog.html" class="text-gray-700 font-semibold hover:text-teal-500">Blog</a></li>
+                <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
+                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <!-- Título da Página -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Blog & Notícias</h1>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Acompanhe as últimas atualizações, histórias de impacto e notícias da Conecta Vidas.</p>
+        </section>
+
+        <!-- Listagem de Artigos -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Artigo 1 -->
+            <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
+                <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Inauguração+da+Sala" alt="Inauguração de sala de aula" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-sm text-teal-600 font-medium mb-2">30 de Outubro, 2024</span>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Inauguramos nova sala no projeto "Educação para Todos"</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
+                        Veja como a sua doação e o esforço dos nossos voluntários se transformaram em um novo espaço de aprendizado...
+                    </p>
+                    <a href="#" class="text-teal-500 hover:text-teal-700 font-medium">Ler mais &rarr;</a>
+                </div>
+            </article>
+            
+            <!-- Artigo 2 -->
+            <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
+                <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Recorde+de+Refeições" alt="Refeições sendo servidas" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-sm text-teal-600 font-medium mb-2">28 de Outubro, 2024</span>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Cozinha Solidária bate recorde de refeições em Outubro</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
+                        Com o apoio de novos doadores e parceiros, conseguimos expandir nossa atuação e distribuir mais de 5.000...
+                    </p>
+                    <a href="#" class="text-teal-500 hover:text-teal-700 font-medium">Ler mais &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Artigo 3 -->
+            <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
+                <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Voluntário+do+Mês" alt="Voluntária sorrindo" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <span class="text-sm text-teal-600 font-medium mb-2">25 de Outubro, 2024</span>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Conheça a Mariana, nossa voluntária do mês</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
+                        "O voluntariado mudou minha vida..." - Leia o depoimento inspirador da Mariana, que atua no projeto...
+                    </p>
+                    <a href="#" class="text-teal-500 hover:text-teal-700 font-medium">Ler mais &rarr;</a>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-10 mt-16">
+        <!-- Seção Newsletter -->
+        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
+            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
+            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
+            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
+                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
+                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
+                    Assinar
+                </button>
+            </form>
+        </section>
+        
+        <!-- Copyright -->
+        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
+            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

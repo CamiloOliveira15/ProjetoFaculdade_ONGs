@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparência - ONG Conecta Vidas</title>
+    <meta name="description" content="Acesse nossos relatórios, prestação de contas e documentos.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-teal-600">
+                <a href="index.html">ONG Conecta Vidas</a>
+            </div>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
+                <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
+                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
+                <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
+                <li><a href="transparencia.html" class="text-gray-700 font-semibold hover:text-teal-500">Transparência</a></li>
+                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <!-- Título da Página -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Comunicação e Transparência</h1>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Acreditamos que a confiança é a base do nosso trabalho. Acesse todos os nossos relatórios, documentos e comunicados.</p>
+        </section>
+
+        <div class="grid lg:grid-cols-3 gap-12">
+            
+            <!-- Coluna Principal (Relatórios e Documentos) -->
+            <div class="lg:col-span-2">
+                <!-- Relatórios Financeiros -->
+                <section id="relatorios" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Relatórios e Prestação de Contas</h2>
+                    <ul class="space-y-4">
+                        <!-- Item Relatório -->
+                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-3">
+                                <!-- Ícone PDF -->
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="font-medium text-gray-800">Relatório Anual 2023</span>
+                            </div>
+                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
+                        </li>
+                        <!-- Item Relatório -->
+                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="font-medium text-gray-800">Prestação de Contas (Semestre 1/2024)</span>
+                            </div>
+                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Documentos Públicos -->
+                <section id="documentos" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Documentos Públicos</h2>
+                    <ul class="space-y-4">
+                        <!-- Item Documento -->
+                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="font-medium text-gray-800">Estatuto Social da ONG Conecta Vidas</span>
+                            </div>
+                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
+                        </li>
+                        <!-- Item Documento -->
+                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="font-medium text-gray-800">Certificado de Utilidade Pública</span>
+                            </div>
+                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Coluna Lateral (Imprensa) -->
+            <aside>
+                <section id="imprensa" class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Área de Imprensa</h2>
+                    <p class="text-gray-700 mb-4 text-sm">Para solicitações de imprensa, entrevistas ou parcerias de mídia, entre em contato:</p>
+                    <a href="mailto:imprensa@conectavidas.org" class="font-medium text-teal-600 hover:underline">imprensa@conectavidas.org</a>
+                    
+                    <h3 class="text-xl font-semibold text-gray-900 mt-8 mb-4">Press Releases</h3>
+                    <ul class="space-y-4">
+                        <li class="border-b pb-3">
+                            <a href="#" class="text-gray-800 hover:text-teal-600">
+                                <span class="text-sm text-gray-500">15/10/2024</span><br>
+                                ONG Conecta Vidas lança nova campanha de arrecadação...
+                            </a>
+                        </li>
+                        <li class="border-b pb-3">
+                            <a href="#" class="text-gray-800 hover:text-teal-600">
+                                <span class="text-sm text-gray-500">01/09/2024</span><br>
+                                Projeto "Capacitação Jovem" forma primeira turma...
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-10 mt-16">
+        <!-- Seção Newsletter -->
+        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
+            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
+            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
+            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
+                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
+                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
+                    Assinar
+                </button>
+            </form>
+        </section>
+        
+        <!-- Copyright -->
+        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
+            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

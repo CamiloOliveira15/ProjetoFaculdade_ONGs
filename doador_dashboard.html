@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Doador - Conecta Vidas</title>
+    <meta name="robots" content="noindex, nofollow"> <!-- Impede indexação -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex flex-col flex-shrink-0">
+            <div class="text-2xl font-bold text-white p-6 border-b border-gray-700">
+                Área do Doador
+            </div>
+            <nav class="flex-grow p-4 space-y-2 overflow-y-auto">
+                <a href="#perfil" class="flex items-center space-x-3 px-4 py-3 bg-teal-600 rounded-lg">
+                    <!-- Ícone Perfil -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    <span>Meu Perfil</span>
+                </a>
+                <a href="#historico" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <!-- Ícone Histórico -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Histórico de Doações</span>
+                </a>
+                <a href="#novadoacao" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <!-- Ícone Doar -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2zM3 18s.895-2 3-2h12c2.105 0 3 2 3 2H3zM3 7a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg>
+                    <span>Apoiar um Projeto</span>
+                </a>
+                <a href="#relatorios" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <!-- Ícone Relatórios -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+            <!-- Logout -->
+            <div class="p-4 border-t border-gray-700 mt-auto">
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <!-- Ícone Sair -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 overflow-y-auto">
+            <h1 id="perfil" class="text-3xl font-bold text-gray-900 mb-2">Olá, Roberto Almeida!</h1>
+            <p class="text-lg text-gray-600 mb-8">Obrigado por sua confiança e apoio contínuo.</p>
+
+            <!-- Métricas -->
+            <section class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold text-gray-600 mb-2">Total Doado (Este Ano)</h3>
+                    <p class="text-4xl font-bold text-teal-600">R$ 350,00</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold text-gray-600 mb-2">Vidas Impactadas (Estimativa)</h3>
+                    <p class="text-4xl font-bold text-teal-600">72</p>
+                </div>
+            </section>
+
+            <!-- Apoiar Novo Projeto -->
+            <section id="novadoacao" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">Apoie um Projeto</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card Projeto 1 -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                        <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Cozinha+Solidária" alt="Cozinha Solidária" class="w-full h-40 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Cozinha Solidária</h3>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">Ajude a comprar ingredientes para as 500 refeições diárias que distribuímos.</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div class="bg-teal-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <span class="text-sm text-gray-500 mb-4">Meta: R$ 8.500 / R$ 10.000</span>
+                            <button class="w-full bg-yellow-400 text-yellow-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">
+                                Doar Agora
+                            </button>
+                        </div>
+                    </article>
+                    <!-- Card Projeto 2 -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                        <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Capacitação+Jovem" alt="Capacitação Jovem" class="w-full h-40 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Capacitação Jovem</h3>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">Sua doação compra equipamentos (computadores) para nossos cursos de tecnologia.</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div class="bg-teal-500 h-2.5 rounded-full" style="width: 30%"></div>
+                            </div>
+                            <span class="text-sm text-gray-500 mb-4">Meta: R$ 4.500 / R$ 15.000</span>
+                            <button class="w-full bg-yellow-400 text-yellow-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">
+                                Doar Agora
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- Últimas Notícias (Blog) -->
+            <section id="noticias" class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">Últimas Notícias e Atualizações</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <a href="blog.html" class="block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <h3 class="font-semibold text-teal-700 mb-2">Inauguramos nova sala no projeto "Educação para Todos"</h3>
+                        <p class="text-sm text-gray-600">Veja como sua doação se transformou em um novo espaço de aprendizado...</p>
+                    </a>
+                    <a href="blog.html" class="block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <h3 class="font-semibold text-teal-700 mb-2">Cozinha Solidária bate recorde de refeições em Outubro</h3>
+                        <p class="text-sm text-gray-600">Com o apoio de novos doadores, conseguimos expandir nossa atuação...</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Grid: Histórico e Relatórios -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Tabela de Histórico -->
+                <section id="historico" class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Meu Histórico de Doações</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="border-b bg-gray-50">
+                                    <th class="p-4">Data</th>
+                                    <th class="p-4">Valor</th>
+                                    <th class="p-4">Projeto Apoiado</th>
+                                    <th class="p-4">Recibo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y">
+                                <tr>
+                                    <td class="p-4">15/09/2024</td>
+                                    <td class="p-4">R$ 100,00</td>
+                                    <td class="p-4">Cozinha Solidária</td>
+                                    <td class="p-4"><a href="#" class="text-blue-600 hover:underline">Ver Recibo</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">10/06/2024</td>
+                                    <td class="p-4">R$ 50,00</td>
+                                    <td class="p-4">Educação para Todos</td>
+                                    <td class="p-4"><a href="#" class="text-blue-600 hover:underline">Ver Recibo</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">22/03/2024</td>
+                                    <td class="p-4">R$ 200,00</td>
+                                    <td class="p-4">Fundo Geral</td>
+                                    <td class="p-4"><a href="#" class="text-blue-600 hover:underline">Ver Recibo</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Relatórios de Transparência -->
+                <section id="relatorios" class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Relatórios de Transparência</h2>
+                    <p class="text-gray-700 mb-6 text-sm">Acompanhe seu impacto. Baixe os relatórios financeiros ou visite nossa central de transparência para ver documentos públicos e releases.</p>
+                    <div class="mb-6">
+                        <a href="transparencia.html" class="text-teal-600 hover:underline font-medium">
+                            Acessar Central de Transparência Completa &rarr;
+                        </a>
+                    </div>
+                    <ul class="space-y-4">
+                        <!-- Item Relatório -->
+                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-3">
+                                <!-- Ícone PDF -->
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="font-medium text-gray-800">Relatório Anual 2023</span>
+                            </div>
+                            <a href="#" class="text-teal-600 hover:underline font-medium">Baixar</a>
+                        </li>
+                        <!-- Item Relatório -->
+                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="font-medium text-gray-800">Prestação de Contas (Semestre 1/2024)</span>
+                            </div>
+                            <a href="#" class="text-teal-600 hover:underline font-medium">Baixar</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
+

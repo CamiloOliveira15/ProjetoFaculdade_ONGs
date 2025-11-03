@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Conecta Vidas</title>
+<!-- ... (cabeçalho, estilos, etc. - sem alterações) ... -->
+    <meta name="robots" content="noindex, nofollow"> <!-- Impede indexação -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para o Modal */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-content {
+            transition: transform 0.25s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex flex-col flex-shrink-0">
+<!-- ... (barra lateral do admin - sem alterações) ... -->
+            <div class="text-2xl font-bold text-white p-6 border-b border-gray-700">
+                Admin
+            </div>
+            <nav class="flex-grow p-4 space-y-2 overflow-y-auto">
+                <a href="#dashboard" class="flex items-center space-x-3 px-4 py-3 bg-teal-600 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4a1 1 0 001-1v-1a1 1 0 10-2 0v1a1 1 0 001 1z"></path></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#gerenciar-projetos" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    <span>Gerenciar Projetos</span>
+                </a>
+                <a href="#gerenciar-voluntarios" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-1.654-1.346-3-3-3H7c-1.654 0-3 1.346-3 3v2m17 0h-2M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-1.654 1.346-3 3-3h3c1.654 0 3 1.346 3 3v2M12 11a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+                    <span>Gerenciar Voluntários</span>
+                </a>
+                <a href="#relatorio-doacoes" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <span>Relatório de Doações</span>
+                </a>
+                <a href="#info-institucional" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Info Institucional</span>
+                </a>
+            </nav>
+            <!-- Logout -->
+            <div class="p-4 border-t border-gray-700 mt-auto">
+                <a href="login.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-700 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 overflow-y-auto">
+<!-- ... (todo o HTML do main content - sem alterações) ... -->
+            <h1 id="dashboard" class="text-3xl font-bold text-gray-900 mb-8">Dashboard do Administrador</h1>
+
+            <!-- Métricas (Estáticas por enquanto) -->
+            <section class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- ... métricas ... -->
+            </section>
+
+            <!-- Tabela de Gerenciar Projetos -->
+            <section id="gerenciar-projetos" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900">Gerenciar Projetos</h2>
+                    <!-- Botão para abrir o modal -->
+                    <button id="add-project-button" class="bg-teal-500 text-white px-5 py-2 rounded-lg hover:bg-teal-600">+ Adicionar Novo Projeto</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b bg-gray-50">
+                                <th class="p-4">Projeto</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4">Voluntários (Inscritos/Vagas)</th>
+                                <th class="p-4">Meta Doação (Atual/Meta)</th>
+                                <th class="p-4">Ações</th>
+                            </tr>
+                        </thead>
+                        <!-- Corpo da tabela será preenchido pelo JS -->
+                        <tbody id="projects-table-body" class="divide-y">
+                            <!-- Linha de carregamento -->
+                            <tr><td colspan="5" class="p-4 text-center text-gray-500">Carregando projetos...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tabela de Gerenciar Voluntários -->
+            <section id="gerenciar-voluntarios" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">Gerenciar Voluntários (Novos cadastros)</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b bg-gray-50">
+                                <th class="p-4">Nome</th>
+                                <th class="p-4">Email</th>
+                                <th class="p-4">Telefone</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4">Ações</th>
+                            </tr>
+                        </thead>
+                        <!-- Corpo da tabela será preenchido pelo JS -->
+                        <tbody id="volunteers-table-body" class="divide-y">
+                            <tr><td colspan="5" class="p-4 text-center text-gray-500">Carregando voluntários...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Outras seções (Doações, Info) permanecem estáticas por enquanto -->
+
+        </main>
+    </div>
+
+    <!-- Modal "Adicionar Novo Projeto" -->
+    <div id="project-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 hidden opacity-0">
+<!-- ... (HTML do modal - sem alterações) ... -->
+        <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl p-8 transform scale-95">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-900">Adicionar Novo Projeto</h2>
+                <button id="close-modal-button" class="text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+            
+            <form id="add-project-form" class="space-y-4">
+                <div>
+                    <label for="project-name" class="block text-sm font-medium text-gray-700 mb-1">Nome do Projeto</label>
+                    <input type="text" id="project-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm" required>
+                </div>
+                <div>
+                    <label for="project-description" class="block text-sm font-medium text-gray-700 mb-1">Descrição Curta</label>
+                    <textarea id="project-description" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm" required></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="project-volunteers-needed" class="block text-sm font-medium text-gray-700 mb-1">Vagas de Voluntários</label>
+                        <input type="number" id="project-volunteers-needed" value="10" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm" required>
+                    </div>
+                    <div>
+                        <label for="project-donation-goal" class="block text-sm font-medium text-gray-700 mb-1">Meta de Doação (R$)</label>
+                        <input type="number" id="project-donation-goal" value="5000" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="project-image" class="block text-sm font-medium text-gray-700 mb-1">URL da Imagem (Placeholder)</label>
+                    <input type="text" id="project-image" value="https://placehold.co/600x400/38b2ac/ffffff?text=Novo+Projeto" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm">
+                </div>
+                <div class="text-right">
+                    <button type="button" id="cancel-modal-button" class="bg-gray-200 text-gray-800 px-5 py-2 rounded-lg hover:bg-gray-300 mr-3">Cancelar</button>
+                    <button type="submit" class="bg-teal-500 text-white px-5 py-2 rounded-lg hover:bg-teal-600">Salvar Projeto</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Importar Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { 
+            getAuth, 
+            signInAnonymously, 
+            signInWithCustomToken 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { 
+            getFirestore, 
+            doc, 
+            collection, 
+            addDoc, 
+            deleteDoc, 
+            updateDoc, 
+            onSnapshot,
+            query,
+            setLogLevel
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Configuração e Inicialização ---
+        
+        // Habilitar logs para debug
+        setLogLevel('Debug');
+
+        // Configurações do Firebase (serão injetadas pelo ambiente ou usarão o fallback)
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : {
+                // ESTE É O FALLBACK COM A SUA CONFIGURAÇÃO
+                apiKey: "AIzaSyAnjwM59-bGQgjPOEvcWS3djUtcUBDdrtw",
+                authDomain: "projetofaculdade-b10e1.firebaseapp.com",
+                projectId: "projetofaculdade-b10e1",
+                storageBucket: "projetofaculdade-b10e1.firebasestorage.app",
+                messagingSenderId: "178683175625",
+                appId: "1:178683175625:web:a70db7f30cf9ef28306318",
+                measurementId: "G-T5Y9F89PCQ"
+            };
+
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        let app, db, auth, userId;
+
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+// ... (resto do script JS para autenticação e lógica do app - sem alterações) ...
+            // Autenticação
+            if (initialAuthToken) {
+                await signInWithCustomToken(auth, initialAuthToken);
+                console.log("Autenticado com token customizado.");
+            } else {
+                await signInAnonymously(auth);
+                console.log("Autenticado anonimamente.");
+            }
+            
+            userId = auth.currentUser?.uid || crypto.randomUUID();
+            console.log("UserID:", userId);
+
+            // Iniciar a aplicação
+            initializeAppLogic();
+
+        } catch (error) {
+            console.error("Erro ao inicializar Firebase:", error);
+            alert("Erro fatal ao conectar ao banco de dados. Verifique o console.");
+        }
+
+        function initializeAppLogic() {
+            // --- Referências do Firestore ---
+            // Coleção pública de projetos
+            const projectsCollection = collection(db, `/artifacts/${appId}/public/data/projects`);
+            // Coleção de voluntários (vamos simular como pública por enquanto para o admin ver todos)
+            const volunteersCollection = collection(db, `/artifacts/${appId}/public/data/volunteers`);
+
+            // --- Elementos do DOM ---
+            const projectsTableBody = document.getElementById('projects-table-body');
+            const volunteersTableBody = document.getElementById('volunteers-table-body');
+            const modal = document.getElementById('project-modal');
+            const addProjectForm = document.getElementById('add-project-form');
+            const addProjectButton = document.getElementById('add-project-button');
+            const closeModalButton = document.getElementById('close-modal-button');
+            const cancelModalButton = document.getElementById('cancel-modal-button');
+            
+            // --- Lógica do Modal ---
+            const showProjectModal = () => {
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.add('opacity-100'), 10);
+                setTimeout(() => modal.querySelector('.modal-content').classList.add('scale-100'), 10);
+            };
+            
+            const hideProjectModal = () => {
+                modal.querySelector('.modal-content').classList.remove('scale-100');
+                modal.classList.remove('opacity-100');
+                setTimeout(() => modal.classList.add('hidden'), 250);
+                addProjectForm.reset();
+            };
+
+            addProjectButton.onclick = showProjectModal;
+            closeModalButton.onclick = hideProjectModal;
+            cancelModalButton.onclick = hideProjectModal;
+
+            // --- CRUD: Projetos ---
+
+            // C (Create)
+            addProjectForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const newProject = {
+                    name: document.getElementById('project-name').value,
+                    description: document.getElementById('project-description').value,
+                    volunteersNeeded: parseInt(document.getElementById('project-volunteers-needed').value),
+                    donationGoal: parseInt(document.getElementById('project-donation-goal').value),
+                    imageUrl: document.getElementById('project-image').value,
+                    status: 'Ativo',
+                    volunteersCount: 0, // Novo projeto começa com 0
+                    donationCurrent: 0, // Novo projeto começa com 0
+                    createdAt: new Date()
+                };
+
+                try {
+                    await addDoc(projectsCollection, newProject);
+                    console.log("Projeto adicionado!");
+                    hideProjectModal();
+                } catch (error) {
+                    console.error("Erro ao adicionar projeto: ", error);
+                }
+            });
+
+            // R (Read) - Listener em tempo real
+            onSnapshot(query(projectsCollection), (snapshot) => {
+                if (snapshot.empty) {
+                    projectsTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Nenhum projeto encontrado. Adicione um!</td></tr>`;
+                    return;
+                }
+                
+                projectsTableBody.innerHTML = ''; // Limpa a tabela
+                snapshot.forEach(doc => {
+                    renderProject(doc);
+                });
+            }, (error) => {
+                console.error("Erro ao buscar projetos: ", error);
+                projectsTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500">Erro ao carregar projetos.</td></tr>`;
+            });
+
+            // Renderiza uma linha da tabela de projeto
+            const renderProject = (doc) => {
+                const project = doc.data();
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-gray-50';
+                
+                tr.innerHTML = `
+                    <td class="p-4 font-medium">${project.name}</td>
+                    <td class="p-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">${project.status}</span></td>
+                    <td class="p-4">${project.volunteersCount || 0} / ${project.volunteersNeeded}</td>
+                    <td class="p-4">R$ ${project.donationCurrent || 0} / R$ ${project.donationGoal}</td>
+                    <td class="p-4">
+                        <button class="text-blue-600 hover:underline" data-action="edit" data-id="${doc.id}">Editar</button>
+                        <button class="text-red-600 hover:underline ml-4" data-action="delete" data-id="${doc.id}">Excluir</button>
+                    </td>
+                `;
+                
+                // D (Delete)
+                tr.querySelector('[data-action="delete"]').addEventListener('click', async () => {
+                    // Substituir 'confirm' por um modal customizado em um projeto real
+                    if (true) { // 'confirm' não funciona bem em iframes
+                        try {
+                            await deleteDoc(doc(db, `/artifacts/${appId}/public/data/projects`, doc.id));
+                            console.log("Projeto excluído!");
+                        } catch (error) {
+                            console.error("Erro ao excluir projeto: ", error);
+                        }
+                    }
+                });
+
+                // U (Update) - (Simples, o 'Editar' pode abrir o modal preenchido)
+                tr.querySelector('[data-action="edit"]').addEventListener('click', () => {
+                    // Lógica para preencher o modal com dados de 'project' e mudar para modo de edição
+                    alert("Função 'Editar' ainda não implementada. Abra o modal e adicione manualmente.");
+                });
+                
+                projectsTableBody.appendChild(tr);
+            };
+
+            // --- CRUD: Voluntários ---
+
+            // R (Read)
+            onSnapshot(query(volunteersCollection), (snapshot) => {
+                if (snapshot.empty) {
+                    volunteersTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Nenhum voluntário pendente.</td></tr>`;
+                    return;
+                }
+                
+                volunteersTableBody.innerHTML = ''; // Limpa a tabela
+                snapshot.forEach(doc => {
+                    renderVolunteer(doc);
+                });
+            }, (error) => {
+                console.error("Erro ao buscar voluntários: ", error);
+                volunteersTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500">Erro ao carregar voluntários.</td></tr>`;
+            });
+
+            // Renderiza uma linha da tabela de voluntário
+            const renderVolunteer = (doc) => {
+                const volunteer = doc.data();
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-gray-50';
+
+                const statusPill = volunteer.status === 'Aprovado'
+                    ? `<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Aprovado</span>`
+                    : `<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Pendente</span>`;
+
+                tr.innerHTML = `
+                    <td class="p-4 font-medium">${volunteer.nome}</td>
+                    <td class="p-4">${volunteer.email}</td>
+                    <td class="p-4">${volunteer.telefone}</td>
+                    <td class="p-4">${statusPill}</td>
+                    <td class="p-4">
+                        ${volunteer.status !== 'Aprovado' 
+                            ? `<button class="text-green-600 hover:underline" data-action="approve" data-id="${doc.id}">Aprovar</button>`
+                            : `<button class="text-blue-600 hover:underline" data-action="view" data-id="${doc.id}">Ver Perfil</button>`
+                        }
+                    </td>
+                `;
+
+                // U (Update) - Aprovar voluntário
+                const approveButton = tr.querySelector('[data-action="approve"]');
+                if (approveButton) {
+                    approveButton.addEventListener('click', async () => {
+                        try {
+                            const volunteerRef = doc(db, `/artifacts/${appId}/public/data/volunteers`, doc.id);
+                            await updateDoc(volunteerRef, {
+                                status: "Aprovado"
+                            });
+                            console.log("Voluntário aprovado!");
+                        } catch (error) {
+                            console.error("Erro ao aprovar voluntário: ", error);
+                        }
+                    });
+                }
+                
+                volunteersTableBody.appendChild(tr);
+            };
+        }
+
+    </script>
+</body>
+</html>
+

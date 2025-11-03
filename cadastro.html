@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - ONG Conecta Vidas</title>
+    <meta name="description" content="Cadastre-se como voluntário ou apoiador da ONG Conecta Vidas.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Link para o arquivo CSS global -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-teal-600">
+                <a href="index.html">ONG Conecta Vidas</a>
+            </div>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
+                <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
+                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
+                <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
+                <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
+                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
+            <!-- Título -->
+            <section class="text-center mb-10">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Crie sua Conta</h1>
+                <p class="text-lg text-gray-700">Junte-se a nós como voluntário ou apoiador. Já tem uma conta? <a href="login.html" class="text-teal-600 hover:underline">Faça login</a>.</p>
+            </section>
+
+            <!-- Formulário de Cadastro -->
+            <form id="registration-form" action="#" method="POST" novalidate>
+                
+                <!-- Dados Pessoais -->
+                <fieldset class="mb-8">
+                    <legend class="text-2xl font-semibold text-teal-700 mb-6 border-b border-teal-200 pb-2 w-full">Dados Pessoais</legend>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Nome Completo -->
+                        <div>
+                            <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="Seu nome completo"
+                                   required>
+                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                        </div>
+                        
+                        <!-- E-mail -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail *</label>
+                            <input type="email" id="email" name="email"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="seu.email@dominio.com"
+                                   required>
+                            <span class="text-red-600 text-sm mt-1 hidden">E-mail inválido.</span>
+                        </div>
+
+                        <!-- CPF -->
+                        <div>
+                            <label for="cpf" class="block text-sm font-medium text-gray-700 mb-1">CPF *</label>
+                            <input type="text" id="cpf" name="cpf"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="000.000.000-00"
+                                   required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                            <span class="text-red-600 text-sm mt-1 hidden">CPF inválido. Use o formato 000.000.000-00.</span>
+                        </div>
+                        
+                        <!-- Telefone -->
+                        <div>
+                            <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone / Celular *</label>
+                            <input type="tel" id="telefone" name="telefone"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="(00) 90000-0000"
+                                   required pattern="\(\d{2}\) \d{4,5}-\d{4}">
+                            <span class="text-red-600 text-sm mt-1 hidden">Telefone inválido.</span>
+                        </div>
+
+                        <!-- Data de Nascimento -->
+                        <div>
+                            <label for="data-nascimento" class="block text-sm font-medium text-gray-700 mb-1">Data de Nascimento *</label>
+                            <input type="date" id="data-nascimento" name="data-nascimento"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   required>
+                            <span class="text-red-600 text-sm mt-1 hidden">Data obrigatória.</span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Endereço -->
+                <fieldset class="mb-8">
+                    <legend class="text-2xl font-semibold text-teal-700 mb-6 border-b border-teal-200 pb-2 w-full">Endereço</legend>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- CEP -->
+                        <div class="md:col-span-1">
+                            <label for="cep" class="block text-sm font-medium text-gray-700 mb-1">CEP *</label>
+                            <input type="text" id="cep" name="cep"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="00000-000"
+                                   required pattern="\d{5}-\d{3}">
+                            <span class="text-red-600 text-sm mt-1 hidden">CEP inválido. Use o formato 00000-000.</span>
+                        </div>
+                        
+                        <!-- Endereço (Rua) -->
+                        <div class="md:col-span-2">
+                            <label for="endereco" class="block text-sm font-medium text-gray-700 mb-1">Endereço (Rua e Número) *</label>
+                            <input type="text" id="endereco" name="endereco"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="Ex: Rua das Flores, 123"
+                                   required>
+                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                        </div>
+
+                        <!-- Cidade -->
+                        <div class="md:col-span-2">
+                            <label for="cidade" class="block text-sm font-medium text-gray-700 mb-1">Cidade *</label>
+                            <input type="text" id="cidade" name="cidade"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="Sua cidade"
+                                   required>
+                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="md:col-span-1">
+                            <label for="estado" class="block text-sm font-medium text-gray-700 mb-1">Estado *</label>
+                            <input type="text" id="estado" name="estado"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                   placeholder="UF"
+                                   required maxlength="2">
+                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <!-- Botão de Envio -->
+                <div class="text-center">
+                    <button type="submit"
+                            class="bg-teal-500 text-white font-bold px-10 py-3 rounded-full hover:bg-teal-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 text-lg">
+                        Finalizar Cadastro
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-10 mt-16">
+        <!-- Seção Newsletter -->
+        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
+            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
+            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
+            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
+                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
+                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
+                    Assinar
+                </button>
+            </form>
+        </section>
+        
+        <!-- Copyright -->
+        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
+            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
+        </div>
+    </footer>
+
+    <!-- Link para o arquivo JavaScript global (que contém as máscaras) -->
+    <script src="script.js" defer></script>
+</body>
+</html>
+
