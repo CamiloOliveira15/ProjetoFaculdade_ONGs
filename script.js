@@ -74,4 +74,3 @@ function formatTelefone(e) {
     
     e.target.value = value;
 }
-

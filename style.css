@@ -14,12 +14,10 @@ main {
 
 /* Estilos de validação (para o cadastro.html) */
 /* Mostra borda vermelha em campos inválidos que já foram tocados */
+/* Este estilo é um ótimo feedback visual que complementa a validação nativa */
 input:invalid:not(:placeholder-shown) {
     border-color: #e53e3e; /* red-600 */
 }
 
-/* Mostra a mensagem de erro span quando o input é inválido */
-input:invalid:not(:placeholder-shown) + span {
-    display: block;
-}
-
+/* AJUSTE: Removida a regra para 'input:invalid:not(:placeholder-shown) + span' 
+   pois os spans de erro foram removidos em favor da validação nativa. */

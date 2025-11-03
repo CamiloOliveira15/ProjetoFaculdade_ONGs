@@ -32,9 +32,11 @@
             <ul class="flex space-x-6 items-center">
                 <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
                 <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
+                <!-- Links para páginas não exigidas na Entrega 1 (opcional manter) -->
                 <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
                 <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
                 <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
+                <!-- Fim dos links opcionais -->
                 <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
             </ul>
         </nav>
@@ -44,6 +46,9 @@
     <main class="container mx-auto px-6 py-16">
         
         <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
+            <!-- AJUSTE: Imagem adicionada para cumprir o requisito -->
+            <img src="https://placehold.co/800x300/38b2ac/ffffff?text=Junte-se+a+Nós" alt="Banner de cadastro" class="w-full h-48 object-cover rounded-lg mb-10">
+
             <!-- Título -->
             <section class="text-center mb-10">
                 <h1 class="text-4xl font-bold text-gray-900 mb-4">Crie sua Conta</h1>
@@ -51,7 +56,8 @@
             </section>
 
             <!-- Formulário de Cadastro -->
-            <form id="registration-form" action="#" method="POST" novalidate>
+            <!-- AJUSTE: Removido o atributo 'novalidate' para ativar a validação nativa do navegador -->
+            <form id="registration-form" action="#" method="POST">
                 
                 <!-- Dados Pessoais -->
                 <fieldset class="mb-8">
@@ -64,7 +70,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="Seu nome completo"
                                    required>
-                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                         
                         <!-- E-mail -->
@@ -74,7 +80,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="seu.email@dominio.com"
                                    required>
-                            <span class="text-red-600 text-sm mt-1 hidden">E-mail inválido.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- CPF -->
@@ -84,7 +90,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="000.000.000-00"
                                    required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
-                            <span class="text-red-600 text-sm mt-1 hidden">CPF inválido. Use o formato 000.000.000-00.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                         
                         <!-- Telefone -->
@@ -94,7 +100,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="(00) 90000-0000"
                                    required pattern="\(\d{2}\) \d{4,5}-\d{4}">
-                            <span class="text-red-600 text-sm mt-1 hidden">Telefone inválido.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- Data de Nascimento -->
@@ -103,7 +109,7 @@
                             <input type="date" id="data-nascimento" name="data-nascimento"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    required>
-                            <span class="text-red-600 text-sm mt-1 hidden">Data obrigatória.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                     </div>
                 </fieldset>
@@ -119,7 +125,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="00000-000"
                                    required pattern="\d{5}-\d{3}">
-                            <span class="text-red-600 text-sm mt-1 hidden">CEP inválido. Use o formato 00000-000.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                         
                         <!-- Endereço (Rua) -->
@@ -129,7 +135,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="Ex: Rua das Flores, 123"
                                    required>
-                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- Cidade -->
@@ -139,7 +145,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="Sua cidade"
                                    required>
-                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
 
                         <!-- Estado -->
@@ -149,7 +155,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                    placeholder="UF"
                                    required maxlength="2">
-                            <span class="text-red-600 text-sm mt-1 hidden">Campo obrigatório.</span>
+                            <!-- AJUSTE: Span de erro removido -->
                         </div>
                     </div>
                 </fieldset>
@@ -192,4 +198,3 @@
     <script src="script.js" defer></script>
 </body>
 </html>
-
