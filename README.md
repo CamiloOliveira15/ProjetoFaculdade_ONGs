@@ -66,12 +66,6 @@ Tailwind CSS (via CDN): Estilização e design responsivo (Mobile-First).
 
 JavaScript (ESM - Módulos): Manipulação do DOM, máscaras de formulário, lógica de modais e interação com o banco de dados.
 
-Firebase (BaaS - Backend as a Service):
-
-Firestore: Banco de dados NoSQL em tempo real para projetos e voluntários.
-
-Firebase Auth: Autenticação (neste projeto, simulada com login anônimo ou token).
-
 📁 Estrutura dos Arquivos
 
 /
