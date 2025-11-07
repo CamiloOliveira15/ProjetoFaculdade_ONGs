@@ -32,6 +32,19 @@
     
     <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS com @apply (processado pelo Play CDN) -->
+    <style type="text/tailwindcss">
+      .btn {
+        @apply px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all duration-300 ease-in-out;
+      }
+      .btn-primary {
+        @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
+      }
+      .btn-secondary {
+        @apply bg-secondary hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+      }
+    </style>
 </head>
 
 <body class="flex min-h-screen flex-col">

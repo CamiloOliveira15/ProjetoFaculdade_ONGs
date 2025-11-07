@@ -70,11 +70,13 @@ HTML5 Semântico: Atendido, como descrito acima.
 
 CSS3 Avançado e Layout Responsivo:
 
-O projeto utiliza Tailwind CSS para implementar um design mobile-first profissional e totalmente responsivo.
+O projeto utiliza Tailwind CSS (via Play CDN) para implementar um design mobile-first profissional e totalmente responsivo.
 
 Todos os componentes, tabelas e formulários se adaptam a tablets e desktops.
 
-O arquivo style.css complementa o Tailwind com estilos de botões (.btn) e melhorias de foco para acessibilidade.
+O arquivo style.css contém estilos globais (fonte, cor de fundo, :focus-visible).
+
+Nota Importante sobre o @apply: As classes customizadas do Tailwind (como .btn e .btn-primary) que usam @apply foram movidas do style.css para dentro de uma tag <style type="text/tailwindcss"> em cada arquivo .html. Isso é um requisito técnico do Tailwind Play CDN, que não processa a regra @apply em arquivos .css externos.
 
 JavaScript Interativo e Dinâmico:
 
@@ -110,7 +112,7 @@ O código é separado, organizado e comentado.
 
 HTML5: Estruturação semântica.
 
-CSS3 (com Tailwind CSS): Estilização avançada, responsividade e sistema de design.
+CSS3 (com Tailwind CSS): Estilização avançada, responsividade e sistema de design (via Play CDN).
 
 JavaScript (ES6+): Interatividade, manipulação de DOM e simulação de autenticação via localStorage.
 
@@ -142,6 +144,7 @@ Para a entrega no GitHub, os arquivos devem ser organizados da seguinte forma:
     ├── vecteezy_lovely-cat-sitting_23027565.jpg
     ├── vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg
     └── vecteezy_silver-tabby-cat-sitting-on-green-background_2098203.jpg
+
 
 
 Nota: Se você colocar as imagens na pasta /images/, lembre-se de atualizar o caminho src nos arquivos .html (ex: src="images/vecteezy_...jpg").
