@@ -4,6 +4,8 @@ Este repositório contém o código-fonte do projeto "MiauApoio", uma plataforma
 
 O projeto foi desenvolvido como avaliação para a disciplina de Desenvolvimento Front-End Para Web - Turma_004.
 
+Está disponível no site: https://pinheirotecnologia.com/index.html
+
 Contexto do Projeto
 
 O objetivo deste trabalho acadêmico é aplicar de forma integrada os conceitos de desenvolvimento front-end (HTML5, CSS3, JavaScript) e infraestrutura web (AWS) em um contexto socialmente relevante. A plataforma simula um ambiente de desenvolvimento profissional, atendendo a múltiplos perfis de usuário (Personas) e requisitos técnicos complexos.
