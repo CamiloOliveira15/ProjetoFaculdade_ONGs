@@ -1,190 +1,366 @@
-MiauApoio - Plataforma Web para ONG de Adoção Felina
+Plataforma Web para ONGs - MiauApoio
 
-Este projeto é uma plataforma web completa e profissional desenvolvida para a MiauApoio, uma ONG fictícia de resgate e adoção de gatos. O sistema foi criado como parte de um projeto acadêmico de desenvolvimento front-end, aplicando de forma integrada conceitos de HTML5, CSS3 avançado, JavaScript e integração básica de backend com serviços AWS.
+Este repositório contém o código-fonte do projeto "MiauApoio", uma plataforma web completa e profissional para Organizações Não Governamentais (ONGs) focadas no resgate e adoção de animais.
 
-A plataforma simula um ambiente real, atendendo às necessidades de diferentes personas (Visitantes, Doadores, Voluntários e Administradores) e fornecendo uma presença digital vital para uma organização do terceiro setor.
+O projeto foi desenvolvido como avaliação para a disciplina de Desenvolvimento Front-End Para Web - Turma_004.
 
-🚀 Funcionalidades Implementadas
+Contexto do Projeto
 
-O projeto é dividido em duas áreas principais: o Site Público (para visitantes, doadores e potenciais voluntários) e o Dashboard Administrativo (para a gestão da ONG).
+O objetivo deste trabalho acadêmico é aplicar de forma integrada os conceitos de desenvolvimento front-end (HTML5, CSS3, JavaScript) e infraestrutura web (AWS) em um contexto socialmente relevante. A plataforma simula um ambiente de desenvolvimento profissional, atendendo a múltiplos perfis de usuário (Personas) e requisitos técnicos complexos.
 
-1. Site Público
+Arquitetura da Solução
 
-Página Home (index.html): Apresenta a missão da ONG, métricas de impacto, informações de contato e uma seção "hero" com as imagens reais fornecidas.
+A plataforma é composta por duas áreas principais:
 
-Página de Projetos (projetos.html): Detalha os projetos sociais (Resgate, Feiras de Adoção), explica como ser voluntário e como doar (Captação de Recursos).
+Site Público (Front-End Estático): Desenvolvido com HTML5 semântico, CSS3 (utilizando o framework Tailwind CSS) e JavaScript puro. Esta é a vitrine da ONG para visitantes, doadores e potenciais voluntários.
 
-Página de Cadastro (cadastro.html): Formulário complexo para inscrição de novos voluntários. Esta página está integrada com um backend AWS (API Gateway + Lambda) para salvar os cadastros em um banco de dados DynamoDB.
+Área Administrativa (Dashboard): Uma área de acesso restrito (simulada com localStorage) para administradores gerenciarem projetos, voluntários e conteúdo.
 
-Página de Blog (blog.html): Lista de notícias, dicas e histórias de adoção, servindo como ferramenta de comunicação.
+Back-End (Serverless): O formulário de cadastro de voluntários não é uma simulação. Ele se integra a um back-end real e escalável na nuvem, utilizando:
 
-Post de Blog (blog-post.html): Modelo de artigo individual.
+AWS API Gateway: Para expor um endpoint HTTP seguro.
 
-Página de Transparência (transparencia.html): Área para relatórios, prestação de contas e documentos públicos.
+AWS Lambda: Uma função Python que recebe os dados, valida e os armazena.
 
-Newsletter: Seção no rodapé de todas as páginas para engajamento de apoiadores.
+AWS DynamoDB: Um banco de dados NoSQL para persistir os cadastros de voluntários.
 
-2. Dashboard Administrativo (Acesso Restrito)
+Estrutura de Arquivos do Projeto
 
-Página de Login (login.html): Portal de entrada para a área de gestão (simulado via localStorage).
+/
+├── dashboard-auth.js         # (JS) Proteção e logout do dashboard
+├── dashboard-blog-novo.html    # (HTML) Formulário de novo post
+├── dashboard-blog.html         # (HTML) Gerenciador de posts
+├── dashboard-projetos-novo.html # (HTML) Formulário de novo projeto
+├── dashboard-projetos.html     # (HTML) Gerenciador de projetos
+├── dashboard-voluntarios.html  # (HTML) Gerenciador de voluntários
+├── dashboard.html              # (HTML) Página principal do admin
+├── index.html                  # (HTML) Página principal (Home)
+├── login.html                  # (HTML) Página de login do admin
+├── login.js                    # (JS) Lógica de simulação de login
+├── projetos.html               # (HTML) Página de projetos e doações
+├── blog.html                   # (HTML) Página de listagem do blog
+├── blog-post.html              # (HTML) Página de um post individual
+├── transparencia.html          # (HTML) Página de prestação de contas
+├── cadastro.html               # (HTML) Formulário de cadastro (com API)
+├── script.js                   # (JS) Lógica do site público (Menu, Máscaras, API)
+├── style.css                   # (CSS) Estilos customizados e @apply
+├── lambda_function.py          # (Python) Código da função AWS Lambda
+└── README.md                   # (MD) Esta documentação
 
-Visão Geral (dashboard.html): Painel com métricas de engajamento (simuladas).
 
-Gerenciar Projetos (dashboard-projetos.html): Tabela para listar projetos existentes.
+Checklist de Requisitos Atendidos
 
-Adicionar Projeto (dashboard-projetos-novo.html): Formulário para cadastrar novos projetos (simulado).
+Esta seção detalha como o projeto atende a todos os requisitos solicitados no briefing da disciplina.
 
-Gerenciar Voluntários (dashboard-voluntarios.html): Tabela para listar voluntários (simulada, mas alimentada pelo formulário de cadastro real).
+1. Requisitos da Primeira Entrega (HTML5)
 
-Gerenciar Blog (dashboard-blog.html): Tabela para listar posts.
+Requisito
 
-Adicionar Post (dashboard-blog-novo.html): Formulário para criar novos posts (simulado).
+Status
 
-✅ Atendimento aos Requisitos do Projeto
+Implementação
 
-Este projeto foi meticulosamente estruturado para atender a todos os requisitos do briefing acadêmico.
+Mínimo 3 páginas HTML
 
-1. Requisitos da "Primeira Entrega" (Fundamentos de HTML5)
+✅
 
-Estrutura Semântica (3+ páginas): O projeto excede o requisito, entregando 13 arquivos HTML (index.html, projetos.html, cadastro.html, blog.html, transparencia.html, etc.), todos utilizando tags semânticas modernas (<header>, <main>, <section>, <article>, <nav>, <aside>, <footer>).
+14 páginas HTML criadas (home, projetos, cadastro, login, blog, etc.)
 
-Hierarquia de Títulos: Todas as páginas possuem uma estrutura lógica de títulos (um único <h1> por página, seguido de <h2>, <h3>, etc.), garantindo acessibilidade e SEO.
+Estrutura Semântica
 
-Imagens: Imagens são usadas em todas as páginas públicas, com alt-text descritivos e atribuição de licença no rodapé.
+✅
 
-Formulário Complexo (cadastro.html):
+Uso extensivo de tags como <header>, <footer>, <main>, <nav>, <section>, <article>.
 
-Inputs HTML5: Utiliza type="email", type="date", type="tel", etc.
+Hierarquia de Títulos
 
-Campos Obrigatórios: Nome Completo, e-mail, CPF, telefone, Data de Nascimento, Endereço, CEP, Cidade e Estado.
+✅
 
-Validação Nativa: Usa atributos required, pattern e title para validação no lado do cliente.
+Todas as páginas possuem <h1> único e hierarquia <h2>, <h3> lógica.
 
-Agrupamento Lógico: Utiliza <fieldset> e <legend> para agrupar "Dados Pessoais" e "Endereço".
+Imagens por página
 
-Máscaras de Input (JavaScript): O arquivo script.js implementa as máscaras obrigatórias para CPF, Telefone e CEP.
+✅
 
-2. Objetivos Específicos e Requisitos Técnicos
+Todas as páginas utilizam imagens com alt-text descritivo.
 
-HTML5 Semântico: Atendido, como descrito acima.
+Página index.html
 
-CSS3 Avançado e Layout Responsivo:
+✅
 
-O projeto utiliza Tailwind CSS (via Play CDN) para implementar um design mobile-first profissional e totalmente responsivo.
+index.html (Home) apresenta a organização e informações de contato.
 
-Todos os componentes, tabelas e formulários se adaptam a tablets e desktops.
+Página projetos.html
 
-O arquivo style.css contém estilos globais (fonte, cor de fundo, :focus-visible).
+✅
 
-Nota Importante sobre o @apply: As classes customizadas do Tailwind (como .btn e .btn-primary) que usam @apply foram movidas do style.css para dentro de uma tag <style type="text/tailwindcss"> em cada arquivo .html. Isso é um requisito técnico do Tailwind Play CDN, que não processa a regra @apply em arquivos .css externos.
+projetos.html detalha projetos, voluntariado e como doar.
 
-JavaScript Interativo e Dinâmico:
+Página cadastro.html
 
-script.js: Controla o menu mobile (hamburguer), aplica as máscaras de formulário e envia os dados do formulário de cadastro para a API Gateway da AWS via fetch.
+✅
 
-login.js: Simula a autenticação de login (usuário e senha) usando localStorage.
+cadastro.html contém o formulário completo.
 
-dashboard-auth.js: Atua como um "gatekeeper", protegendo todas as páginas do dashboard e implementando a função de "Sair" (logout).
+Formulário Complexo
 
-Acessibilidade (WCAG):
+✅
 
-Uso de HTML semântico e hierarquia de títulos.
+Todos os campos solicitados (Nome, E-mail, CPF, etc.) estão presentes.
 
-alt-text em imagens.
+Inputs HTML5
 
-Foco visível (:focus-visible em style.css).
+✅
 
-Uso de aria-label e role="navigation" para leitores de tela (ex: redes sociais).
+Uso de type="email", type="tel", type="date".
 
-SEO e Descoberta:
+Validação Nativa
 
-Cada página possui <title> e <meta name="description"> únicos e otimizados.
+✅
 
-A página login.html e os arquivos do dashboard usam <meta name="robots" content="noindex"> para evitar indexação.
+Uso de atributos required, pattern e title para validação.
 
-Simulação de Ambiente Profissional:
+Agrupamento Lógico
 
-O projeto lida com múltiplas personas e um fluxo de usuário completo.
+✅
 
-O código é separado, organizado e comentado.
+Formulário dividido com <fieldset> e <legend>.
 
-Integração com AWS: O projeto demonstra um fluxo real de front-end para back-end, conectando o site estático (S3/CloudFront) a um serviço serverless (Lambda/DynamoDB) através de uma API Gateway.
+Máscaras de Input (JS)
 
-🛠️ Tecnologias Utilizadas
+✅
 
-HTML5: Estruturação semântica.
+script.js implementa as máscaras de CPF, Telefone e CEP.
 
-CSS3 (com Tailwind CSS): Estilização avançada e responsividade (via Play CDN).
+2. Personas e Casos de Uso
 
-JavaScript (ES6+): Interatividade, manipulação de DOM, chamadas de API (fetch) e simulação de autenticação (localStorage).
+Persona
 
-AWS (Backend):
+Caso de Uso
 
-AWS S3: Hospedagem do site estático.
+Status
 
-AWS CloudFront: Distribuição de conteúdo (CDN) e domínio personalizado com HTTPS.
+Implementação
 
-AWS API Gateway: Criação do endpoint POST para o formulário.
+Administrador
 
-AWS Lambda (Python): Função serverless para processar o formulário e lidar com CORS.
+Gerenciar projetos
 
-AWS DynamoDB: Banco de dados NoSQL para armazenar os cadastros de voluntários.
+✅
 
-📂 Estrutura de Pastas (Recomendada)
+dashboard-projetos.html, dashboard-projetos-novo.html
 
-Para a entrega no GitHub, os arquivos devem ser organizados da seguinte forma:
 
-/ (raiz do projeto)
-├── README.md             (Este arquivo)
-├── index.html
-├── projetos.html
-├── cadastro.html
-├── blog.html
-├── blog-post.html
-├── transparencia.html
-├── login.html
-├── dashboard.html
-├── dashboard-projetos.html
-├── dashboard-projetos-novo.html
-├── dashboard-voluntarios.html
-├── dashboard-blog.html
-├── dashboard-blog-novo.html
-├── style.css
-├── script.js
-├── login.js
-├── dashboard-auth.js
-│
-└── /backend/
-│   └── lambda_function.py
-│
-└── /images/              (Pasta para as imagens)
-    ├── vecteezy_lovely-cat-sitting_23027565.jpg
-    ├── vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg
-    └── vecteezy_silver-tabby-cat-sitting-on-green-background_2098203.jpg
 
+Gerenciar voluntários
 
+✅
 
-Nota: Se você colocar as imagens na pasta /images/, lembre-se de atualizar o caminho src nos arquivos .html (ex: src="images/vecteezy_...jpg").
+dashboard-voluntarios.html (dados viriam da AWS)
 
-⚙️ Como Executar
+
+
+Acompanhar métricas
+
+✅
+
+dashboard.html (simulação de métricas)
+
+Voluntário
+
+Descobrir oportunidades
+
+✅
+
+projetos.html
+
+
+
+Candidatar-se
+
+✅
+
+cadastro.html (integrado com AWS Lambda)
+
+
+
+Acompanhar histórico
+
+❌
+
+Requeriria back-end de login para voluntários.
+
+Doador
+
+Conhecer projetos
+
+✅
+
+projetos.html
+
+
+
+Realizar doações
+
+✅
+
+projetos.html (informações de PIX e conta)
+
+
+
+Relatórios
+
+✅
+
+transparencia.html
+
+Visitante
+
+Conhecer a organização
+
+✅
+
+index.html
+
+
+
+Acessar contato
+
+✅
+
+index.html (seção de contato no rodapé)
+
+
+
+Compartilhar
+
+✅
+
+Links de redes sociais no rodapé.
+
+3. Funcionalidades Principais
+
+Funcionalidade
+
+Status
+
+Implementação
+
+Área Institucional
+
+✅
+
+index.html (Missão), transparencia.html (Relatórios)
+
+Gestão de Projetos
+
+✅
+
+Simulada no Dashboard com dashboard-projetos.html.
+
+Engajamento (Voluntários)
+
+✅
+
+Portal em projetos.html e cadastro funcional em cadastro.html.
+
+Captação de Recursos
+
+✅
+
+projetos.html com informações de doação.
+
+Comunicação/Transparência
+
+✅
+
+blog.html, blog-post.html, transparencia.html e Newsletter no rodapé.
+
+4. Requisitos Técnicos Gerais
+
+Requisito
+
+Status
+
+Implementação
+
+Responsividade
+
+✅
+
+Design Mobile-First aplicado com Tailwind CSS. O layout se adapta a celulares, tablets e desktops.
+
+Desempenho
+
+✅
+
+Imagens otimizadas (placeholders/Vecteezy), uso de CDN para Tailwind.
+
+Acessibilidade (WCAG)
+
+✅
+
+Contraste de cores verificado, uso de alt-text, aria-label, role e hierarquia de títulos correta.
+
+Segurança
+
+✅
+
+Validação de formulários (HTML5 nativo + API). HTTPS é configurado na AWS (CloudFront).
+
+SEO e Descoberta
+
+✅
+
+Meta tags (<title>, <meta name="description">) otimizadas em todas as páginas.
+
+CSS3 Avançado
+
+✅
+
+Uso do framework Tailwind CSS com classes utilitárias e diretivas @apply.
+
+JavaScript Dinâmico
+
+✅
+
+Menu mobile, máscaras de formulário e chamada de API (AWS) com fetch.
+
+Infraestrutura Web
+
+✅
+
+Uso de AWS API Gateway, Lambda e DynamoDB para o cadastro.
+
+⚠️ Nota Técnica Importante: Tailwind CSS e @apply
+
+Para este projeto, utilizamos o Tailwind CSS Play CDN (<script src="https://cdn.tailwindcss.com">). Esta abordagem é excelente para prototipagem e projetos que não possuem um build step (como npm run build).
+
+No entanto, o Play CDN possui uma limitação conhecida: ele não processa a diretiva @apply dentro de arquivos CSS externos (como o style.css).
+
+Problema: Seu editor de código (VS Code, etc.) pode exibir um "aviso" ou "erro" na diretiva @apply, pois ele não a reconhece como CSS padrão.
+Solução: Este aviso do editor deve ser ignorado. O código está correto.
+
+Atenção: Para que as classes customizadas (como .btn) funcionem, movemos as regras de @apply do style.css para dentro de uma tag <style type="text/tailwindcss"> no <head> de cada arquivo HTML. Esta é a abordagem oficial recomendada pelo Tailwind para usar @apply com o Play CDN.
+
+A tentativa de mover o @apply de volta para o style.css fará com que os estilos dos botões e do blog deixem de funcionar no navegador, mesmo que o "erro" no editor desapareça.
+
+Como Executar o Projeto
+
+1. Modo Local (Simulado)
 
 Clone este repositório.
 
-Abra o arquivo index.html em qualquer navegador web.
+Abra qualquer arquivo .html (ex: index.html) diretamente no seu navegador.
 
-A navegação entre as páginas é feita por links de hipertexto padrão.
+Funcionalidades:
 
-Acesso ao Dashboard
+O site público é 100% navegável.
 
-Para acessar a área administrativa e testar as funcionalidades de login:
+O Dashboard (dashboard.html, etc.) é 100% funcional (simulado com localStorage).
 
-Navegue até login.html.
+O formulário de cadastro.html irá funcionar, pois está apontando para a API pública na AWS.
 
-Use as seguintes credenciais de simulação:
-
-E-mail: admin@miauapoio.org
-
-Senha: admin123
 
 📄 Licença e Créditos
 
