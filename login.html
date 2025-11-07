@@ -3,129 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ONG Conecta Vidas</title>
-    <meta name="description" content="Acesse sua conta de voluntário, doador ou administrador.">
-    <!-- Tailwind CSS CDN -->
+    <title>Login | MiauApoio</title>
+    <meta name="robots" content="noindex"> <!-- Impede indexação de páginas de login -->
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
             }
+          }
         }
+      }
     </script>
-    <!-- Link para o arquivo CSS global -->
+    
+    <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 text-gray-800">
 
-    <!-- Cabeçalho e Navegação -->
-    <header class="bg-white shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-teal-600">
-                <a href="index.html">ONG Conecta Vidas</a>
+<body class="flex min-h-screen flex-col bg-light items-center justify-center p-4">
+
+    <main class="w-full max-w-md">
+        <div class="bg-white p-8 rounded-2xl shadow-xl">
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0 flex justify-center items-center gap-2 mb-6">
+              <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+              <span class="text-2xl font-bold text-secondary">
+                MiauApoio
+              </span>
+            </a>
+            
+            <h1 class="text-center text-3xl font-bold text-secondary mb-2">
+                Acesso Restrito
+            </h1>
+            <p class="text-center text-secondary-light mb-8">
+                Área exclusiva para administradores e voluntários.
+            </p>
+
+            <!-- Mensagem de Erro (oculta por padrão) -->
+            <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6" role="alert">
+                <span class="block sm:inline">E-mail ou senha inválidos. Tente novamente.</span>
             </div>
-            <ul class="flex space-x-6 items-center">
-                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
-                <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
-                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
-                <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
-                <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
-                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Conteúdo Principal -->
-    <main class="container mx-auto px-6 py-24 flex justify-center items-center">
-        
-        <div class="max-w-md w-full bg-white p-10 rounded-lg shadow-xl">
-            <!-- Título -->
-            <section class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-3">Acesse sua Conta</h1>
-                <p class="text-gray-600">Bem-vindo de volta!</p>
-            </section>
 
             <!-- Formulário de Login -->
-            <form action="#" method="POST">
-                <div class="space-y-6">
-                    <!-- E-mail -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                        <input type="email" id="email" name="email"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                               placeholder="seu.email@dominio.com"
-                               required>
-                    </div>
-                    
-                    <!-- Senha -->
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-                        <input type="password" id="password" name="password"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                               placeholder="Sua senha"
-                               required>
-                    </div>
-                    
-                    <!-- Botão de Login (Simulado) -->
-                    <button type="button" class="w-full bg-teal-500 text-white font-bold px-8 py-3 rounded-full hover:bg-teal-600 transition duration-300 text-lg">
-                        Entrar
+            <form id="login-form" class
+="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-secondary-light">E-mail</label>
+                    <input type="email" id="email" name="email" autocomplete="email"
+                           required 
+                           class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+                           value="admin@miauapoio.org"
+                    >
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium text-secondary-light">Senha</label>
+                    <input type="password" id="password" name="password"
+                           required
+                           class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+                           value="admin123"
+                    >
+                </div>
+                
+                <p class="text-xs text-stone-500">
+                    Use <span class="font-medium">admin@miauapoio.org</span> e <span class="font-medium">admin123</span> para simular o login.
+                </p>
+
+                <div>
+                    <button type="submit" class="w-full btn btn-primary text-lg px-10 py-3">
+                      Entrar
                     </button>
-                    
-                    <p class="text-center text-sm text-gray-600">
-                        Não tem uma conta? 
-                        <a href="cadastro.html" class="font-medium text-teal-600 hover:underline">Cadastre-se aqui</a>.
-                    </p>
                 </div>
             </form>
 
-            <!-- SIMULAÇÃO DE LOGIN (APENAS PARA FRONT-END) -->
-            <fieldset class="mt-8 border-t border-gray-200 pt-6">
-                <legend class="text-center text-sm font-medium text-gray-500">Apenas para simulação:</legend>
-                <div class="mt-4 grid grid-cols-1 gap-3">
-                    <a href="admin_dashboard.html" class="w-full text-center bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-sm">
-                        Simular Login (Admin)
-                    </a>
-                    <a href="voluntario_dashboard.html" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm">
-                        Simular Login (Voluntário)
-                    </a>
-                    <a href="doador_dashboard.html" class="w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm">
-                        Simular Login (Doador)
-                    </a>
-                </div>
-            </fieldset>
-            <!-- FIM DA SIMULAÇÃO -->
-
+            <div class="mt-6 text-center">
+                <a href="index.html" class="text-sm font-medium text-primary hover:text-primary-dark">
+                    &larr; Voltar para o site
+                </a>
+            </div>
         </div>
     </main>
 
-    <!-- Rodapé -->
-    <footer class="bg-gray-800 text-white py-10 mt-16">
-        <!-- Seção Newsletter -->
-        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
-            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
-            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
-            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
-                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
-                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
-                    Assinar
-                </button>
-            </form>
-        </section>
-        
-        <!-- Copyright -->
-        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
-            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
-        </div>
-    </footer>
-
-    <!-- Link para o arquivo JavaScript global -->
-    <script src="script.js" defer></script>
+    <!-- Script de Lógica de Login -->
+    <script src="login.js" defer></script>
 </body>
 </html>
-

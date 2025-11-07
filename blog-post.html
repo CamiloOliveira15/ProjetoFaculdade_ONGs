@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Final Feliz de Frajola | MiauApoio</title>
+    <meta name="description" content="Após meses de recuperação, nosso querido Frajola encontrou um lar amoroso...">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para o conteúdo do post */
+        .post-content h2 {
+            @apply text-3xl font-bold text-secondary mt-12 mb-4;
+        }
+        .post-content p {
+            @apply text-lg text-secondary-light mb-6 leading-relaxed;
+        }
+        .post-content blockquote {
+            @apply border-l-4 border-primary pl-6 py-4 my-8 text-xl italic text-secondary-light;
+        }
+    </style>
+</head>
+
+<body class="flex min-h-screen flex-col">
+
+    <!-- =============================================== -->
+    <!-- COMPONENTE: HEADER (Atualizado)                 -->
+    <!-- =============================================== -->
+    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          
+          <!-- Logo (Link para Home) -->
+          <a href="index.html" class="flex-shrink-0">
+            <div class="flex items-center gap-2">
+              <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+              <span class="text-2xl font-bold text-secondary">
+                MiauApoio
+              </span>
+            </div>
+          </a>
+
+          <!-- Navegação (Semântico: <nav>) -->
+          <nav class="hidden md:flex md:items-center md:space-x-2">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Home
+            </a>
+            <a href="projetos.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Projetos
+            </a>
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Blog
+            </a>
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Transparência
+            </a>
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Login
+            </a>
+            <a href="cadastro.html" class="ml-4 btn btn-primary">
+              Cadastre-se
+            </a>
+          </nav>
+
+          <!-- Menu Mobile -->
+          <div class="flex md:hidden">
+            <button id="mobile-menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-secondary-light hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+              <span class="sr-only">Abrir menu principal</span>
+              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Mobile (Dropdown) -->
+      <div id="mobile-menu" class="hidden border-t border-stone-200 md:hidden">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal do Post -->
+    <main class="flex-grow bg-white py-16 sm:py-24">
+        <div class="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <article>
+                <header class="mb-12 text-center">
+                    <span class="text-base font-semibold text-primary">Histórias de Adoção</span>
+                    <!-- h1: Título principal da página -->
+                    <h1 class="mt-4 text-4xl font-bold text-secondary sm:text-5xl">
+                        O Final Feliz de Frajola
+                    </h1>
+                    <p class="mt-6 text-lg text-secondary-light">
+                        Por Equipe MiauApoio | 5 de Novembro, 2025
+                    </p>
+                </header>
+
+                <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="h-auto w-full rounded-2xl shadow-lg">
+
+                <div class="post-content mt-12">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. 
+                        Sed sit amet felis nec ante facilisis varius. Quisque maximus, 
+                        urna nec finibus euismod, sem elit interdum tellus, 
+                        vel convallis eros erat in tortor. 
+                        Quando Frajola chegou ao nosso abrigo, ele estava assustado, 
+                        magro e precisando de cuidados médicos urgentes.
+                    </p>
+                    <p>
+                        Ele havia sido encontrado em um terreno baldio, 
+                        lutando por comida. Nossos veterinários imediatamente 
+                        iniciaram o tratamento para desnutrição e uma infecção 
+                        de pele. Foram semanas de cuidado intensivo e, mais importante, 
+                        de muito carinho por parte dos nossos voluntários.
+                    </p>
+
+                    <h2>A Recuperação</h2>
+                    <p>
+                        Aos poucos, o verdadeiro Frajola começou a aparecer. 
+                        Um gato incrivelmente dócil, que adorava um cafuné na 
+                        barriga e não resistia a um brinquedo de penas. 
+                        Sua transformação foi inspiradora para toda a equipe. 
+                        Ele estava pronto para o próximo capítulo.
+                    </p>
+
+                    <blockquote>
+                        "No momento em que o vimos no site, sabíamos que ele era 
+                        especial. Trazê-lo para casa foi a melhor decisão que tomamos."
+                        <cite class="mt-2 block text-base not-italic text-secondary">- Nova família do Frajola</cite>
+                    </blockquote>
+
+                    <h2>Um Novo Lar</h2>
+                    <p>
+                        No último fim de semana, Frajola foi adotado por uma 
+                        família maravilhosa. Ele agora tem um quintal seguro para 
+                        explorar (com supervisão!) e uma nova melhor amiga, 
+                        a "irmã" canina, Luna.
+                    </p>
+                    <p>
+                        Histórias como a do Frajola só são possíveis por causa 
+                        da sua ajuda. Seja doando, voluntariando ou 
+                        compartilhando nossas postagens. Obrigado por fazerem 
+                        parte disso!
+                    </p>
+                </div>
+            </article>
+
+            <div class="mt-16 border-t pt-8 text-center">
+                <a href="blog.html" class="text-lg font-medium text-primary hover:text-primary-dark">
+                    &larr; Voltar para o Blog
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- =============================================== -->
+    <!-- COMPONENTE: FOOTER (Atualizado com Newsletter)  -->
+    <!-- =============================================== -->
+    <footer class="mt-auto w-full bg-secondary text-stone-300">
+      <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        
+        <!-- Seção Newsletter -->
+        <div class="mb-12 rounded-2xl bg-stone-700 p-8 md:p-12">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Assine nossa Newsletter</h2>
+                    <p class="mt-2 text-stone-300">Receba histórias de adoção e atualizações mensais no seu e-mail.</p>
+                </div>
+                <form class="flex w-full flex-col items-end gap-3 sm:flex-row" onsubmit="alert('Obrigado por se inscrever!'); return false;">
+                    <div class="w-full">
+                        <label for="email-newsletter" class="sr-only">E-mail</label>
+                        <input type="email" id="email-newsletter" required placeholder="Digite seu e-mail"
+                               class="w-full rounded-md border-stone-500 bg-stone-600 px-4 py-3 text-white shadow-sm focus:border-primary focus:ring-primary">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full sm:w-auto">Inscrever</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Rodapé Principal -->
+        <div class="flex flex-col items-center justify-between md:flex-row">
+          <div class="mb-6 flex items-center gap-2 md:mb-0">
+            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+            <span class="text-2xl font-bold text-white">MiauApoio</span>
+          </div>
+          <div class="mb-6 flex space-x-6 md:mb-0" role="navigation" aria-label="Redes sociais">
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Instagram">Instagram</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Facebook">Facebook</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Twitter">Twitter</a>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-stone-700 pt-8 text-center text-base text-stone-400">
+          <p>&copy; 2025 MiauApoio. Todos os direitos reservados.</p>
+          <p class="mt-1">CNPJ: 12.345.678/0001-99 | Organização Fictícia</p>
+          <!-- Atribuição de Imagem Adicionada -->
+          <p class="mt-2 text-xs text-stone-500">
+            Fotos de gatos gentilmente cedidas por <a href="https://pt.vecteezy.com/fotos-gratis/gato" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-300">Vecteezy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link para o JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>

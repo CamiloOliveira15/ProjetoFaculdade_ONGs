@@ -1,23 +1,30 @@
-/* Estilos Globais - style.css */
+/* ARQUIVO: style.css
+  (Estilos customizados que complementam o Tailwind CSS)
+*/
 
-/* Estilo base do body (de todos os arquivos) */
+/* Estilos para o corpo e fontes */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* Uma boa fonte padrão limpa */
+  background-color: #f5f5f4; /* stone-100 */
+  color: #44403c; /* stone-700 */
 }
 
-main {
-    flex-grow: 1;
+/* Melhoria de Acessibilidade: Foco visível */
+:focus-visible {
+  outline: 3px solid #f97316;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-/* Estilos de validação (para o cadastro.html) */
-/* Mostra borda vermelha em campos inválidos que já foram tocados */
-/* Este estilo é um ótimo feedback visual que complementa a validação nativa */
-input:invalid:not(:placeholder-shown) {
-    border-color: #e53e3e; /* red-600 */
+/* Classes de Botão Customizadas
+  (Usando @apply do Tailwind para agrupar classes)
+*/
+.btn {
+  @apply px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all duration-300 ease-in-out;
 }
-
-/* AJUSTE: Removida a regra para 'input:invalid:not(:placeholder-shown) + span' 
-   pois os spans de erro foram removidos em favor da validação nativa. */
+.btn-primary {
+  @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
+}
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+}

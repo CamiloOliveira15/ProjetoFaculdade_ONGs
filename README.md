@@ -1,167 +1,173 @@
-Plataforma de Gestão para ONGs - Conecta Vidas (Projeto Acadêmico)
+MiauApoio - Plataforma Web para ONG de Adoção Felina
 
-Este repositório contém o código-fonte de um projeto académico focado no desenvolvimento front-end de uma plataforma web completa para Organizações Não Governamentais (ONGs), utilizando HTML5, Tailwind CSS e JavaScript moderno (ESM).
+Este projeto é uma plataforma web completa e profissional desenvolvida para a MiauApoio, uma ONG fictícia de resgate e adoção de gatos. O sistema foi criado como parte de um projeto acadêmico de desenvolvimento front-end, aplicando de forma integrada conceitos de HTML5, CSS3 avançado e JavaScript.
 
-O projeto simula a plataforma "Conecta Vidas", um sistema profissional desenhado para ajudar ONGs a gerir projetos, captar recursos, e angariar voluntários, oferecendo uma presença digital robusta e funcional.
+A plataforma simula um ambiente real, atendendo às necessidades de diferentes personas (Visitantes, Doadores, Voluntários e Administradores) e fornecendo uma presença digital vital para uma organização do terceiro setor.
 
-🚀 Visão Geral
+🚀 Funcionalidades Implementadas
 
-A plataforma é dividida em duas áreas principais:
+O projeto é dividido em duas áreas principais: o Site Público (para visitantes, doadores e potenciais voluntários) e o Dashboard Administrativo (para a gestão da ONG).
 
-Site Público: Um conjunto de páginas estáticas e informativas destinadas a visitantes, potenciais doadores e voluntários. O seu objetivo é apresentar a ONG, os seus projetos e formas de apoio.
+1. Site Público
 
-Área Restrita (Dashboards): Painéis de gestão para os diferentes perfis de utilizadores (Administrador, Voluntário, Doador), com funcionalidades dinâmicas para gerir as operações da ONG.
+Página Home (index.html): Apresenta a missão da ONG, métricas de impacto, informações de contato e uma seção "hero" com as imagens reais fornecidas.
 
-🎯 Mapeamento de Requisitos vs. Estado Atual
+Página de Projetos (projetos.html): Detalha os projetos sociais (Resgate, Feiras de Adoção), explica como ser voluntário e como doar (Captação de Recursos).
 
-Esta secção compara os requisitos completos do briefing do projeto com o estado atual do código neste repositório.
+Página de Cadastro (cadastro.html): Formulário complexo para inscrição de novos voluntários e apoiadores.
 
-Estado Atual: O projeto é um protótipo funcional que estabelece a fundação visual (Front-End) e a lógica de gestão principal (demonstrada com dados estáticos no dashboard admin).
+Página de Blog (blog.html): Lista de notícias, dicas e histórias de adoção, servindo como ferramenta de comunicação.
 
-Funcionalidades Principais (Escopo Total)
+Post de Blog (blog-post.html): Modelo de artigo individual.
 
-Área institucional: (🟡 Em Progresso/Protótipo)
+Página de Transparência (transparencia.html): Área para relatórios, prestação de contas e documentos públicos.
 
-(✅) Página inicial com missão, visão e valores (index.html).
-(✅) Equipa e estrutura organizacional (equipe.html).
-(✅) Relatórios de transparência (página transparencia.html).
-(❌) Histórico e conquistas (página dedicada pendente).
+Newsletter: Seção no rodapé de todas as páginas para engajamento de apoiadores.
 
-Gestão de projetos: (🟡 Em Progresso/Protótipo)
+2. Dashboard Administrativo (Acesso Restrito)
 
-(✅) Cadastro detalhado de projetos sociais (formulário no admin_dashboard.html, dados mock).
-(❌) Galeria de fotos e vídeos (pendente).
-(❌) Indicadores de impacto e resultados (pendente).
-(❌) Sistema de categorização (pendente).
+Página de Login (login.html): Portal de entrada para a área de gestão.
 
-Engajamento de voluntários: (🟡 Em Progresso/Protótipo)
+Visão Geral (dashboard.html): Painel com métricas de engajamento (simuladas).
 
-(✅) Portal de oportunidades de voluntariado (protótipo estático no voluntario_dashboard.html).
-(✅) Sistema de inscrição (cadastro.html) - Conectado a um endpoint AWS.
-(✅) Seleção (aprovação no admin_dashboard.html - dados mock).
-(✅) Área do voluntário com histórico (protótipo estático no voluntario_dashboard.html).
-(❌) Certificados digitais de participação (pendente).
+Gerenciar Projetos (dashboard-projetos.html): Tabela para listar projetos existentes.
 
-Captação de recursos: (🟡 Em Progresso/Protótipo)
+Adicionar Projeto (dashboard-projetos-novo.html): Formulário para cadastrar novos projetos.
 
-(✅) Campanhas de arrecadação (protótipo estático no doador_dashboard.html).
-(✅) Sistema de doações on-line (simulado na página projetos.html).
-(✅) Relatórios de prestação de contas (protótipo estático no doador_dashboard.html).
-(❌) Metas e progresso em tempo real (pendente, requer back-end).
+Gerenciar Voluntários (dashboard-voluntarios.html): Tabela para listar voluntários cadastrados.
 
-Comunicação e transparência: (🟡 Em Progresso/Protótipo)
+Gerenciar Blog (dashboard-blog.html): Tabela para listar posts.
 
-(✅) Blog com notícias e atualizações (blog.html e artigo-1.html).
-(✅) Newsletter para engajamento (componente no rodapé).
-(✅) Central de documentos públicos (transparencia.html).
-(❌) Área de imprensa com releases (pendente).
+Adicionar Post (dashboard-blog-novo.html): Formulário para criar novos posts.
 
-Requisitos Técnicos Gerais (Escopo Total)
+✅ Atendimento aos Requisitos do Projeto
 
-Responsividade: (✅ Concluído)
+Este projeto foi meticulosamente estruturado para atender a todos os requisitos do briefing acadêmico.
 
-O design é mobile-first e adapta-se a tablets e desktops, utilizando Tailwind CSS e a meta tag viewport.
+1. Requisitos da "Primeira Entrega" (Fundamentos de HTML5)
 
-Desempenho: (❌ Pendente)
+Estrutura Semântica (3+ páginas): O projeto excede o requisito, entregando 13 arquivos HTML (index.html, projetos.html, cadastro.html, blog.html, transparencia.html, etc.), todos utilizando tags semânticas modernas (<header>, <main>, <section>, <article>, <nav>, <aside>, <footer>).
 
-O protótipo atual utiliza CDNs e não inclui otimizações avançadas como minificação de CSS/JS, otimização de imagens ou lazy loading. O tempo de carregamento não foi otimizado.
+Hierarquia de Títulos: Todas as páginas possuem uma estrutura lógica de títulos (um único <h1> por página, seguido de <h2>, <h3>, etc.), garantindo acessibilidade e SEO.
 
-Acessibilidade: (🟡 Em Progresso/Protótipo)
+Imagens: Imagens são usadas em todas as páginas públicas, com alt-text descritivos e atribuição de licença no rodapé.
 
-A estrutura semântica básica (HTML5) está implementada, o que ajuda na navegação por teclado e leitores de tela.
+Formulário Complexo (cadastro.html):
 
-A conformidade total com WCAG 2.1 Nível AA é um requisito avançado (pendente) que exigiria uma auditoria completa, implementação de roles ARIA e verificação de contraste de cores.
+Inputs HTML5: Utiliza type="email", type="date", type="tel", etc.
 
-Segurança: (🟡 Em Progresso/Protótipo)
+Campos Obrigatórios: Nome Completo, e-mail, CPF, telefone, Data de Nascimento, Endereço, CEP, Cidade e Estado.
 
-(✅) Validação de formulários (lado do cliente) está implementada.
-(❌) Implementação de HTTPS é uma configuração do lado do servidor (hospedagem), não aplicável diretamente ao código HTML/JS.
+Validação Nativa: Usa atributos required, pattern e title para validação no lado do cliente.
 
-SEO e descoberta: (✅ Concluído)
+Agrupamento Lógico: Utiliza <fieldset> e <legend> para agrupar "Dados Pessoais" e "Endereço".
 
-Todas as páginas públicas possuem meta tags (título e descrição) otimizadas e uma estrutura de cabeçalhos (H1, H2, etc.) lógica.
+Máscaras de Input (JavaScript): O arquivo script.js implementa as máscaras obrigatórias para CPF, Telefone e CEP.
+
+2. Objetivos Específicos e Requisitos Técnicos
+
+HTML5 Semântico: Atendido, como descrito acima.
+
+CSS3 Avançado e Layout Responsivo:
+
+O projeto utiliza Tailwind CSS para implementar um design mobile-first profissional e totalmente responsivo.
+
+Todos os componentes, tabelas e formulários se adaptam a tablets e desktops.
+
+O arquivo style.css complementa o Tailwind com estilos de botões (.btn) e melhorias de foco para acessibilidade.
+
+JavaScript Interativo e Dinâmico:
+
+script.js: Controla o menu mobile (hamburguer) e aplica as máscaras de formulário.
+
+login.js: Simula a autenticação de login (usuário e senha) usando localStorage.
+
+dashboard-auth.js: Atua como um "gatekeeper", protegendo todas as páginas do dashboard e implementando a função de "Sair" (logout).
+
+Acessibilidade (WCAG):
+
+Uso de HTML semântico e hierarquia de títulos.
+
+alt-text em imagens.
+
+Foco visível (:focus-visible em style.css).
+
+Uso de aria-label e role="navigation" para leitores de tela (ex: redes sociais).
+
+SEO e Descoberta:
+
+Cada página possui <title> e <meta name="description"> únicos e otimizados.
+
+A página login.html e os arquivos do dashboard usam <meta name="robots" content="noindex"> para evitar indexação.
+
+Simulação de Ambiente Profissional:
+
+O projeto lida com múltiplas personas e um fluxo de usuário completo (de visitante a administrador).
+
+O código é separado, organizado e comentado.
 
 🛠️ Tecnologias Utilizadas
 
-HTML5: Utilizado para a estruturação semântica de todas as páginas.
+HTML5: Estruturação semântica.
 
-Tailwind CSS (via CDN): Framework CSS utility-first para a estilização rápida e responsiva.
+CSS3 (com Tailwind CSS): Estilização avançada, responsividade e sistema de design.
 
-JavaScript (ESM - Módulos):
+JavaScript (ES6+): Interatividade, manipulação de DOM e simulação de autenticação via localStorage.
 
-Manipulação dinâmica do DOM (ex: modais, tabelas).
-Máscaras de formulário (CPF, Telefone, CEP) no cadastro.html.
-Lógica de interação nos dashboards.
+📂 Estrutura de Pastas (Recomendada)
 
-AWS (Amazon Web Services):
+Para a entrega no GitHub, os arquivos devem ser organizados da seguinte forma:
 
-O formulário cadastro.html está configurado para enviar dados (via fetch) para um endpoint do AWS API Gateway, que por sua vez aciona uma função Lambda.
-Os demais dashboards (admin, voluntario, doador) utilizam dados estáticos (mock) para demonstrar a funcionalidade do front-end, aguardando integração com APIs AWS.
-
-📁 Estrutura do Projeto
-
-/
-├── index.html           # Página Inicial (Home)
-├── projetos.html        # Página de listagem de projetos
-├── equipe.html          # Página "Sobre Nós / A Nossa Equipe"
-├── blog.html            # Página de listagem de notícias
-├── artigo-1.html        # Página de exemplo de um artigo de blog
-├── transparencia.html   # Página de prestação de contas
-├── cadastro.html        # Formulário de registo (Conectado à AWS API Gateway)
-├── login.html           # Página de login (simulada)
+/ (raiz do projeto)
+├── README.md             (Este arquivo)
+├── index.html
+├── projetos.html
+├── cadastro.html
+├── blog.html
+├── blog-post.html
+├── transparencia.html
+├── login.html
+├── dashboard.html
+├── dashboard-projetos.html
+├── dashboard-projetos-novo.html
+├── dashboard-voluntarios.html
+├── dashboard-blog.html
+├── dashboard-blog-novo.html
+├── style.css
+├── script.js
+├── login.js
+├── dashboard-auth.js
 │
-├── admin_dashboard.html     # Painel do Administrador (Protótipo com dados estáticos)
-├── voluntario_dashboard.html# Painel do Voluntário (protótipo estático)
-├── doador_dashboard.html    # Painel do Doador (protótipo estático)
-│
-├── style.css            # CSS global (mínimo, usado principalmente para o body)
-├── script.js            # JS global (usado para as máscaras do formulário de cadastro)
-└── README.md            # Este ficheiro
+└── /images/              (Pasta para as imagens)
+    ├── vecteezy_lovely-cat-sitting_23027565.jpg
+    ├── vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg
+    └── vecteezy_silver-tabby-cat-sitting-on-green-background_2098203.jpg
 
-✨ Funcionalidades Implementadas (Estado Atual)
 
-Páginas Públicas
+Nota: Se você colocar as imagens na pasta /images/, lembre-se de atualizar o caminho src nos arquivos .html (ex: src="images/vecteezy_...jpg").
 
-Home (index.html): Apresentação da ONG, missão, valores e formulário de contacto.
-Projetos (projetos.html): Listagem dos projetos sociais, com apelos à ação para doação e voluntariado.
-Blog (blog.html e artigo-1.html): Secção de notícias com links funcionais para páginas de artigos detalhados.
-Equipa (equipe.html): Apresentação dos fundadores e da equipa principal.
-Transparência (transparencia.html): Secção para relatórios financeiros e documentos públicos.
+⚙️ Como Executar
 
-Páginas de Interação
+Clone este repositório.
 
-Cadastro (cadastro.html): Formulário completo com validação de campos HTML5 e máscaras de input (CPF, Telefone, CEP) via JavaScript. O formulário envia os dados para um endpoint real do AWS API Gateway.
-Login (login.html): Página de login simulada que direciona para os três perfis de dashboard.
+Abra o arquivo index.html em qualquer navegador web.
 
-Dashboards (Área Restrita - Protótipos Estáticos)
+A navegação entre as páginas é feita por links de hipertexto padrão.
 
-O foco principal do projeto reside na demonstração do layout e fluxo do front-end dos dashboards.
+Acesso ao Dashboard
 
-Administrador (admin_dashboard.html)
+Para acessar a área administrativa e testar as funcionalidades de login:
 
-Gestão de Projetos (Dados Estáticos):
+Navegue até login.html.
 
-Criar (Create): Adiciona novos projetos através de um formulário inline (incorporado na página). (Apenas front-end, não salva os dados).
-Ler (Read): Lista os projetos existentes (dados estáticos/mock).
+Use as seguintes credenciais de simulação:
 
-Gestão de Voluntários (Dados Estáticos):
+E-mail: admin@miauapoio.org
 
-Ler (Read): Lista voluntários pendentes e aprovados (dados estáticos/mock).
-Atualizar (Update): O botão "Aprovar" altera o status do voluntário (apenas na visualização).
-Ver Perfil: O botão "Ver Perfil" abre um modal (pop-up) com os detalhes do voluntário selecionado.
+Senha: admin123
 
-Visualização de Secções:
+📄 Licença e Créditos
 
-As secções "Relatório de Doações" e "Info Institucional" estão preenchidas com dados estáticos para demonstração de layout.
+Este projeto é um trabalho acadêmico e não deve ser distribuído ou utilizado comercialmente.
 
-Voluntário e Doador (Protótipos)
-
-voluntario_dashboard.html e doador_dashboard.html: São protótipos estáticos que demonstram como seriam as áreas restritas para esses perfis, preenchidos com dados de exemplo.
-
-🚀 Como Executar
-
-Este projeto não requer um servidor web para a maioria das funcionalidades (exceto a integração com a AWS).
-
-Clone ou faça o download deste repositório.
-
-Abra qualquer um dos ficheiros .html diretamente no seu navegador (ex: index.html ou admin_dashboard.html).
+Fotos de Gatos: As imagens utilizadas nas páginas públicas são cortesia da Vecteezy.

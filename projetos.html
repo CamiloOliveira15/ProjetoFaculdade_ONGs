@@ -3,166 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossos Projetos - ONG Conecta Vidas</title>
-    <meta name="description" content="Conheça os projetos sociais, oportunidades de voluntariado e como doar.">
-    <!-- Tailwind CSS CDN -->
+    
+    <!-- Título e Meta Tags (Requisito de SEO) -->
+    <title>Projetos | MiauApoio</title>
+    <meta name="description" content="Conheça nossos projetos de resgate, seja um voluntário ou faça uma doação para a MiauApoio.">
+
+    <!-- Tailwind CSS (Para atender 'CSS3 avançado' e 'Responsividade') -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema (Seguindo a paleta da MiauApoio) -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
             }
+          }
         }
+      }
     </script>
-    <!-- Link para o arquivo CSS global -->
+    
+    <!-- Link para o CSS Customizado -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
 
-    <!-- Cabeçalho e Navegação -->
-    <header class="bg-white shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-teal-600">
-                <a href="index.html">ONG Conecta Vidas</a>
+<body class="flex min-h-screen flex-col">
+
+    <!-- =============================================== -->
+    <!-- COMPONENTE: HEADER (Reutilizável)               -->
+    <!-- =============================================== -->
+    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          
+          <!-- Logo (Link para Home) -->
+          <a href="index.html" class="flex-shrink-0">
+            <div class="flex items-center gap-2">
+              <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+              <span class="text-2xl font-bold text-secondary">
+                MiauApoio
+              </span>
             </div>
-            <ul class="flex space-x-6 items-center">
-                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
-                <li><a href="projetos.html" class="text-gray-700 font-semibold hover:text-teal-500">Projetos</a></li>
-                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
-                <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
-                <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
-                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
-            </ul>
-        </nav>
+          </a>
+
+          <!-- Navegação (Semântico: <nav>) -->
+          <nav class="hidden md:flex md:items-center md:space-x-2">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Home
+            </a>
+            <a href="projetos.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Projetos
+            </a>
+            <!-- LINKS ADICIONADOS -->
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Blog
+            </a>
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Transparência
+            </a>
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Login
+            </a>
+            <a href="cadastro.html" class="ml-4 btn btn-primary">
+              Cadastre-se
+            </a>
+          </nav>
+
+          <!-- Menu Mobile (JS lidará com o clique) -->
+          <div class="flex md:hidden">
+            <button id="mobile-menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-secondary-light hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+              <span class="sr-only">Abrir menu principal</span>
+              <!-- Ícone Hamburguer -->
+              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Mobile (Dropdown) -->
+      <div id="mobile-menu" class="hidden border-t border-stone-200 md:hidden">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <a href="index.html" classa="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <!-- LINKS ADICIONADOS -->
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
+        </div>
+      </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="container mx-auto px-6 py-16">
+    <!-- Conteúdo Principal de Projetos -->
+    <main id="page-projetos" class="flex-grow">
         
-        <!-- Título da Página -->
-        <section class="text-center mb-16">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Nossos Projetos e Causas</h1>
-            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Conheça as frentes de atuação da Conecta Vidas e descubra como você pode fazer parte da mudança.</p>
-        </section>
-
-        <!-- Seção de Projetos -->
-        <section id="projetos" class="mb-16">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Card Projeto 1 -->
-                <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-                    <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Educação+para+Todos" alt="Crianças em sala de aula" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Educação para Todos</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
-                            Nosso projeto de reforço escolar e atividades culturais atende mais de 100 crianças em comunidades carentes, oferecendo um futuro com mais oportunidades.
-                        </p>
-                        <a href="#doar" class="text-teal-500 hover:text-teal-700 font-medium">Quero apoiar este projeto</a>
-                    </div>
-                </article>
-                
-                <!-- Card Projeto 2 -->
-                <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-                    <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Cozinha+Solidária" alt="Distribuição de alimentos" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Cozinha Solidária</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
-                            Distribuímos refeições nutritivas diariamente para pessoas em situação de vulnerabilidade social. Sua doação garante o prato de quem tem fome.
-                        </p>
-                        <a href="#doar" class="text-teal-500 hover:text-teal-700 font-medium">Contribuir com alimentos</a>
-                    </div>
-                </article>
-
-                <!-- Card Projeto 3 -->
-                <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-                    <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Capacitação+Jovem" alt="Jovens em curso profissionalizante" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Capacitação Jovem</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
-                            Oferecemos cursos profissionalizantes de tecnologia e administração para jovens, preparando-os para o mercado de trabalho e para a vida.
-                        </p>
-                        <a href="#doar" class="text-teal-500 hover:text-teal-700 font-medium">Seja um parceiro</a>
-                    </div>
-                </article>
-
+        <!-- Seção 1: Cabeçalho da Página -->
+        <section class="bg-white py-16 sm:py-24">
+          <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+              <!-- h1: Título principal da página -->
+              <h1 class="text-4xl font-bold text-secondary sm:text-5xl">
+                Nossos Projetos e Como Ajudar
+              </h1>
+              <p class="mt-6 text-lg text-secondary-light">
+                Cada ação, seja doando ou voluntariando, salva vidas. Veja como
+                nossos projetos transformam a realidade de centenas de animais.
+              </p>
             </div>
+          </div>
         </section>
-
-        <!-- Seção de Voluntariado -->
-        <section id="voluntariado" class="py-16 bg-white rounded-lg shadow-lg mb-16">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Voluntários+em+Ação" alt="Grupo de voluntários sorrindo" class="rounded-lg shadow-md w-full h-auto">
-                </div>
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Seja um Voluntário</h2>
-                    <p class="text-gray-700 mb-6 leading-relaxed">
-                        O voluntariado é a força vital da nossa organização. Temos oportunidades em diversas áreas, desde a organização de eventos até o apoio direto nos projetos.
-                    </p>
-                    <p class="text-gray-700 mb-8 leading-relaxed">
-                        Ao se cadastrar, você entra para nossa rede de transformadores e pode escolher as ações que mais se alinham aos seus talentos e disponibilidade.
-                    </p>
-                    <a href="cadastro.html" class="bg-teal-500 text-white font-bold px-8 py-3 rounded-full hover:bg-teal-600 transition duration-300">Quero Ser Voluntário</a>
+        
+        <!-- Seção 2: Projetos Sociais (Semântico: <article>) -->
+        <section class="bg-light py-20 sm:py-28">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <!-- h2: Título da seção -->
+                <h2 class="text-center text-3xl font-bold text-secondary sm:text-4xl">Projetos Sociais</h2>
+                <div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">
+                    <!-- Artigo 1 -->
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg">
+                        <img src="vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg" alt="[Imagem de um gato preto com olhos amarelos]" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-secondary">Projeto Resgate e Reabilitação</h3>
+                            <p class="mt-4 text-base text-secondary-light">
+                                Nossas equipes atuam 24/7 para resgatar animais em situação de
+                                risco. Após o resgate, eles recebem cuidados veterinários completos,
+                                são castrados, vacinados e preparados para um novo lar.
+                            </p>
+                        </div>
+                    </article>
+                    <!-- Artigo 2 -->
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg">
+                        <img src="https://placehold.co/600x400/166534/white?text=Feira+de+Adoção" alt="[Imagem de uma feira de adoção com voluntários e famílias]" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-secondary">Feiras de Adoção Responsável</h3>
+                            <p class="mt-4 text-base text-secondary-light">
+                                Regularmente, promovemos feiras de adoção em parceria com
+                                empresas locais. É a chance de conectar nossos gatinhos
+                                com famílias amorosas, sempre com entrevista e termo de adoção.
+                            </p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Doação -->
-        <section id="doar" class="py-16 bg-teal-600 text-white rounded-lg shadow-lg text-center">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-6">Sua Doação Transforma Vidas</h2>
-                <p class="text-lg mb-8 max-w-2xl mx-auto">
-                    Cada contribuição, não importa o valor, nos ajuda a manter nossos projetos ativos e a expandir nosso impacto. Veja como é fácil contribuir.
-                </p>
-                
-                <div class="max-w-md mx-auto bg-white text-gray-800 p-8 rounded-lg shadow-2xl">
-                    <h3 class="text-2xl font-semibold mb-6">Doe Agora</h3>
+        <!-- Seção 3: Voluntariado e Doações (Requisito da Página) -->
+        <section class="bg-white py-20 sm:py-28">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-16 md:grid-cols-2">
+                    <!-- Coluna Voluntariado -->
+                    <div>
+                        <!-- h2: Título da seção -->
+                        <h2 class="text-3xl font-bold text-secondary sm:text-4xl">Seja um Voluntário</h2>
+                        <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md">
+                        <p class="text-lg text-secondary-light">
+                            Doe seu tempo! Precisamos de ajuda com limpeza do abrigo,
+                            feiras de adoção, transporte de animais e, o mais importante,
+                            lar temporário para filhotes e animais em recuperação.
+                        </p>
+                        <a href="cadastro.html" class="mt-8 inline-block btn btn-secondary">
+                            Quero ser Voluntário
+                        </a>
+                    </div>
                     
-                    <!-- Simulação de Botões de Doação -->
-                    <div class="flex justify-center space-x-4 mb-6">
-                        <button class="bg-gray-200 px-6 py-2 rounded-full font-medium hover:bg-gray-300">R$ 20</button>
-                        <button class="bg-teal-500 text-white px-6 py-2 rounded-full font-bold shadow-md">R$ 50</button>
-                        <button class="bg-gray-200 px-6 py-2 rounded-full font-medium hover:bg-gray-300">R$ 100</button>
+                    <!-- Coluna Doações -->
+                    <div>
+                        <!-- h2: Título da seção -->
+                        <h2 class="text-3xl font-bold text-secondary sm:text-4xl">Como Doar</h2>
+                         <img src="https://placehold.co/600x400/fdba74/444?text=Itens+para+Doação" alt="[Imagem de sacos de ração, areia e medicamentos]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md">
+                        <p class="text-lg text-secondary-light">
+                            Nossa ONG depende 100% de doações. Cada contribuição faz
+                            uma enorme diferença para cobrir custos de veterinário,
+                            medicamentos e ração.
+                        </p>
+                        <div class="mt-8 space-y-4">
+                            <div class="rounded-lg bg-light p-4 shadow-sm">
+                                <h3 class="font-semibold text-secondary">Doe via PIX (CNPJ)</h3>
+                                <p class="font-mono text-primary-dark">12.345.678/0001-99</p>
+                            </div>
+                            <div class="rounded-lg bg-light p-4 shadow-sm">
+                                <h3 class="font-semibold text-secondary">Doe Suprimentos</h3>
+                                <p class="text-secondary-light">Ração, areia, sachês e medicamentos são sempre bem-vindos em nosso ponto de coleta.</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Botão de Doação Principal (simulado) -->
-                    <button class="w-full bg-yellow-400 text-yellow-900 font-bold px-8 py-3 rounded-full hover:bg-yellow-500 transition duration-300 shadow-lg">
-                        Doar com PIX
-                    </button>
-                    <p class="text-sm text-gray-600 mt-4">Chave PIX: contato@conectavidas.org</p>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Rodapé -->
-    <footer class="bg-gray-800 text-white py-10 mt-16">
-        <!-- Seção Newsletter -->
-        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
-            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
-            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
-            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
-                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
-                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
-                    Assinar
-                </button>
-            </form>
-        </section>
+    <!-- =============================================== -->
+    <!-- COMPONENTE: FOOTER (Reutilizável)               -->
+    <!-- =============================================== -->
+    <footer class="mt-auto w-full bg-secondary text-stone-300">
+      <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         
-        <!-- Copyright -->
-        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
-            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
+        <!-- Seção Newsletter ADICIONADA -->
+        <div class="mb-12 rounded-2xl bg-stone-700 p-8 md:p-12">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Assine nossa Newsletter</h2>
+                    <p class="mt-2 text-stone-300">Receba histórias de adoção e atualizações mensais no seu e-mail.</p>
+                </div>
+                <form class="flex w-full flex-col items-end gap-3 sm:flex-row" onsubmit="alert('Obrigado por se inscrever!'); return false;">
+                    <div class="w-full">
+                        <label for="email-newsletter" class="sr-only">E-mail</label>
+                        <input type="email" id="email-newsletter" required placeholder="Digite seu e-mail"
+                               class="w-full rounded-md border-stone-500 bg-stone-600 px-4 py-3 text-white shadow-sm focus:border-primary focus:ring-primary">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full sm:w-auto">Inscrever</button>
+                </form>
+            </div>
         </div>
+
+        <!-- Rodapé Principal -->
+        <div class="flex flex-col items-center justify-between md:flex-row">
+          <div class="mb-6 flex items-center gap-2 md:mb-0">
+            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+            <span class="text-2xl font-bold text-white">MiauApoio</span>
+          </div>
+          <div class="mb-6 flex space-x-6 md:mb-0" role="navigation" aria-label="Redes sociais">
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Instagram">Instagram</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Facebook">Facebook</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Twitter">Twitter</a>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-stone-700 pt-8 text-center text-base text-stone-400">
+          <p>&copy; 2025 MiauApoio. Todos os direitos reservados.</p>
+          <p class="mt-1">CNPJ: 12.345.678/0001-99 | Organização Fictícia</p>
+          <!-- Atribuição de Imagem Adicionada -->
+          <p class="mt-2 text-xs text-stone-500">
+            Fotos de gatos gentilmente cedidas por <a href="https://pt.vecteezy.com/fotos-gratis/gato" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-300">Vecteezy</a>
+          </p>
+        </div>
+      </div>
     </footer>
 
-    <!-- Link para o arquivo JavaScript global -->
+    <!-- Link para o JavaScript -->
     <script src="script.js" defer></script>
 </body>
 </html>
-

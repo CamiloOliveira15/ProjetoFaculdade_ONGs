@@ -1,76 +1,69 @@
-// Script Global - script.js
+/*
+  ARQUIVO: script.js
+  (Lógica para interatividade do site)
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Site carregado e pronto.');
+        
+  // --- LÓGICA DO MENU MOBILE ---
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-    // Funções de máscara para o formulário de cadastro (cadastro.html)
-    const cpfInput = document.getElementById('cpf');
-    const cepInput = document.getElementById('cep');
-    const telefoneInput = document.getElementById('telefone');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 
-    if (cpfInput) {
-        cpfInput.addEventListener('input', formatCPF);
-    }
-    if (cepInput) {
-        cepInput.addEventListener('input', formatCEP);
-    }
-    if (telefoneInput) {
-        telefoneInput.addEventListener('input', formatTelefone);
-    }
+  // --- LÓGICA DE MÁSCARAS DE FORMULÁRIO (Requisito Obrigatório) ---
+  
+  const cpfInput = document.getElementById('cpf');
+  const telefoneInput = document.getElementById('telefone');
+  const cepInput = document.getElementById('cep');
+
+  // Máscara de CPF: 000.000.000-00
+  if (cpfInput) {
+    cpfInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, ''); // Remove não-dígitos
+      value = value.slice(0, 11); // Limita a 11 dígitos
+      value = value.replace(/(\d{3})(\d)/, '$1.$2');
+      value = value.replace(/(\d{3})(\d)/, '$1.$2');
+      value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      e.target.value = value;
+    });
+  }
+  
+  // Máscara de Telefone: (00) 90000-0000 ou (00) 0000-0000
+  if (telefoneInput) {
+    telefoneInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.slice(0, 11); // Limita a 11 dígitos (DDD + 9 dígitos)
+      
+      if (value.length > 10) {
+        // (00) 90000-0000
+        value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+      } else if (value.length > 6) {
+        // (00) 0000-0000
+        value = value.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+      } else if (value.length > 2) {
+        // (00) 0000
+        value = value.replace(/^(\d{2})(\d{0,5})$/, '($1) $2');
+      } else if (value.length > 0) {
+        // (00
+        value = value.replace(/^(\d{0,2})$/, '($1');
+      }
+      e.target.value = value;
+    });
+  }
+  
+  // Máscara de CEP: 00000-000
+  if (cepInput) {
+    cepInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.slice(0, 8); // Limita a 8 dígitos
+      value = value.replace(/(\d{5})(\d)/, '$1-$2');
+      e.target.value = value;
+    });
+  }
+
 });
-
-/**
- * Formata o valor do input para o padrão de CPF (000.000.000-00).
- * @param {Event} e - O evento de input.
- */
-function formatCPF(e) {
-    let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
-    value = value.substring(0, 11); // Limita a 11 dígitos
-
-    if (value.length > 9) {
-        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    } else if (value.length > 6) {
-        value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
-    } else if (value.length > 3) {
-        value = value.replace(/(\d{3})(\d{1,3})/, '$1.$2');
-    }
-    
-    e.target.value = value;
-}
-
-/**
- * Formata o valor do input para o padrão de CEP (00000-000).
- * @param {Event} e - O evento de input.
- */
-function formatCEP(e) {
-    let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
-    value = value.substring(0, 8); // Limita a 8 dígitos
-
-    if (value.length > 5) {
-        value = value.replace(/(\d{5})(\d{1,3})/, '$1-$2');
-    }
-    
-    e.target.value = value;
-}
-
-/**
- * Formata o valor do input para o padrão de Telefone (00) 90000-0000 ou (00) 0000-0000.
- * @param {Event} e - O evento de input.
- */
-function formatTelefone(e) {
-    let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
-    value = value.substring(0, 11); // Limita a 11 dígitos (com 9)
-
-    if (value.length > 10) {
-        // Celular (00) 90000-0000
-        value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-    } else if (value.length > 6) {
-        // Fixo (00) 0000-0000
-        value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
-    } else if (value.length > 2) {
-        value = value.replace(/(\d{2})(\d{1,4})/, '($1) $2');
-    } else if (value.length > 0) {
-        value = value.replace(/(\d{1,2})/, '($1');
-    }
-    
-    e.target.value = value;
-}

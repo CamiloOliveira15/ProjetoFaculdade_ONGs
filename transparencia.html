@@ -3,153 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transparência - ONG Conecta Vidas</title>
-    <meta name="description" content="Acesse nossos relatórios, prestação de contas e documentos.">
-    <!-- Tailwind CSS CDN -->
+    <title>Transparência | MiauApoio</title>
+    <meta name="description" content="Acesse nossos relatórios financeiros, prestação de contas e certificados.">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
             }
+          }
         }
+      }
     </script>
+    
+    <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
 
-    <!-- Cabeçalho e Navegação -->
-    <header class="bg-white shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-teal-600">
-                <a href="index.html">ONG Conecta Vidas</a>
+<body class="flex min-h-screen flex-col">
+
+    <!-- =============================================== -->
+    <!-- COMPONENTE: HEADER (Atualizado)                 -->
+    <!-- =============================================== -->
+    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          
+          <!-- Logo (Link para Home) -->
+          <a href="index.html" class="flex-shrink-0">
+            <div class="flex items-center gap-2">
+              <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+              <span class="text-2xl font-bold text-secondary">
+                MiauApoio
+              </span>
             </div>
-            <ul class="flex space-x-6 items-center">
-                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
-                <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
-                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
-                <li><a href="blog.html" class="text-gray-700 hover:text-teal-500">Blog</a></li>
-                <li><a href="transparencia.html" class="text-gray-700 font-semibold hover:text-teal-500">Transparência</a></li>
-                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
-            </ul>
-        </nav>
+          </a>
+
+          <!-- Navegação (Semântico: <nav>) -->
+          <nav class="hidden md:flex md:items-center md:space-x-2">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Home
+            </a>
+            <a href="projetos.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Projetos
+            </a>
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Blog
+            </a>
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Transparência
+            </a>
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Login
+            </a>
+            <a href="cadastro.html" class="ml-4 btn btn-primary">
+              Cadastre-se
+            </a>
+          </nav>
+
+          <!-- Menu Mobile -->
+          <div class="flex md:hidden">
+            <button id="mobile-menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-secondary-light hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+              <span class="sr-only">Abrir menu principal</span>
+              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Mobile (Dropdown) -->
+      <div id="mobile-menu" class="hidden border-t border-stone-200 md:hidden">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
+        </div>
+      </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="container mx-auto px-6 py-16">
+    <!-- Conteúdo Principal de Transparência -->
+    <main class="flex-grow">
         
-        <!-- Título da Página -->
-        <section class="text-center mb-16">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Comunicação e Transparência</h1>
-            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Acreditamos que a confiança é a base do nosso trabalho. Acesse todos os nossos relatórios, documentos e comunicados.</p>
-        </section>
-
-        <div class="grid lg:grid-cols-3 gap-12">
-            
-            <!-- Coluna Principal (Relatórios e Documentos) -->
-            <div class="lg:col-span-2">
-                <!-- Relatórios Financeiros -->
-                <section id="relatorios" class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Relatórios e Prestação de Contas</h2>
-                    <ul class="space-y-4">
-                        <!-- Item Relatório -->
-                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
-                            <div class="flex items-center space-x-3">
-                                <!-- Ícone PDF -->
-                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                <span class="font-medium text-gray-800">Relatório Anual 2023</span>
-                            </div>
-                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
-                        </li>
-                        <!-- Item Relatório -->
-                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
-                            <div class="flex items-center space-x-3">
-                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                <span class="font-medium text-gray-800">Prestação de Contas (Semestre 1/2024)</span>
-                            </div>
-                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Documentos Públicos -->
-                <section id="documentos" class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Documentos Públicos</h2>
-                    <ul class="space-y-4">
-                        <!-- Item Documento -->
-                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
-                            <div class="flex items-center space-x-3">
-                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                <span class="font-medium text-gray-800">Estatuto Social da ONG Conecta Vidas</span>
-                            </div>
-                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
-                        </li>
-                        <!-- Item Documento -->
-                        <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
-                            <div class="flex items-center space-x-3">
-                                <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                <span class="font-medium text-gray-800">Certificado de Utilidade Pública</span>
-                            </div>
-                            <a href="#" class="text-teal-600 hover:underline font-medium text-sm">Baixar PDF</a>
-                        </li>
-                    </ul>
-                </section>
+        <!-- Cabeçalho da Página -->
+        <section class="bg-white py-16 sm:py-24">
+          <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+              <!-- h1: Título principal da página -->
+              <h1 class="text-4xl font-bold text-secondary sm:text-5xl">
+                Transparência e Prestação de Contas
+              </h1>
+              <p class="mt-6 text-lg text-secondary-light">
+                Nosso compromisso com a clareza é tão importante quanto 
+                nosso compromisso com os animais.
+              </p>
             </div>
+          </div>
+        </section>
+        
+        <!-- Seção de Documentos -->
+        <section class="bg-light py-20 sm:py-28">
+            <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                
+                <!-- Seção 1: Relatórios -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-secondary mb-8">Relatórios Anuais</h2>
+                    <div class="space-y-4">
+                        <!-- Item de Relatório -->
+                        <a href="#" class="flex items-center justify-between rounded-lg bg-white p-6 shadow-md transition-all hover:shadow-lg hover:bg-primary/5">
+                            <div class="flex items-center gap-4">
+                                <span class="text-3xl">📄</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary">Relatório de Atividades 2024</h3>
+                                    <p class="text-secondary-light">Publicado em 01/03/2025</p>
+                                </div>
+                            </div>
+                            <span class="text-lg font-medium text-primary hover:text-primary-dark">Baixar PDF &rarr;</span>
+                        </a>
+                        <!-- Item de Relatório -->
+                        <a href="#" class="flex items-center justify-between rounded-lg bg-white p-6 shadow-md transition-all hover:shadow-lg hover:bg-primary/5">
+                            <div class="flex items-center gap-4">
+                                <span class="text-3xl">📄</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary">Demonstração Financeira 2024</h3>
+                                    <p class="text-secondary-light">Publicado em 01/03/2025</p>
+                                </div>
+                            </div>
+                            <span class="text-lg font-medium text-primary hover:text-primary-dark">Baixar PDF &rarr;</span>
+                        </a>
+                        <!-- Item de Relatório -->
+                        <a href="#" class="flex items-center justify-between rounded-lg bg-white p-6 shadow-md transition-all hover:shadow-lg hover:bg-primary/5">
+                            <div class="flex items-center gap-4">
+                                <span class="text-3xl">📄</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary">Relatório de Atividades 2023</h3>
+                                    <p class="text-secondary-light">Publicado em 01/03/2024</p>
+                                </div>
+                            </div>
+                            <span class="text-lg font-medium text-primary hover:text-primary-dark">Baixar PDF &rarr;</span>
+                        </a>
+                    </div>
+                </div>
 
-            <!-- Coluna Lateral (Imprensa) -->
-            <aside>
-                <section id="imprensa" class="bg-white rounded-lg shadow-lg p-8">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Área de Imprensa</h2>
-                    <p class="text-gray-700 mb-4 text-sm">Para solicitações de imprensa, entrevistas ou parcerias de mídia, entre em contato:</p>
-                    <a href="mailto:imprensa@conectavidas.org" class="font-medium text-teal-600 hover:underline">imprensa@conectavidas.org</a>
-                    
-                    <h3 class="text-xl font-semibold text-gray-900 mt-8 mb-4">Press Releases</h3>
-                    <ul class="space-y-4">
-                        <li class="border-b pb-3">
-                            <a href="#" class="text-gray-800 hover:text-teal-600">
-                                <span class="text-sm text-gray-500">15/10/2024</span><br>
-                                ONG Conecta Vidas lança nova campanha de arrecadação...
-                            </a>
-                        </li>
-                        <li class="border-b pb-3">
-                            <a href="#" class="text-gray-800 hover:text-teal-600">
-                                <span class="text-sm text-gray-500">01/09/2024</span><br>
-                                Projeto "Capacitação Jovem" forma primeira turma...
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </aside>
-
-        </div>
-
+                <!-- Seção 2: Certificados -->
+                <div>
+                    <h2 class="text-3xl font-bold text-secondary mb-8">Certificados e Documentos</h2>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div class="rounded-lg bg-white p-6 shadow-md">
+                            <h3 class="text-xl font-semibold text-secondary">Estatuto Social</h3>
+                            <p class="mt-2 text-secondary-light">Acesse nosso estatuto social atualizado.</p>
+                            <a href="#" class="mt-4 inline-block font-medium text-primary hover:text-primary-dark">Ver Documento &rarr;</a>
+                        </div>
+                        <div class="rounded-lg bg-white p-6 shadow-md">
+                            <h3 class="text-xl font-semibold text-secondary">Certificado OSCIP</h3>
+                            <p class="mt-2 text-secondary-light">Certificação como Organização da Sociedade Civil.</p>
+                            <a href="#" class="mt-4 inline-block font-medium text-primary hover:text-primary-dark">Ver Documento &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
     </main>
 
-    <!-- Rodapé -->
-    <footer class="bg-gray-800 text-white py-10 mt-16">
-        <!-- Seção Newsletter -->
-        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
-            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
-            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
-            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
-                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
-                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
-                    Assinar
-                </button>
-            </form>
-        </section>
+    <!-- =============================================== -->
+    <!-- COMPONENTE: FOOTER (Atualizado com Newsletter)  -->
+    <!-- =============================================== -->
+    <footer class="mt-auto w-full bg-secondary text-stone-300">
+      <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         
-        <!-- Copyright -->
-        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
-            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
+        <!-- Seção Newsletter -->
+        <div class="mb-12 rounded-2xl bg-stone-700 p-8 md:p-12">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Assine nossa Newsletter</h2>
+                    <p class="mt-2 text-stone-300">Receba histórias de adoção e atualizações mensais no seu e-mail.</p>
+                </div>
+                <form class="flex w-full flex-col items-end gap-3 sm:flex-row" onsubmit="alert('Obrigado por se inscrever!'); return false;">
+                    <div class="w-full">
+                        <label for="email-newsletter" class="sr-only">E-mail</label>
+                        <input type="email" id="email-newsletter" required placeholder="Digite seu e-mail"
+                               class="w-full rounded-md border-stone-500 bg-stone-600 px-4 py-3 text-white shadow-sm focus:border-primary focus:ring-primary">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full sm:w-auto">Inscrever</button>
+                </form>
+            </div>
         </div>
+
+        <!-- Rodapé Principal -->
+        <div class="flex flex-col items-center justify-between md:flex-row">
+          <div class="mb-6 flex items-center gap-2 md:mb-0">
+            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+            <span class="text-2xl font-bold text-white">MiauApoio</span>
+          </div>
+          <div class="mb-6 flex space-x-6 md:mb-0" role="navigation" aria-label="Redes sociais">
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Instagram">Instagram</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Facebook">Facebook</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Twitter">Twitter</a>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-stone-700 pt-8 text-center text-base text-stone-400">
+          <p>&copy; 2025 MiauApoio. Todos os direitos reservados.</p>
+          <p class="mt-1">CNPJ: 12.345.678/0001-99 | Organização Fictícia</p>
+          <!-- Atribuição de Imagem Adicionada -->
+          <p class="mt-2 text-xs text-stone-500">
+            Fotos de gatos gentilmente cedidas por <a href="https://pt.vecteezy.com/fotos-gratis/gato" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-300">Vecteezy</a>
+          </p>
+        </div>
+      </div>
     </footer>
 
+    <!-- Link para o JavaScript -->
     <script src="script.js" defer></script>
 </body>
 </html>

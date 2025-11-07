@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | MiauApoio</title>
+    <meta name="robots" content="noindex">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex h-screen bg-light">
+
+    <!-- =============================================== -->
+    <!-- BARRA LATERAL DO DASHBOARD                      -->
+    <!-- =============================================== -->
+    <aside class="flex w-64 flex-col bg-secondary text-white shadow-lg">
+        <!-- Logo -->
+        <div class="flex h-20 items-center justify-center gap-2 border-b border-stone-700">
+            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+            <span class="text-2xl font-bold">MiauApoio</span>
+        </div>
+        
+        <!-- Navegação -->
+        <nav class="flex-1 space-y-2 p-4">
+            <a href="dashboard.html" class="flex items-center gap-3 rounded-lg bg-primary/20 px-4 py-3 font-semibold text-primary transition-all">
+                <span>📊</span>
+                <span>Visão Geral</span>
+            </a>
+            <a href="dashboard-projetos.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+                <span>📁</span>
+                <span>Gerenciar Projetos</span>
+            </a>
+            <a href="dashboard-voluntarios.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+                <span>👥</span>
+                <span>Gerenciar Voluntários</span>
+            </a>
+            <!-- LINK CORRIGIDO -->
+            <a href="dashboard-blog.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+                <span>📝</span>
+                <span>Gerenciar Blog</span>
+            </a>
+        </nav>
+
+        <!-- Rodapé da Barra Lateral -->
+        <div class="border-t border-stone-700 p-4">
+            <button id="logout-button" class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-red-500/20 hover:text-red-400">
+                <span>🚪</span>
+                <span>Sair</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- =============================================== -->
+    <!-- CONTEÚDO PRINCIPAL DO DASHBOARD                 -->
+    <!-- =============================================== -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- Cabeçalho Superior -->
+        <header class="flex h-20 items-center justify-between border-b bg-white px-6">
+            <h1 class="text-2xl font-bold text-secondary">Visão Geral</h1>
+            <div class="text-secondary-light">
+                Bem-vindo(a), <span id="user-name" class="font-semibold">Admin</span>
+            </div>
+        </header>
+
+        <!-- Conteúdo da Página -->
+        <main class="flex-1 overflow-y-auto p-8">
+            <h2 class="text-3xl font-semibold text-secondary mb-6">Métricas Principais</h2>
+            
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Card 1 -->
+                <article class="rounded-2xl bg-white p-6 shadow-lg">
+                    <h3 class="text-lg font-medium text-secondary-light">Novos Voluntários</h3>
+                    <p class="mt-2 text-4xl font-bold text-primary">12</p>
+                    <p class="mt-1 text-sm text-stone-500">nos últimos 30 dias</p>
+                </article>
+                <!-- Card 2 -->
+                <article class="rounded-2xl bg-white p-6 shadow-lg">
+                    <h3 class="text-lg font-medium text-secondary-light">Projetos Ativos</h3>
+                    <p class="mt-2 text-4xl font-bold text-primary">4</p>
+                    <p class="mt-1 text-sm text-stone-500">precisando de ajuda</p>
+                </article>
+                <!-- Card 3 -->
+                <article class="rounded-2xl bg-white p-6 shadow-lg">
+                    <h3 class="text-lg font-medium text-secondary-light">Doações (Mês)</h3>
+                    <p class="mt-2 text-4xl font-bold text-primary">R$ 4.580</p>
+                    <p class="mt-1 text-sm text-stone-500">meta de R$ 7.000</p>
+                </article>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Script de Proteção do Dashboard -->
+    <script src="dashboard-auth.js" defer></script>
+</body>
+</html>

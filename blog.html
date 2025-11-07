@@ -3,123 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog e Notícias - ONG Conecta Vidas</title>
-<!-- ... (head sem alterações) ... -->
-    <meta name="description" content="Acompanhe as últimas notícias e atualizações dos nossos projetos.">
-    <!-- Tailwind CSS CDN -->
+    <title>Blog e Notícias | MiauApoio</title>
+    <meta name="description" content="Acompanhe as últimas notícias, histórias de adoção e atualizações da MiauApoio.">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
             }
+          }
         }
+      }
     </script>
+    
+    <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
 
-    <!-- Cabeçalho e Navegação -->
-    <header class="bg-white shadow-md">
-<!-- ... (header sem alterações) ... -->
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-teal-600">
-                <a href="index.html">ONG Conecta Vidas</a>
+<body class="flex min-h-screen flex-col">
+
+    <!-- =============================================== -->
+    <!-- COMPONENTE: HEADER (Atualizado)                 -->
+    <!-- =============================================== -->
+    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          
+          <!-- Logo (Link para Home) -->
+          <a href="index.html" class="flex-shrink-0">
+            <div class="flex items-center gap-2">
+              <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+              <span class="text-2xl font-bold text-secondary">
+                MiauApoio
+              </span>
             </div>
-            <ul class="flex space-x-6 items-center">
-                <li><a href="index.html" class="text-gray-700 hover:text-teal-500">Início</a></li>
-                <li><a href="projetos.html" class="text-gray-700 hover:text-teal-500">Projetos</a></li>
-                <li><a href="equipe.html" class="text-gray-700 hover:text-teal-500">Nossa Equipe</a></li>
-                <li><a href="blog.html" class="text-gray-700 font-semibold hover:text-teal-500">Blog</a></li>
-                <li><a href="transparencia.html" class="text-gray-700 hover:text-teal-500">Transparência</a></li>
-                <li><a href="login.html" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300">Login / Cadastro</a></li>
-            </ul>
-        </nav>
+          </a>
+
+          <!-- Navegação (Semântico: <nav>) -->
+          <nav class="hidden md:flex md:items-center md:space-x-2">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Home
+            </a>
+            <a href="projetos.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Projetos
+            </a>
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Blog
+            </a>
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Transparência
+            </a>
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+              Login
+            </a>
+            <a href="cadastro.html" class="ml-4 btn btn-primary">
+              Cadastre-se
+            </a>
+          </nav>
+
+          <!-- Menu Mobile -->
+          <div class="flex md:hidden">
+            <button id="mobile-menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-secondary-light hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+              <span class="sr-only">Abrir menu principal</span>
+              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Mobile (Dropdown) -->
+      <div id="mobile-menu" class="hidden border-t border-stone-200 md:hidden">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
+        </div>
+      </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="container mx-auto px-6 py-16">
+    <!-- Conteúdo Principal do Blog -->
+    <main class="flex-grow">
         
-        <!-- Título da Página -->
-        <section class="text-center mb-16">
-<!-- ... (título sem alterações) ... -->
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Blog & Notícias</h1>
-            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Acompanhe as últimas atualizações, histórias de impacto e notícias da Conecta Vidas.</p>
+        <!-- Cabeçalho da Página -->
+        <section class="bg-white py-16 sm:py-24">
+          <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+              <!-- h1: Título principal da página -->
+              <h1 class="text-4xl font-bold text-secondary sm:text-5xl">
+                Nosso Blog
+              </h1>
+              <p class="mt-6 text-lg text-secondary-light">
+                Histórias de adoção, dicas de cuidados e as últimas notícias da MiauApoio.
+              </p>
+            </div>
+          </div>
         </section>
+        
+        <!-- Listagem de Posts -->
+        <section class="bg-light py-20 sm:py-28">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+                    
+                    <!-- Post 1 -->
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl">
+                        <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="h-64 w-full object-cover">
+                        <div class="flex flex-1 flex-col justify-between p-6">
+                            <div>
+                                <span class="text-sm font-medium text-primary">Histórias de Adoção</span>
+                                <a href="blog-post.html" class="mt-2 block">
+                                    <h3 class="text-2xl font-bold text-secondary hover:text-primary">O Final Feliz de Frajola</h3>
+                                    <p class="mt-4 text-base text-secondary-light">
+                                        Após meses de recuperação, nosso querido Frajola encontrou um lar
+                                        amoroso e uma nova irmãzinha canina.
+                                    </p>
+                                </a>
+                            </div>
+                            <p class="mt-6 text-sm font-medium text-stone-500">5 de Novembro, 2025</p>
+                        </div>
+                    </article>
 
-        <!-- Listagem de Artigos -->
-        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Artigo 1 -->
-            <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-                <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Inauguração+da+Sala" alt="Inauguração de sala de aula" class="w-full h-48 object-cover">
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-sm text-teal-600 font-medium mb-2">30 de Outubro, 2024</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Inauguramos nova sala no projeto "Educação para Todos"</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
-                        Veja como a sua doação e o esforço dos nossos voluntários se transformaram em um novo espaço de aprendizado...
-                    </p>
-                    <!-- AJUSTE: O href foi atualizado -->
-                    <a href="artigo-1.html" class="text-teal-500 hover:text-teal-700 font-medium">Ler mais &rarr;</a>
-                </div>
-            </article>
-            
-            <!-- Artigo 2 -->
-            <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-<!-- ... (artigo 2 sem alterações, ainda com href="#") ... -->
-                <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Recorde+de+Refeições" alt="Refeições sendo servidas" class="w-full h-48 object-cover">
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-sm text-teal-600 font-medium mb-2">28 de Outubro, 2024</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Cozinha Solidária bate recorde de refeições em Outubro</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
-                        Com o apoio de novos doadores e parceiros, conseguimos expandir nossa atuação e distribuir mais de 5.000...
-                    </p>
-                    <a href="#" class="text-teal-500 hover:text-teal-700 font-medium">Ler mais &rarr;</a>
-                </div>
-            </article>
+                    <!-- Post 2 -->
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl">
+                        <img src="vecteezy_silver-tabby-cat-sitting-on-green-background_2098203.jpg" alt="[Imagem de um gato filhote branco e cinza]" class="h-64 w-full object-cover">
+                        <div class="flex flex-1 flex-col justify-between p-6">
+                            <div>
+                                <span class="text-sm font-medium text-primary">Dicas de Saúde</span>
+                                <a href="blog-post.html" class="mt-2 block">
+                                    <h3 class="text-2xl font-bold text-secondary hover:text-primary">5 Dicas para Manter seu Gato Saudável no Inverno</h3>
+                                    <p class="mt-4 text-base text-secondary-light">
+                                        O frio está chegando! Veja como garantir que seu companheiro
+                                        felino fique aquecido, seguro e saudável.
+                                    </p>
+                                </a>
+                            </div>
+                            <p class="mt-6 text-sm font-medium text-stone-500">1 de Novembro, 2025</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 3 -->
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl">
+                        <img src="vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg" alt="[Imagem de um gato preto com olhos amarelos]" class="h-64 w-full object-cover">
+                        <div class="flex flex-1 flex-col justify-between p-6">
+                            <div>
+                                <span class="text-sm font-medium text-primary">Eventos</span>
+                                <a href="blog-post.html" class="mt-2 block">
+                                    <h3 class="text-2xl font-bold text-secondary hover:text-primary">Sucesso no Bazar Beneficente!</h3>
+                                    <p class="mt-4 text-base text-secondary-light">
+                                        Nosso bazar de outono foi um sucesso incrível! Arrecadamos
+                                        o suficiente para cobrir 3 meses de ração. Obrigado a todos!
+                                    </p>
+                                </a>
+                            </div>
+                            <p class="mt-6 text-sm font-medium text-stone-500">28 de Outubro, 2025</p>
+                        </div>
+                    </article>
 
-            <!-- Artigo 3 -->
-            <article class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-<!-- ... (artigo 3 sem alterações, ainda com href="#") ... -->
-                <img src="https://placehold.co/600x400/38b2ac/ffffff?text=Voluntário+do+Mês" alt="Voluntária sorrindo" class="w-full h-48 object-cover">
-                <div class="p-6 flex flex-col flex-grow">
-                    <span class="text-sm text-teal-600 font-medium mb-2">25 de Outubro, 2024</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Conheça a Mariana, nossa voluntária do mês</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4 flex-grow">
-                        "O voluntariado mudou minha vida..." - Leia o depoimento inspirador da Mariana, que atua no projeto...
-                    </p>
-                    <a href="#" class="text-teal-500 hover:text-teal-700 font-medium">Ler mais &rarr;</a>
                 </div>
-            </article>
-
+            </div>
         </section>
-
     </main>
 
-    <!-- Rodapé -->
-    <footer class="bg-gray-800 text-white py-10 mt-16">
-<!-- ... (rodapé sem alterações) ... -->
-        <section class="container mx-auto px-6 py-10 text-center max-w-3xl">
-            <h3 class="text-2xl font-bold mb-4">Assine nossa Newsletter</h3>
-            <p class="text-gray-400 mb-6">Receba atualizações mensais sobre nossos projetos, histórias de impacto e como você pode ajudar.</p>
-            <form class="flex flex-col md:flex-row justify-center max-w-lg mx-auto">
-                <input type="email" placeholder="Seu melhor e-mail" class="w-full md:w-2/3 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3 md:mb-0 md:mr-3" required>
-                <button type="submit" class="bg-teal-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition duration-300">
-                    Assinar
-                </button>
-            </form>
-        </section>
+    <!-- =============================================== -->
+    <!-- COMPONENTE: FOOTER (Atualizado com Newsletter)  -->
+    <!-- =============================================== -->
+    <footer class="mt-auto w-full bg-secondary text-stone-300">
+      <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         
-        <div class="container mx-auto px-6 text-center border-t border-gray-700 pt-8 mt-8">
-            <p>&copy; 2024 ONG Conecta Vidas. Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-400 mt-2">Desenvolvido como parte do projeto acadêmico.</p>
+        <!-- Seção Newsletter -->
+        <div class="mb-12 rounded-2xl bg-stone-700 p-8 md:p-12">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Assine nossa Newsletter</h2>
+                    <p class="mt-2 text-stone-300">Receba histórias de adoção e atualizações mensais no seu e-mail.</p>
+                </div>
+                <form class="flex w-full flex-col items-end gap-3 sm:flex-row" onsubmit="alert('Obrigado por se inscrever!'); return false;">
+                    <div class="w-full">
+                        <label for="email-newsletter" class="sr-only">E-mail</label>
+                        <input type="email" id="email-newsletter" required placeholder="Digite seu e-mail"
+                               class="w-full rounded-md border-stone-500 bg-stone-600 px-4 py-3 text-white shadow-sm focus:border-primary focus:ring-primary">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full sm:w-auto">Inscrever</button>
+                </form>
+            </div>
         </div>
+
+        <!-- Rodapé Principal -->
+        <div class="flex flex-col items-center justify-between md:flex-row">
+          <div class="mb-6 flex items-center gap-2 md:mb-0">
+            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+            <span class="text-2xl font-bold text-white">MiauApoio</span>
+          </div>
+          <div class="mb-6 flex space-x-6 md:mb-0" role="navigation" aria-label="Redes sociais">
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Instagram">Instagram</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Facebook">Facebook</a>
+            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Twitter">Twitter</a>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-stone-700 pt-8 text-center text-base text-stone-400">
+          <p>&copy; 2025 MiauApoio. Todos os direitos reservados.</p>
+          <p class="mt-1">CNPJ: 12.345.678/0001-99 | Organização Fictícia</p>
+          <!-- Atribuição de Imagem Adicionada -->
+          <p class="mt-2 text-xs text-stone-500">
+            Fotos de gatos gentilmente cedidas por <a href="https://pt.vecteezy.com/fotos-gratis/gato" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-300">Vecteezy</a>
+          </p>
+        </div>
+      </div>
     </footer>
 
+    <!-- Link para o JavaScript -->
     <script src="script.js" defer></script>
 </body>
 </html>

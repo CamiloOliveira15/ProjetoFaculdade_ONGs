@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Projeto | Dashboard</title>
+    <meta name="robots" content="noindex">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores do Tema -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#f97316', // orange-500
+                dark: '#ea580c',  // orange-600
+              },
+              secondary: {
+                DEFAULT: '#292524', // stone-800
+                light: '#44403c',  // stone-700
+              },
+              light: '#f5f5f4', // stone-100
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex h-screen bg-light">
+
+    <!-- =============================================== -->
+    <!-- BARRA LATERAL DO DASHBOARD (REPETIDA)           -->
+    <!-- =============================================== -->
+    <aside class="flex w-64 flex-col bg-secondary text-white shadow-lg">
+        <!-- Logo -->
+        <div class="flex h-20 items-center justify-center gap-2 border-b border-stone-700">
+            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
+            <span class="text-2xl font-bold">MiauApoio</span>
+        </div>
+        
+        <!-- Navegação -->
+        <nav class="flex-1 space-y-2 p-4">
+            <a href="dashboard.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+                <span>📊</span>
+                <span>Visão Geral</span>
+            </a>
+            <a href="dashboard-projetos.html" class="flex items-center gap-3 rounded-lg bg-primary/20 px-4 py-3 font-semibold text-primary transition-all">
+                <span>📁</span>
+                <span>Gerenciar Projetos</span>
+            </a>
+            <a href="dashboard-voluntarios.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+                <span>👥</span>
+                <span>Gerenciar Voluntários</span>
+            </a>
+            <a href="dashboard-blog.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+                <span>📝</span>
+                <span>Gerenciar Blog</span>
+            </a>
+        </nav>
+
+        <!-- Rodapé da Barra Lateral -->
+        <div class="border-t border-stone-700 p-4">
+            <button id="logout-button" class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-red-500/20 hover:text-red-400">
+                <span>🚪</span>
+                <span>Sair</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- =============================================== -->
+    <!-- CONTEÚDO PRINCIPAL DO DASHBOARD                 -->
+    <!-- =============================================== -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- Cabeçalho Superior -->
+        <header class="flex h-20 items-center justify-between border-b bg-white px-6">
+            <h1 class="text-2xl font-bold text-secondary">Adicionar Novo Projeto</h1>
+            <div>
+                 <a href="dashboard-projetos.html" class="btn btn-secondary">
+                    &larr; Voltar
+                </a>
+            </div>
+        </header>
+
+        <!-- Conteúdo da Página (Formulário) -->
+        <main class="flex-1 overflow-y-auto p-8">
+            
+            <div class="max-w-2xl mx-auto rounded-2xl bg-white p-8 shadow-lg">
+                <!-- O formulário simula o salvamento e redireciona de volta -->
+                <form id="novo-projeto-form" class="space-y-6" onsubmit="alert('Novo projeto salvo (simulação)!'); window.location.href='dashboard-projetos.html'; return false;">
+                    
+                    <!-- Título -->
+                    <div>
+                        <label for="titulo" class="block text-sm font-medium text-secondary-light">Título do Projeto</label>
+                        <input type="text" id="titulo" name="titulo" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
+                    </div>
+
+                    <!-- Descrição -->
+                    <div>
+                        <label for="descricao" class="block text-sm font-medium text-secondary-light">Descrição Curta</label>
+                        <textarea id="descricao" name="descricao" rows="4" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"></textarea>
+                    </div>
+
+                    <!-- Status -->
+                    <div>
+                        <label for="status" class="block text-sm font-medium text-secondary-light">Status Inicial</label>
+                        <select id="status" name="status" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
+                            <option value="planejamento">Planejamento</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="concluido">Concluído</option>
+                        </select>
+                    </div>
+
+                    <!-- Vagas -->
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label for="vagas" class="block text-sm font-medium text-secondary-light">Vagas de Voluntários</label>
+                            <input type="number" id="vagas" name="vagas" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="5">
+                        </div>
+                        <div>
+                            <label for="vagas_preenchidas" class="block text-sm font-medium text-secondary-light">Vagas Preenchidas</d>
+                            <input type="number" id="vagas_preenchidas" name="vagas_preenchidas" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="0">
+                        </div>
+                    </div>
+                    
+                    <!-- Botão de Envio -->
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary text-lg px-10 py-3">
+                          Salvar Projeto
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Script de Proteção do Dashboard -->
+    <script src="dashboard-auth.js" defer></script>
+</body>
+</html>
