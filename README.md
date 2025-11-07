@@ -1,6 +1,6 @@
 MiauApoio - Plataforma Web para ONG de Adoção Felina
 
-Este projeto é uma plataforma web completa e profissional desenvolvida para a MiauApoio, uma ONG fictícia de resgate e adoção de gatos. O sistema foi criado como parte de um projeto acadêmico de desenvolvimento front-end, aplicando de forma integrada conceitos de HTML5, CSS3 avançado e JavaScript.
+Este projeto é uma plataforma web completa e profissional desenvolvida para a MiauApoio, uma ONG fictícia de resgate e adoção de gatos. O sistema foi criado como parte de um projeto acadêmico de desenvolvimento front-end, aplicando de forma integrada conceitos de HTML5, CSS3 avançado, JavaScript e integração básica de backend com serviços AWS.
 
 A plataforma simula um ambiente real, atendendo às necessidades de diferentes personas (Visitantes, Doadores, Voluntários e Administradores) e fornecendo uma presença digital vital para uma organização do terceiro setor.
 
@@ -14,7 +14,7 @@ Página Home (index.html): Apresenta a missão da ONG, métricas de impacto, inf
 
 Página de Projetos (projetos.html): Detalha os projetos sociais (Resgate, Feiras de Adoção), explica como ser voluntário e como doar (Captação de Recursos).
 
-Página de Cadastro (cadastro.html): Formulário complexo para inscrição de novos voluntários e apoiadores.
+Página de Cadastro (cadastro.html): Formulário complexo para inscrição de novos voluntários. Esta página está integrada com um backend AWS (API Gateway + Lambda) para salvar os cadastros em um banco de dados DynamoDB.
 
 Página de Blog (blog.html): Lista de notícias, dicas e histórias de adoção, servindo como ferramenta de comunicação.
 
@@ -26,19 +26,19 @@ Newsletter: Seção no rodapé de todas as páginas para engajamento de apoiador
 
 2. Dashboard Administrativo (Acesso Restrito)
 
-Página de Login (login.html): Portal de entrada para a área de gestão.
+Página de Login (login.html): Portal de entrada para a área de gestão (simulado via localStorage).
 
 Visão Geral (dashboard.html): Painel com métricas de engajamento (simuladas).
 
 Gerenciar Projetos (dashboard-projetos.html): Tabela para listar projetos existentes.
 
-Adicionar Projeto (dashboard-projetos-novo.html): Formulário para cadastrar novos projetos.
+Adicionar Projeto (dashboard-projetos-novo.html): Formulário para cadastrar novos projetos (simulado).
 
-Gerenciar Voluntários (dashboard-voluntarios.html): Tabela para listar voluntários cadastrados.
+Gerenciar Voluntários (dashboard-voluntarios.html): Tabela para listar voluntários (simulada, mas alimentada pelo formulário de cadastro real).
 
 Gerenciar Blog (dashboard-blog.html): Tabela para listar posts.
 
-Adicionar Post (dashboard-blog-novo.html): Formulário para criar novos posts.
+Adicionar Post (dashboard-blog-novo.html): Formulário para criar novos posts (simulado).
 
 ✅ Atendimento aos Requisitos do Projeto
 
@@ -80,7 +80,7 @@ Nota Importante sobre o @apply: As classes customizadas do Tailwind (como .btn e
 
 JavaScript Interativo e Dinâmico:
 
-script.js: Controla o menu mobile (hamburguer) e aplica as máscaras de formulário.
+script.js: Controla o menu mobile (hamburguer), aplica as máscaras de formulário e envia os dados do formulário de cadastro para a API Gateway da AWS via fetch.
 
 login.js: Simula a autenticação de login (usuário e senha) usando localStorage.
 
@@ -104,17 +104,31 @@ A página login.html e os arquivos do dashboard usam <meta name="robots" content
 
 Simulação de Ambiente Profissional:
 
-O projeto lida com múltiplas personas e um fluxo de usuário completo (de visitante a administrador).
+O projeto lida com múltiplas personas e um fluxo de usuário completo.
 
 O código é separado, organizado e comentado.
+
+Integração com AWS: O projeto demonstra um fluxo real de front-end para back-end, conectando o site estático (S3/CloudFront) a um serviço serverless (Lambda/DynamoDB) através de uma API Gateway.
 
 🛠️ Tecnologias Utilizadas
 
 HTML5: Estruturação semântica.
 
-CSS3 (com Tailwind CSS): Estilização avançada, responsividade e sistema de design (via Play CDN).
+CSS3 (com Tailwind CSS): Estilização avançada e responsividade (via Play CDN).
 
-JavaScript (ES6+): Interatividade, manipulação de DOM e simulação de autenticação via localStorage.
+JavaScript (ES6+): Interatividade, manipulação de DOM, chamadas de API (fetch) e simulação de autenticação (localStorage).
+
+AWS (Backend):
+
+AWS S3: Hospedagem do site estático.
+
+AWS CloudFront: Distribuição de conteúdo (CDN) e domínio personalizado com HTTPS.
+
+AWS API Gateway: Criação do endpoint POST para o formulário.
+
+AWS Lambda (Python): Função serverless para processar o formulário e lidar com CORS.
+
+AWS DynamoDB: Banco de dados NoSQL para armazenar os cadastros de voluntários.
 
 📂 Estrutura de Pastas (Recomendada)
 
@@ -139,6 +153,9 @@ Para a entrega no GitHub, os arquivos devem ser organizados da seguinte forma:
 ├── script.js
 ├── login.js
 ├── dashboard-auth.js
+│
+└── /backend/
+│   └── lambda_function.py
 │
 └── /images/              (Pasta para as imagens)
     ├── vecteezy_lovely-cat-sitting_23027565.jpg
