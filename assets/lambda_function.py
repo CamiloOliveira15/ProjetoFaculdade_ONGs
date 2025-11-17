@@ -8,7 +8,6 @@ TABLE_NAME = os.environ.get('VOLUNTARIOS_TABLE_NAME', 'Voluntarios-ONG')
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table(TABLE_NAME)
 
-# --- MELHORIA: Cabeçalhos CORS centralizados ---
 # Use '*' para desenvolvimento ou seu domínio específico (ex: 'https://pinheirotecnologia.com')
 ALLOWED_ORIGIN = '*' 
 
@@ -52,7 +51,7 @@ def lambda_handler(event, context):
             'email', 
             'cpf', 
             'telefone', 
-            'nascimento', # --- CORREÇÃO 1: 'nascimento' ao invés de 'data-nascimento' ---
+            'nascimento',
             'cep', 
             'endereco', 
             'cidade', 
@@ -72,7 +71,7 @@ def lambda_handler(event, context):
 
         # 5. Extrai os dados validados
         cpf = body.get('cpf') # Chave Primária
-        data_nascimento = body.get('nascimento') # --- CORREÇÃO 1: Lendo o campo correto ---
+        data_nascimento = body.get('nascimento')
 
         # 6. Cria o item a ser salvo no DynamoDB
         item_to_save = {

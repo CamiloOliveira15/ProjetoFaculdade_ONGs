@@ -2,9 +2,9 @@
   (Estilos customizados que complementam o Tailwind CSS)
 */
 
-/* ENTREGA 2: Sistema de Design (Variáveis CSS Customizadas)
+/* Sistema de Design (Variáveis CSS Customizadas)
   Definindo a paleta de cores primária como variáveis CSS
-  para fácil manutenção e para atender ao requisito.
+  para fácil manutenção.
 */
 :root {
   --color-primary: #f97316; /* orange-500 */
@@ -32,7 +32,7 @@
   --tw-shadow: 0 0 #0000;
 }
 
-/* ENTREGA 4: Acessibilidade (Modo Escuro)
+/* Acessibilidade (Modo Escuro)
   Definindo as variáveis quando a classe .dark está no <html>
 */
 html.dark {
@@ -65,7 +65,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ENTREGA 4: Acessibilidade (Navegação por Teclado)
+/* Acessibilidade (Navegação por Teclado)
   Melhoria de Acessibilidade: Foco visível
 */
 :focus-visible {
@@ -79,7 +79,7 @@ button:focus-visible {
 }
 
 
-/* ENTREGA 2: Navegação Sofisticada (Dropdown)
+/* Navegação Sofisticada (Dropdown)
   Estilos base para o dropdown. O Tailwind cuidará do resto.
   Oculto por padrão, JS o tornará visível.
 */
@@ -108,7 +108,7 @@ button:focus-visible {
   color: var(--color-primary);
 }
 
-/* ENTREGA 4: Acessibilidade (Modo Escuro)
+/* Acessibilidade (Modo Escuro)
   Estilos para o seletor de modo escuro
 */
 .dark-mode-toggle {
@@ -191,12 +191,9 @@ html:not(.dark) .btn-secondary {
   color: #ffffff;
 }
 
-/* CORREÇÃO: Feedback de Formulário Inválido
-  As regras antigas (input:invalid:not(:placeholder-shown)) foram removidas
-  e substituídas por estas, que dependem da classe '.form-submitted'.
+/* Feedback de Formulário Inválido
   Esta classe é adicionada via JavaScript (em script.js) apenas 
-  quando o usuário tenta enviar o formulário, evitando as
-  bordas vermelhas antes da hora.
+  quando o usuário tenta enviar o formulário
 */
 .form-submitted input:invalid,
 .form-submitted select:invalid {

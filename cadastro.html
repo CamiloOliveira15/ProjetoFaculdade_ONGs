@@ -41,24 +41,12 @@
     
 </head>
 
-<!-- 
-  CORREÇÃO: 
-  Layout do body atualizado para centralizar o conteúdo, 
-  seguindo o padrão da tela de login.html para consistência.
--->
+
 <body class="flex min-h-screen flex-col items-center justify-center bg-background-alt p-4 text-foreground-muted">
 
-    <!-- 
-      CORREÇÃO: 
-      Header removido para uma tela de cadastro focada.
-    -->
+    
 
-    <!-- 
-      CORREÇÃO: 
-      Estrutura do main atualizada para o formato de "card" centralizado,
-      seguindo o padrão de login.html.
-      Usado max-w-2xl por ser um formulário maior.
-    -->
+    
     <main class="w-full max-w-2xl my-12">
         <div class="bg-background p-8 sm:p-10 rounded-2xl shadow-xl shadow-[var(--color-shadow)]">
             
@@ -83,20 +71,12 @@
                 </p>
             </div>
             
-            <!-- 
-              CORREÇÃO: 
-              Área de status movida para cima, como na tela de login.
-            -->
+           
             <div id="status-message" class="mt-6 text-center" role="alert">
                 <!-- O JavaScript (script.js) inserirá as mensagens aqui -->
             </div>
 
-            <!-- 
-              CORREÇÃO: 
-              - Atributo 'novalidate' adicionado para impedir a validação padrão do navegador.
-              - Fieldsets simplificados (sem borda/legenda) para um visual mais limpo.
-              - Asteriscos de campo obrigatório adicionados aos labels.
-            -->
+            
             <form id="cadastro-form" class="mt-8 space-y-8" novalidate>
                 
                 <fieldset class="space-y-6">
@@ -215,11 +195,7 @@
                     </div>
                 </fieldset>
                 
-                <!-- 
-                  CORREÇÃO: 
-                  Botão atualizado para 'w-full' e padding 'px-10 py-3',
-                  seguindo o padrão de login.html.
-                -->
+                
                 <div class="pt-4">
                     <button type="submit" id="submit-button" class="w-full btn btn-primary text-lg px-10 py-3">
                         Enviar Cadastro
@@ -237,10 +213,7 @@
         </div>
     </main>
 
-    <!-- 
-      CORREÇÃO: 
-      Footer removido para uma tela de cadastro focada.
-    -->
+    
 
     <!-- Link para o JavaScript -->
     <script src="assets/js/script.js" defer></script>
