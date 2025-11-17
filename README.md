@@ -1,4 +1,130 @@
-Plataforma Web para ONGs - MiauApoio (Estudo de Caso)Este repositório contém o código-fonte do "MiauApoio", uma plataforma web completa desenvolvida como um estudo de caso prático para a disciplina de Desenvolvimento Front-End.O projeto simula um ambiente profissional, implementando um site público responsivo, um dashboard administrativo dinâmico e um back-end serverless funcional para captura de dados.🚀 Projeto no ArA versão de produção deste projeto está hospedada no GitHub Pages e pode ser acessada aqui:https://camilooliveira15.github.io/ProjetoFaculdade_ONGs/1. Visão Geral e Personas AtendidasO objetivo deste estudo de caso é projetar e implementar uma solução web que atenda às necessidades de três personas principais, aplicando os fundamentos de desenvolvimento front-end em um contexto realista.O Visitante (Público Geral):Necessidade: Conhecer a ONG, seus projetos, ler notícias (blog) e entender como ajudar.Solução: Um site institucional estático (index.html, projetos.html, blog.html, transparencia.html) totalmente responsivo, acessível (Modo Escuro) e com carregamento otimizado (lazy loading).O Voluntário em Potencial:Necessidade: Encontrar informações sobre como ser voluntário e enviar seus dados de forma segura para análise.Solução: A página cadastro.html, com layout focado (estilo card), validação de formulário moderna (sem alert) e integração com um back-end AWS real.O Administrador da ONG:Necessidade: Acessar uma área restrita para gerenciar projetos, voluntários cadastrados e postagens do blog.Solução: Um "Dashboard" (dashboard.html e sub-páginas) com autenticação simulada (via localStorage) e renderização de dados dinâmica (via Templates JavaScript).2. Arquitetura da SoluçãoA plataforma é dividida em três componentes principais que se comunicam:Front-End (Site Público): Construído com HTML5 Semântico, Tailwind CSS e JavaScript (ES6+) puro. Todos os assets (CSS, JS) são organizados em pastas para manutenção. As interações, como o envio do formulário de cadastro.html, são conectadas a um back-end funcional.Front-End (Dashboard Admin): Uma Single Page Application (SPA) simulada, protegida por localStorage (assets/js/login.js, assets/js/dashboard-auth.js) e que renderiza conteúdo dinamicamente usando Templates JavaScript (assets/js/dashboard.js).Back-End (Serverless): O formulário de cadastro.html utiliza a fetch API do JavaScript para enviar dados de forma assíncrona para um back-end real hospedado na AWS.O fluxo de dados do cadastro é:Formulário → [AWS API Gateway] → [AWS Lambda (Python)] → [AWS DynamoDB]Esta arquitetura garante que o site público seja extremamente rápido (estático) enquanto processa dados complexos (cadastros) de forma escalável e segura.3. Tecnologias UtilizadasFront-EndHTML5: Estrutura semântica (<main>, <nav>, <article>, <section>, role, aria-label).CSS3 (Tailwind CSS): Framework utility-first para rápida prototipação e consistência visual.CSS3 (Variáveis): Arquivo assets/css/style.css para definir o Design System (cores primárias, de tema claro/escuro) e componentes customizados (.btn, .tag).JavaScript (ES6+): Manipulação do DOM, fetch API, localStorage, Event Listeners, Máscaras de formulário e Templates Literais.Back-End (Serverless)AWS API Gateway: Criação do endpoint REST (POST) para receber os dados do formulário.AWS Lambda: Função Python (assets/lambda_function.py) que recebe os dados, valida e os insere no banco.AWS DynamoDB: Banco de dados NoSQL para armazenar os cadastros de voluntários.DevOps e FerramentasGit / GitHub: Controle de versão.GitHub Actions: Workflow (.github/workflows/static.yml) para deploy automático (CI/CD) no GitHub Pages.4. Estrutura de PastasO projeto segue uma estrutura de pastas organizada, separando os arquivos HTML de seus assets (CSS, JS, Imagens), conforme o requisito da "Entrega 1".ProjetoFaculdade_ONGs/
+# Badges
+
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Online-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![CI/CD](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-yellow)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazon-aws&logoColor=white)
+
+---
+
+# Índice
+
+0. [Projeto no Ar](#-projeto-no-ar)
+1. [Visão Geral e Personas](#1-visão-geral-e-personas-atendidas)
+2. [Arquitetura da Solução](#2-arquitetura-da-solução)
+3. [Tecnologias Utilizadas](#3-tecnologias-utilizadas)
+4. [Estrutura de Pastas](#4-estrutura-de-pastas)
+5. [Próximos Passos](#5-próximos-passos)
+6. [Como Executar](#6-como-executar)
+
+---
+
+# Plataforma Web para ONGs - MiauApoio (Estudo de Caso)
+
+Este repositório contém o código-fonte do "MiauApoio", uma plataforma web completa desenvolvida como um estudo de caso prático para a disciplina de Desenvolvimento Front-End da gradução de Análise e Desenvolvimento de Sistemas.
+
+O projeto simula um ambiente profissional, implementando um site público responsivo, um dashboard administrativo dinâmico e um back-end serverless funcional para captura de dados.
+
+---
+
+## 🚀 Projeto no Ar
+
+A versão de produção deste projeto está hospedada no GitHub Pages e pode ser acessada aqui:
+
+[https://camilooliveira15.github.io/ProjetoFaculdade_ONGs/](https://camilooliveira15.github.io/ProjetoFaculdade_ONGs/)
+
+
+---
+
+## 1. Visão Geral e Personas Atendidas
+
+O objetivo deste estudo de caso é projetar e implementar uma solução web que atenda às necessidades de três personas principais, aplicando os fundamentos de desenvolvimento front-end em um contexto realista.
+
+### **O Visitante (Público Geral):**
+
+* **Necessidade:** Conhecer a ONG, seus projetos, ler notícias (blog) e entender como ajudar.
+* **Solução:** Um site institucional estático (index.html, projetos.html, blog.html, transparencia.html) totalmente responsivo, acessível (Modo Escuro) e com carregamento otimizado (lazy loading).
+
+### **O Voluntário em Potencial:**
+
+* **Necessidade:** Encontrar informações sobre como ser voluntário e enviar seus dados de forma segura para análise.
+* **Solução:** A página cadastro.html, com layout focado (estilo card), validação de formulário moderna (sem alert) e integração com um back-end AWS real.
+
+### **O Administrador da ONG:**
+
+* **Necessidade:** Acessar uma área restrita para gerenciar projetos, voluntários cadastrados e postagens do blog.
+* **Solução:** Um "Dashboard" (dashboard.html e sub-páginas) com autenticação simulada (via localStorage) e renderização de dados dinâmica (via Templates JavaScript).
+
+---
+
+## 2. Arquitetura da Solução
+
+A plataforma é dividida em três componentes principais que se comunicam:
+
+### **Front-End (Site Público):**
+
+Construído com HTML5 Semântico, Tailwind CSS e JavaScript (ES6+) puro. Todos os assets (CSS, JS) são organizados em pastas para manutenção. As interações, como o envio do formulário de cadastro.html, são conectadas a um back-end funcional.
+
+### **Front-End (Dashboard Admin):**
+
+Uma Single Page Application (SPA) simulada, protegida por localStorage (assets/js/login.js, assets/js/dashboard-auth.js) e que renderiza conteúdo dinamicamente usando Templates JavaScript (assets/js/dashboard.js).
+
+### **Back-End (Serverless):**
+
+O formulário de cadastro.html utiliza a fetch API do JavaScript para enviar dados de forma assíncrona para um back-end real hospedado na AWS.
+
+Fluxo de dados do cadastro:
+
+```
+Formulário → [AWS API Gateway] → [AWS Lambda (Python)] → [AWS DynamoDB]
+```
+
+Essa arquitetura garante que o site público seja extremamente rápido (estático) enquanto processa dados complexos (cadastros) de forma escalável e segura.
+
+---
+
+## 3. Tecnologias Utilizadas
+
+### **Front-End**
+
+* **HTML5:** Utilizado para construir a espinha dorsal de todas as páginas, com uso rigoroso de tags como <main>, <nav>, <section> e <article> para garantir acessibilidade (SEO) e facilitar a leitura de tela. Atributos ARIA (aria-label, aria-expanded) são usados para componentes interativos.
+* **CSS3 (Tailwind CSS):** Framework utility-first principal, usado para estilizar 90% do projeto. Permitiu a rápida prototipação e a criação de um design mobile-first totalmente responsivo, com breakpoints (sm:, md:, lg:) controlando o layout.
+* **CSS3 (Variáveis):** O arquivo assets/css/style.css complementa o Tailwind definindo um Design System central. Variáveis CSS (:root) são usadas para cores temáticas (primária, fundo, texto) e para implementar o Modo Escuro (html.dark), além de estilizar componentes reutilizáveis como .btn e .tag.
+* **JavaScript (ES6+):** Usado para adicionar toda a interatividade e lógica da aplicação:
+
+Manipulação do DOM: Controla o menu "hambúrguer" mobile, o dropdown de navegação e o seletor de Modo Escuro.
+
+Event Listeners: Captura cliques, inputs (para máscaras de CPF/Telefone/CEP) e o evento submit do formulário.
+
+Validação de Formulário: Lógica customizada em assets/js/script.js que usa form.checkValidity() e a classe .form-submitted para uma validação moderna sem alert()s.
+
+LocalStorage: Usado para persistir a preferência do Modo Escuro do usuário e para simular a sessão de login do Administrador.
+
+Fetch API: Realiza a chamada assíncrona (async/await) para o endpoint do back-end no formulário de cadastro.
+
+Templates Literais: Usados no assets/js/dashboard.js para renderizar dinamicamente o HTML das tabelas do dashboard (simulando uma SPA).
+
+### **Back-End (Serverless)**
+
+* **AWS API Gateway:** Endpoint REST.
+* **AWS Lambda:** Função Python que valida e insere dados no banco.
+* **AWS DynamoDB:** Banco NoSQL.
+
+### **DevOps e Ferramentas**
+
+* Git / GitHub: Utilizado para todo o controle de versão, gerenciamento de branches e hospedagem do código.
+* GitHub Actions (CI/CD): Configurado um workflow de CI/CD (.github/workflows/static.yml) que automatiza o deploy do site estático para o GitHub Pages a cada push na branch main.
+
+---
+
+## 4. Estrutura de Pastas
+
+```
+ProjetoFaculdade_ONGs/
 │
 ├── .github/
 │   └── workflows/
@@ -38,4 +164,37 @@ Plataforma Web para ONGs - MiauApoio (Estudo de Caso)Este repositório contém o
 │
 ├── PROXIMOS_PASSOS.md         # Documentação de evolução do projeto
 └── README.md                  # Esta documentação
-5. Atendimento aos Requisitos do Estudo de CasoEsta seção valida o projeto finalizado contra os requisitos das 4 entregas do estudo de caso.[✔] HTML5 Semântico (Entrega 1): Atendido. Estrutura semântica (<main>, <nav>), hierarquia de títulos, páginas obrigatórias (index, projetos, cadastro), formulário complexo com validação e máscaras JS.[✔] Estrutura de Pastas (Entrega 1): Atendido. Os assets (css, js) e images estão em pastas separadas, com todos os links HTML atualizados.[✔] CSS3 Avançado (Entrega 2): Atendido. O assets/css/style.css usa variáveis (:root) para um Design System. Layouts usam Flexbox/Grid e são responsivos.[✔] Componentes CSS (Entrega 2): Atendido. Todos os componentes (Dropdown, Menu Hambúrguer, Cards, Botões, Formulários, Feedback e Tags) estão implementados e funcionais.[✔] JavaScript Avançado (Entrega 3): Atendido. O Dashboard (assets/js/dashboard.js) usa Templates JS para renderização dinâmica (simulando uma SPA).[✔] Validação de Formulário JS (Entrega 3): Atendido. O assets/js/script.js usa form.checkValidity() e a classe .form-submitted para uma validação moderna sem alert().[✔] Práticas Profissionais (Entrega 4): Atendido. O projeto demonstra:Controle de Versão: Repositório Git com workflow de CI/CD (.github/workflows/static.yml).Acessibilidade: Navegação por teclado (:focus-visible), atributos ARIA, contraste e Modo Escuro.Performance: loading="lazy" foi implementado nas imagens "abaixo da dobra".Documentação: O projeto contém este README.md e um PROXIMOS_PASSOS.md.6. Próximos PassosA documentação detalhada sobre a evolução deste projeto (como otimização de produção, autenticação real com Cognito e APIs avançadas) foi movida para um arquivo separado.Consulte o arquivo PROXIMOS_PASSOS.md para a análise completa.7. Como Executar1. Site Público e Dashboard (Front-End)O front-end é totalmente estático.Clone este repositório.Abra qualquer arquivo .html (ex: index.html) diretamente no seu navegador.Para testar o Dashboard:Abra o arquivo login.html.Use as credenciais de simulação:E-mail: admin@miauapoio.orgSenha: admin123Você será redirecionado para o dashboard.html (a autenticação é simulada via localStorage).2. Cadastro de Voluntários (Back-End)O formulário em cadastro.html aponta para um endpoint real da AWS API Gateway.Para Testar: Basta preencher o formulário na página cadastro.html com dados válidos e clicar em "Enviar Cadastro". Você receberá uma mensagem de sucesso (JSON) se a função Lambda e o DynamoDB estiverem operacionais.
+```
+
+---
+
+## 5. Próximos Passos
+
+A evolução futura (como Cognito, otimização e APIs avançadas) está documentada em:
+
+**PROXIMOS_PASSOS.md**
+
+---
+
+## 6. Como Executar
+
+### **1. Site Público e Dashboard (Front-End)**
+
+* Clone o repositório.
+* Abra qualquer `.html` no navegador.
+
+**Para testar o Dashboard:**
+
+1. Abra `login.html`
+2. Use as credenciais:
+
+   * E-mail: [admin@miauapoio.org](mailto:admin@miauapoio.org)
+   * Senha: admin123
+3. Você será redirecionado para `dashboard.html`.
+
+### **2. Cadastro de Voluntários (Back-End)**
+
+O formulário envia dados para um endpoint AWS API Gateway.
+
+Para testar:
+Preencha `cadastro.html` e envie. A resposta será JSON indicando sucesso se Lambda + DynamoDB estiverem operacionais.
