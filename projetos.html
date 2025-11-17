@@ -14,18 +14,22 @@
     <!-- Configuração de Cores do Tema (Seguindo a paleta da MiauApoio) -->
     <script>
       tailwind.config = {
+        darkMode: 'class', // Habilita o modo escuro via classe
         theme: {
           extend: {
             colors: {
-              primary: {
-                DEFAULT: '#f97316', // orange-500
-                dark: '#ea580c',  // orange-600
-              },
-              secondary: {
-                DEFAULT: '#292524', // stone-800
-                light: '#44403c',  // stone-700
-              },
-              light: '#f5f5f4', // stone-100
+              // Mapeia as variáveis CSS para o Tailwind
+              primary: 'var(--color-primary)',
+              'primary-dark': 'var(--color-primary-dark)',
+              secondary: 'var(--color-secondary)',
+              'secondary-light': 'var(--color-secondary-light)',
+              light: 'var(--color-light)',
+              // Mapeia as cores de fundo e texto
+              background: 'var(--color-bg)',
+              'background-alt': 'var(--color-bg-alt)',
+              foreground: 'var(--color-text)',
+              'foreground-muted': 'var(--color-text-muted)',
+              'border-color': 'var(--color-border)',
             }
           }
         }
@@ -44,17 +48,23 @@
         @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
       }
       .btn-secondary {
-        @apply bg-secondary hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+        @apply bg-secondary text-white hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+      }
+      
+      /* Estilos para o formulário inválido (Entrega 2) */
+      input:invalid:not(:placeholder-shown),
+      select:invalid:not(:placeholder-shown) {
+         @apply border-red-500 ring-red-500;
       }
     </style>
 </head>
 
-<body class="flex min-h-screen flex-col">
+<body class="flex min-h-screen flex-col bg-background-alt text-foreground-muted">
 
     <!-- =============================================== -->
-    <!-- COMPONENTE: HEADER (Reutilizável)               -->
+    <!-- COMPONENTE: HEADER (Atualizado)                 -->
     <!-- =============================================== -->
-    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+    <header class="sticky top-0 z-50 w-full bg-background shadow-md shadow-[var(--color-shadow)]">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-20 items-center justify-between">
           
@@ -62,7 +72,7 @@
           <a href="index.html" class="flex-shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
-              <span class="text-2xl font-bold text-secondary">
+              <span class="text-2xl font-bold text-foreground">
                 MiauApoio
               </span>
             </div>
@@ -70,22 +80,40 @@
 
           <!-- Navegação (Semântico: <nav>) -->
           <nav class="hidden md:flex md:items-center md:space-x-2">
-            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Home
             </a>
-            <a href="projetos.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
-              Projetos
-            </a>
-            <!-- LINKS ADICIONADOS -->
-            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            
+            <!-- ATUALIZAÇÃO: Dropdown (Entrega 2) -->
+            <div class="relative">
+              <a href="projetos.html" id="dropdown-toggle" aria-expanded="false" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+                Projetos
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <div id="dropdown-menu" class="dropdown-menu">
+                <a href="projetos.html">Ver Projetos</a>
+                <a href="cadastro.html">Seja Voluntário</a>
+              </div>
+            </div>
+            
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Blog
             </a>
-            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Transparência
             </a>
-            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Login
             </a>
+            
+            <!-- ATUALIZAÇÃO: Botão Modo Escuro (Entrega 4) -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle ml-4" aria-label="Alternar modo escuro">
+                <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
+                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+            </button>
+            
             <a href="cadastro.html" class="ml-4 btn btn-primary">
               Cadastre-se
             </a>
@@ -93,9 +121,13 @@
 
           <!-- Menu Mobile (JS lidará com o clique) -->
           <div class="flex md:hidden">
-            <button id="mobile-menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-secondary-light hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-2" aria-label="Alternar modo escuro">
+                <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
+                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+            </button>
+            
+            <button id="mobile-menu-button" aria-expanded="false" class="inline-flex items-center justify-center rounded-md p-2 text-foreground-muted hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
               <span class="sr-only">Abrir menu principal</span>
-              <!-- Ícone Hamburguer -->
               <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
@@ -105,14 +137,13 @@
       </div>
 
       <!-- Menu Mobile (Dropdown) -->
-      <div id="mobile-menu" class="hidden border-t border-stone-200 md:hidden">
+      <div id="mobile-menu" class="hidden border-t border-border-color md:hidden">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-          <a href="index.html" classa="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Home</a>
-          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Projetos</a>
-          <!-- LINKS ADICIONADOS -->
-          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Blog</a>
-          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Transparência</a>
-          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
           <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
         </div>
       </div>
@@ -122,14 +153,14 @@
     <main id="page-projetos" class="flex-grow">
         
         <!-- Seção 1: Cabeçalho da Página -->
-        <section class="bg-white py-16 sm:py-24">
+        <section class="bg-background py-16 sm:py-24">
           <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-3xl text-center">
               <!-- h1: Título principal da página -->
-              <h1 class="text-4xl font-bold text-secondary sm:text-5xl">
+              <h1 class="text-4xl font-bold text-foreground sm:text-5xl">
                 Nossos Projetos e Como Ajudar
               </h1>
-              <p class="mt-6 text-lg text-secondary-light">
+              <p class="mt-6 text-lg text-foreground-muted">
                 Cada ação, seja doando ou voluntariando, salva vidas. Veja como
                 nossos projetos transformam a realidade de centenas de animais.
               </p>
@@ -138,17 +169,18 @@
         </section>
         
         <!-- Seção 2: Projetos Sociais (Semântico: <article>) -->
-        <section class="bg-light py-20 sm:py-28">
+        <section class="bg-background-alt py-20 sm:py-28">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- h2: Título da seção -->
-                <h2 class="text-center text-3xl font-bold text-secondary sm:text-4xl">Projetos Sociais</h2>
+                <h2 class="text-center text-3xl font-bold text-foreground sm:text-4xl">Projetos Sociais</h2>
                 <div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">
                     <!-- Artigo 1 -->
-                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg">
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-background shadow-lg shadow-[var(--color-shadow)]">
+                        <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
                         <img src="vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg" alt="[Imagem de um gato preto com olhos amarelos]" class="h-64 w-full object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-bold text-secondary">Projeto Resgate e Reabilitação</h3>
-                            <p class="mt-4 text-base text-secondary-light">
+                            <h3 class="text-2xl font-bold text-foreground">Projeto Resgate e Reabilitação</h3>
+                            <p class="mt-4 text-base text-foreground-muted">
                                 Nossas equipes atuam 24/7 para resgatar animais em situação de
                                 risco. Após o resgate, eles recebem cuidados veterinários completos,
                                 são castrados, vacinados e preparados para um novo lar.
@@ -156,11 +188,12 @@
                         </div>
                     </article>
                     <!-- Artigo 2 -->
-                    <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg">
+                    <article class="flex flex-col overflow-hidden rounded-2xl bg-background shadow-lg shadow-[var(--color-shadow)]">
+                        <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
                         <img src="https://placehold.co/600x400/166534/white?text=Feira+de+Adoção" alt="[Imagem de uma feira de adoção com voluntários e famílias]" class="h-64 w-full object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-bold text-secondary">Feiras de Adoção Responsável</h3>
-                            <p class="mt-4 text-base text-secondary-light">
+                            <h3 class="text-2xl font-bold text-foreground">Feiras de Adoção Responsável</h3>
+                            <p class="mt-4 text-base text-foreground-muted">
                                 Regularmente, promovemos feiras de adoção em parceria com
                                 empresas locais. É a chance de conectar nossos gatinhos
                                 com famílias amorosas, sempre com entrevista e termo de adoção.
@@ -172,15 +205,16 @@
         </section>
 
         <!-- Seção 3: Voluntariado e Doações (Requisito da Página) -->
-        <section class="bg-white py-20 sm:py-28">
+        <section class="bg-background py-20 sm:py-28">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-16 md:grid-cols-2">
                     <!-- Coluna Voluntariado -->
                     <div>
                         <!-- h2: Título da seção -->
-                        <h2 class="text-3xl font-bold text-secondary sm:text-4xl">Seja um Voluntário</h2>
-                        <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md">
-                        <p class="text-lg text-secondary-light">
+                        <h2 class="text-3xl font-bold text-foreground sm:text-4xl">Seja um Voluntário</h2>
+                        <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
+                        <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md shadow-[var(--color-shadow)]">
+                        <p class="text-lg text-foreground-muted">
                             Doe seu tempo! Precisamos de ajuda com limpeza do abrigo,
                             feiras de adoção, transporte de animais e, o mais importante,
                             lar temporário para filhotes e animais em recuperação.
@@ -193,21 +227,22 @@
                     <!-- Coluna Doações -->
                     <div>
                         <!-- h2: Título da seção -->
-                        <h2 class="text-3xl font-bold text-secondary sm:text-4xl">Como Doar</h2>
-                         <img src="https://placehold.co/600x400/fdba74/444?text=Itens+para+Doação" alt="[Imagem de sacos de ração, areia e medicamentos]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md">
-                        <p class="text-lg text-secondary-light">
+                        <h2 class="text-3xl font-bold text-foreground sm:text-4xl">Como Doar</h2>
+                         <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
+                         <img src="https://placehold.co/600x400/fdba74/444?text=Itens+para+Doação" alt="[Imagem de sacos de ração, areia e medicamentos]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md shadow-[var(--color-shadow)]">
+                        <p class="text-lg text-foreground-muted">
                             Nossa ONG depende 100% de doações. Cada contribuição faz
                             uma enorme diferença para cobrir custos de veterinário,
                             medicamentos e ração.
                         </p>
                         <div class="mt-8 space-y-4">
-                            <div class="rounded-lg bg-light p-4 shadow-sm">
-                                <h3 class="font-semibold text-secondary">Doe via PIX (CNPJ)</h3>
+                            <div class="rounded-lg bg-background-alt p-4 shadow-sm">
+                                <h3 class="font-semibold text-foreground">Doe via PIX (CNPJ)</h3>
                                 <p class="font-mono text-primary-dark">12.345.678/0001-99</p>
                             </div>
-                            <div class="rounded-lg bg-light p-4 shadow-sm">
-                                <h3 class="font-semibold text-secondary">Doe Suprimentos</h3>
-                                <p class="text-secondary-light">Ração, areia, sachês e medicamentos são sempre bem-vindos em nosso ponto de coleta.</p>
+                            <div class="rounded-lg bg-background-alt p-4 shadow-sm">
+                                <h3 class="font-semibold text-foreground">Doe Suprimentos</h3>
+                                <p class="text-foreground-muted">Ração, areia, sachês e medicamentos são sempre bem-vindos em nosso ponto de coleta.</p>
                             </div>
                         </div>
                     </div>

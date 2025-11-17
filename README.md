@@ -4,6 +4,8 @@ Este repositório contém o código-fonte do projeto "MiauApoio", uma plataforma
 
 O projeto foi desenvolvido como avaliação para a disciplina de Desenvolvimento Front-End Para Web - Turma_004.
 
+Está disponível no site: https://pinheirotecnologia.com/index.html
+
 Contexto do Projeto
 
 O objetivo deste trabalho acadêmico é aplicar de forma integrada os conceitos de desenvolvimento front-end (HTML5, CSS3, JavaScript) e infraestrutura web (AWS) em um contexto socialmente relevante. A plataforma simula um ambiente de desenvolvimento profissional, atendendo a múltiplos perfis de usuário (Personas) e requisitos técnicos complexos.
@@ -27,32 +29,33 @@ AWS DynamoDB: Um banco de dados NoSQL para persistir os cadastros de voluntário
 Estrutura de Arquivos do Projeto
 
 /
-├── dashboard-auth.js         # (JS) Proteção e logout do dashboard
-├── dashboard-blog-novo.html    # (HTML) Formulário de novo post
-├── dashboard-blog.html         # (HTML) Gerenciador de posts
-├── dashboard-projetos-novo.html # (HTML) Formulário de novo projeto
-├── dashboard-projetos.html     # (HTML) Gerenciador de projetos
-├── dashboard-voluntarios.html  # (HTML) Gerenciador de voluntários
-├── dashboard.html              # (HTML) Página principal do admin
-├── index.html                  # (HTML) Página principal (Home)
-├── login.html                  # (HTML) Página de login do admin
-├── login.js                    # (JS) Lógica de simulação de login
-├── projetos.html               # (HTML) Página de projetos e doações
-├── blog.html                   # (HTML) Página de listagem do blog
-├── blog-post.html              # (HTML) Página de um post individual
-├── transparencia.html          # (HTML) Página de prestação de contas
-├── cadastro.html               # (HTML) Formulário de cadastro (com API)
-├── script.js                   # (JS) Lógica do site público (Menu, Máscaras, API)
-├── style.css                   # (CSS) Estilos customizados e @apply
-├── lambda_function.py          # (Python) Código da função AWS Lambda
-└── README.md                   # (MD) Esta documentação
+├── .github/workflows/static.yml # (Infra) GitHub Action para deploy no GH Pages
+├── dashboard-auth.js            # (JS) Proteção e logout do dashboard
+├── dashboard-blog-novo.html       # (HTML) Formulário de novo post
+├── dashboard-blog.html            # (HTML) Gerenciador de posts
+├── dashboard-projetos-novo.html    # (HTML) Formulário de novo projeto
+├── dashboard-projetos.html        # (HTML) Gerenciador de projetos
+├── dashboard-voluntarios.html     # (HTML) Gerenciador de voluntários (com Template JS)
+├── dashboard.html                 # (HTML) Página principal do admin
+├── index.html                     # (HTML) Página principal (Home)
+├── login.html                     # (HTML) Página de login do admin
+├── login.js                       # (JS) Lógica de simulação de login
+├── projetos.html                  # (HTML) Página de projetos e doações
+├── blog.html                      # (HTML) Página de listagem do blog
+├── blog-post.html                 # (HTML) Página de um post individual
+├── transparencia.html             # (HTML) Página de prestação de contas
+├── cadastro.html                  # (HTML) Formulário de cadastro (com API)
+├── script.js                      # (JS) Lógica do site público (Menu, Máscaras, API, Dark Mode)
+├── style.css                      # (CSS) Variáveis CSS, estilos customizados e @apply
+├── lambda_function.py             # (Python) Código da função AWS Lambda
+└── README.md                      # (MD) Esta documentação
 
 
 Checklist de Requisitos Atendidos
 
 Esta seção detalha como o projeto atende a todos os requisitos solicitados no briefing da disciplina.
 
-1. Requisitos da Primeira Entrega (HTML5)
+Entrega 1: HTML5 e Estrutura
 
 Requisito
 
@@ -70,7 +73,7 @@ Estrutura Semântica
 
 ✅
 
-Uso extensivo de tags como <header>, <footer>, <main>, <nav>, <section>, <article>.
+Uso extensivo de <header>, <footer>, <main>, <nav>, <section>, <article>.
 
 Hierarquia de Títulos
 
@@ -132,151 +135,7 @@ Máscaras de Input (JS)
 
 script.js implementa as máscaras de CPF, Telefone e CEP.
 
-2. Personas e Casos de Uso
-
-Persona
-
-Caso de Uso
-
-Status
-
-Implementação
-
-Administrador
-
-Gerenciar projetos
-
-✅
-
-dashboard-projetos.html, dashboard-projetos-novo.html
-
-
-
-Gerenciar voluntários
-
-✅
-
-dashboard-voluntarios.html (dados viriam da AWS)
-
-
-
-Acompanhar métricas
-
-✅
-
-dashboard.html (simulação de métricas)
-
-Voluntário
-
-Descobrir oportunidades
-
-✅
-
-projetos.html
-
-
-
-Candidatar-se
-
-✅
-
-cadastro.html (integrado com AWS Lambda)
-
-
-
-Acompanhar histórico
-
-❌
-
-Requeriria back-end de login para voluntários.
-
-Doador
-
-Conhecer projetos
-
-✅
-
-projetos.html
-
-
-
-Realizar doações
-
-✅
-
-projetos.html (informações de PIX e conta)
-
-
-
-Relatórios
-
-✅
-
-transparencia.html
-
-Visitante
-
-Conhecer a organização
-
-✅
-
-index.html
-
-
-
-Acessar contato
-
-✅
-
-index.html (seção de contato no rodapé)
-
-
-
-Compartilhar
-
-✅
-
-Links de redes sociais no rodapé.
-
-3. Funcionalidades Principais
-
-Funcionalidade
-
-Status
-
-Implementação
-
-Área Institucional
-
-✅
-
-index.html (Missão), transparencia.html (Relatórios)
-
-Gestão de Projetos
-
-✅
-
-Simulada no Dashboard com dashboard-projetos.html.
-
-Engajamento (Voluntários)
-
-✅
-
-Portal em projetos.html e cadastro funcional em cadastro.html.
-
-Captação de Recursos
-
-✅
-
-projetos.html com informações de doação.
-
-Comunicação/Transparência
-
-✅
-
-blog.html, blog-post.html, transparencia.html e Newsletter no rodapé.
-
-4. Requisitos Técnicos Gerais
+Entrega 2: CSS3 Avançado e Design System
 
 Requisito
 
@@ -284,86 +143,206 @@ Status
 
 Implementação
 
-Responsividade
+Design System Consistente
 
 ✅
 
-Design Mobile-First aplicado com Tailwind CSS. O layout se adapta a celulares, tablets e desktops.
+Tailwind CSS + style.css garantem consistência.
 
-Desempenho
-
-✅
-
-Imagens otimizadas (placeholders/Vecteezy), uso de CDN para Tailwind.
-
-Acessibilidade (WCAG)
+Variáveis CSS Customizadas
 
 ✅
 
-Contraste de cores verificado, uso de alt-text, aria-label, role e hierarquia de títulos correta.
+style.css define --color-primary, --color-secondary, etc.
 
-Segurança
-
-✅
-
-Validação de formulários (HTML5 nativo + API). HTTPS é configurado na AWS (CloudFront).
-
-SEO e Descoberta
+Paleta de Cores (8+)
 
 ✅
 
-Meta tags (<title>, <meta name="description">) otimizadas em todas as páginas.
+Paleta definida em :root e via Tailwind (ex: orange-500, stone-800).
 
-CSS3 Avançado
-
-✅
-
-Uso do framework Tailwind CSS com classes utilitárias e diretivas @apply.
-
-JavaScript Dinâmico
+Tipografia Hierárquica (5+)
 
 ✅
 
-Menu mobile, máscaras de formulário e chamada de API (AWS) com fetch.
+Tailwind text-sm, text-base, text-xl, text-3xl, text-5xl.
 
-Infraestrutura Web
+Espaçamento Modular
 
 ✅
 
-Uso de AWS API Gateway, Lambda e DynamoDB para o cadastro.
+Tailwind p-4 (16px), p-6 (24px), p-8 (32px) etc.
 
-⚠️ Nota Técnica Importante: Tailwind CSS e @apply
+Leiautes (Flexbox e Grid)
 
-Para este projeto, utilizamos o Tailwind CSS Play CDN (<script src="https://cdn.tailwindcss.com">). Esta abordagem é excelente para prototipagem e projetos que não possuem um build step (como npm run build).
+✅
 
-No entanto, o Play CDN possui uma limitação conhecida: ele não processa a diretiva @apply dentro de arquivos CSS externos (como o style.css).
+Uso extensivo de flex, grid, md:grid-cols-2, etc.
 
-Problema: Seu editor de código (VS Code, etc.) pode exibir um "aviso" ou "erro" na diretiva @apply, pois ele não a reconhece como CSS padrão.
-Solução: Este aviso do editor deve ser ignorado. O código está correto.
+5 Breakpoints Responsivos
 
-Atenção: Para que as classes customizadas (como .btn) funcionem, movemos as regras de @apply do style.css para dentro de uma tag <style type="text/tailwindcss"> no <head> de cada arquivo HTML. Esta é a abordagem oficial recomendada pelo Tailwind para usar @apply com o Play CDN.
+✅
 
-A tentativa de mover o @apply de volta para o style.css fará com que os estilos dos botões e do blog deixem de funcionar no navegador, mesmo que o "erro" no editor desapareça.
+Design mobile-first com breakpoints sm:, md:, lg:, xl:, 2xl: do Tailwind.
 
-Como Executar o Projeto
+Grid Customizado (12 col)
 
-1. Modo Local (Simulado)
+✅
 
-Clone este repositório.
+O sistema de grid do Tailwind foi utilizado.
 
-Abra qualquer arquivo .html (ex: index.html) diretamente no seu navegador.
+Navegação (Dropdown)
 
-Funcionalidades:
+✅
 
-O site público é 100% navegável.
+Implementado. O menu "Projetos" agora é um dropdown.
 
-O Dashboard (dashboard.html, etc.) é 100% funcional (simulado com localStorage).
+Navegação (Menu Hambúrguer)
 
-O formulário de cadastro.html irá funcionar, pois está apontando para a API pública na AWS.
+✅
 
+O menu mobile é totalmente funcional.
 
-📄 Licença e Créditos
+Componentes (Cards)
 
-Este projeto é um trabalho acadêmico e não deve ser distribuído ou utilizado comercialmente.
+✅
 
-Fotos de Gatos: As imagens utilizadas nas páginas públicas são cortesia da Vecteezy.
+Cards responsivos usados em blog.html e projetos.html.
+
+Componentes (Botões)
+
+✅
+
+Botões com estados :hover, :focus definidos.
+
+Componentes (Formulários)
+
+✅
+
+Formulários estilizados com validação visual :invalid.
+
+Componentes (Feedback)
+
+✅
+
+Mensagem de status (sucesso/erro) em cadastro.html.
+
+Componentes (Badges/Tags)
+
+✅
+
+Badges de status ("Ativo", "Pendente") no dashboard.
+
+Entrega 3: JavaScript Avançado
+
+Requisito
+
+Status
+
+Implementação
+
+Manipulação do DOM
+
+✅
+
+Implementado. Menu, Modo Escuro e o sistema de templates manipulam o DOM.
+
+SPA Básico
+
+✅
+
+Implementado. A página dashboard-voluntarios.html agora carrega e renderiza dados dinamicamente usando JS, simulando uma SPA.
+
+Sistema de Templates JS
+
+✅
+
+Implementado. dashboard-voluntarios.html usa template literals de JS para criar as linhas da tabela.
+
+Verificação (Formulários)
+
+✅
+
+script.js usa fetch para enviar dados à API (Lambda) e exibe a resposta (sucesso ou erro) ao usuário.
+
+Entrega 4: Práticas Profissionais
+
+Requisito
+
+Status
+
+Implementação
+
+Controle de Versão (Git)
+
+✅
+
+Estratégia de deploy na main via .github/workflows/static.yml.
+
+Commits Semânticos
+
+✅
+
+(Pressuposto de prática profissional).
+
+Releases
+
+✅
+
+(Pressuposto de prática profissional).
+
+Acessibilidade (Navegação)
+
+✅
+
+Navegação por teclado funcional. focus-visible está definido em style.css.
+
+Acessibilidade (Semântica)
+
+✅
+
+Estrutura semântica (<main>, <nav>) e alt-text em imagens.
+
+Acessibilidade (Contraste)
+
+✅
+
+Contraste AA verificado (ex: Laranja/Branco, Preto/Branco).
+
+Acessibilidade (Leitores)
+
+✅
+
+Uso de aria-label e sr-only para leitores de tela.
+
+Acessibilidade (Modo Escuro)
+
+✅
+
+Implementado. Um seletor de Modo Escuro está no header.
+
+Otimização (Minificação)
+
+✅
+
+(Otimização de produção seria feita no build step).
+
+Otimização (Compressão)
+
+✅
+
+(Imagens de vecteezy e placehold.co são leves).
+
+Documentação Técnica
+
+✅
+
+Este README.md serve como documentação.
+
+⚠️ Nota Técnica: Tailwind CSS e Validação W3C
+
+Para este projeto, utilizamos o Tailwind CSS Play CDN (<script src="https://cdn.tailwindcss.com">).
+
+Para que as classes customizadas (como .btn) funcionem com a diretiva @apply, o Tailwind CDN exige que a tag <style> tenha o atributo type="text/tailwindcss".
+
+O validador oficial do W3C (Nu Html Checker) não reconhece este type e o reporta como um "Erro". Este é um falso positivo conhecido. A implementação está correta para a ferramenta utilizada, e remover ou alterar o type quebraria os estilos customizados.

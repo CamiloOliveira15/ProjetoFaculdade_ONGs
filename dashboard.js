@@ -42,13 +42,13 @@ function renderProjectTable() {
         {
             title: 'Campanha de Castração',
             status: 'Planejamento',
-            statusClass: 'tag-yellow', // Usando uma tag de style.css
+            statusClass: 'tag-yellow',
             volunteers: '2 / 5'
         },
         {
             title: 'Bazar Beneficente',
             status: 'Concluído',
-            statusClass: 'tag-gray', // Usando uma tag de style.css
+            statusClass: 'tag-gray',
             volunteers: '20 / 20'
         }
     ];
@@ -61,12 +61,12 @@ function renderProjectTable() {
     projectsData.forEach(project => {
         // Este é o "template JavaScript"
         html += `
-            <tr class="hover:bg-light/50">
-                <td class="px-6 py-4 font-medium text-secondary">${project.title}</td>
+            <tr class="hover:bg-light/50 dark:hover:bg-secondary-light/20">
+                <td class="px-6 py-4 font-medium text-secondary dark:text-light">${project.title}</td>
                 <td class="px-6 py-4">
                     <span class="tag ${project.statusClass}">${project.status}</span>
                 </td>
-                <td class="px-6 py-4 text-secondary-light">${project.volunteers}</td>
+                <td class="px-6 py-4 text-secondary-light dark:text-stone-400">${project.volunteers}</td>
                 <td class="px-6 py-4 space-x-2">
                     <button class="font-medium text-primary hover:text-primary-dark">Editar</button>
                     <button class="font-medium text-red-500 hover:text-red-700">Excluir</button>
@@ -121,10 +121,10 @@ function renderVolunteerTable() {
     let html = '';
     volunteersData.forEach(vol => {
         html += `
-            <tr class="hover:bg-light/50">
-                <td class="px-6 py-4 font-medium text-secondary">${vol.nome}</td>
-                <td class="px-6 py-4 text-secondary-light">${vol.email}</td>
-                <td class="px-6 py-4 text-secondary-light">${vol.telefone}</td>
+            <tr class="hover:bg-light/50 dark:hover:bg-secondary-light/20">
+                <td class="px-6 py-4 font-medium text-secondary dark:text-light">${vol.nome}</td>
+                <td class="px-6 py-4 text-secondary-light dark:text-stone-400">${vol.email}</td>
+                <td class="px-6 py-4 text-secondary-light dark:text-stone-400">${vol.telefone}</td>
                 <td class="px-6 py-4">
                     <span class="tag ${vol.statusClass}">${vol.status}</span>
                 </td>
@@ -167,10 +167,10 @@ function renderBlogTable() {
     let html = '';
     postsData.forEach(post => {
         html += `
-            <tr class="hover:bg-light/50">
-                <td class="px-6 py-4 font-medium text-secondary">${post.title}</td>
-                <td class="px-6 py-4 text-secondary-light">${post.category}</td>
-                <td class="px-6 py-4 text-secondary-light">${post.date}</td>
+            <tr class="hover:bg-light/50 dark:hover:bg-secondary-light/20">
+                <td class="px-6 py-4 font-medium text-secondary dark:text-light">${post.title}</td>
+                <td class="px-6 py-4 text-secondary-light dark:text-stone-400">${post.category}</td>
+                <td class="px-6 py-4 text-secondary-light dark:text-stone-400">${post.date}</td>
                 <td class="px-6 py-4 space-x-2">
                     <button class="font-medium text-primary hover:text-primary-dark">Editar</button>
                     <button class="font-medium text-red-500 hover:text-red-700">Excluir</button>

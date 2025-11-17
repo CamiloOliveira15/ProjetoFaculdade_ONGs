@@ -12,18 +12,22 @@
     <!-- Configuração de Cores do Tema -->
     <script>
       tailwind.config = {
+        darkMode: 'class', // Habilita o modo escuro via classe
         theme: {
           extend: {
             colors: {
-              primary: {
-                DEFAULT: '#f97316', // orange-500
-                dark: '#ea580c',  // orange-600
-              },
-              secondary: {
-                DEFAULT: '#292524', // stone-800
-                light: '#44403c',  // stone-700
-              },
-              light: '#f5f5f4', // stone-100
+              // Mapeia as variáveis CSS para o Tailwind
+              primary: 'var(--color-primary)',
+              'primary-dark': 'var(--color-primary-dark)',
+              secondary: 'var(--color-secondary)',
+              'secondary-light': 'var(--color-secondary-light)',
+              light: 'var(--color-light)',
+              // Mapeia as cores de fundo e texto
+              background: 'var(--color-bg)',
+              'background-alt': 'var(--color-bg-alt)',
+              foreground: 'var(--color-text)',
+              'foreground-muted': 'var(--color-text-muted)',
+              'border-color': 'var(--color-border)',
             }
           }
         }
@@ -34,14 +38,31 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Estilos específicos para o conteúdo do post */
+        /* Tailwind não processa @apply em <style> sem type */
         .post-content h2 {
-            @apply text-3xl font-bold text-secondary mt-12 mb-4;
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: var(--color-text);
+            margin-top: 3rem; /* mt-12 */
+            margin-bottom: 1rem; /* mb-4 */
         }
         .post-content p {
-            @apply text-lg text-secondary-light mb-6 leading-relaxed;
+            font-size: 1.125rem; /* text-lg */
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem; /* mb-6 */
+            line-height: 1.75; /* leading-relaxed */
         }
         .post-content blockquote {
-            @apply border-l-4 border-primary pl-6 py-4 my-8 text-xl italic text-secondary-light;
+            border-left-width: 4px;
+            border-color: var(--color-primary);
+            padding-left: 1.5rem; /* pl-6 */
+            padding-top: 1rem; /* py-4 */
+            padding-bottom: 1rem; /* py-4 */
+            margin-top: 2rem; /* my-8 */
+            margin-bottom: 2rem; /* my-8 */
+            font-size: 1.25rem; /* text-xl */
+            font-style: italic;
+            color: var(--color-text-muted);
         }
     </style>
     
@@ -54,17 +75,23 @@
         @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
       }
       .btn-secondary {
-        @apply bg-secondary hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+        @apply bg-secondary text-white hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+      }
+      
+      /* Estilos para o formulário inválido (Entrega 2) */
+      input:invalid:not(:placeholder-shown),
+      select:invalid:not(:placeholder-shown) {
+         @apply border-red-500 ring-red-500;
       }
     </style>
 </head>
 
-<body class="flex min-h-screen flex-col">
+<body class="flex min-h-screen flex-col bg-background text-foreground-muted">
 
     <!-- =============================================== -->
     <!-- COMPONENTE: HEADER (Atualizado)                 -->
     <!-- =============================================== -->
-    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+    <header class="sticky top-0 z-50 w-full bg-background shadow-md shadow-[var(--color-shadow)]">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-20 items-center justify-between">
           
@@ -72,7 +99,7 @@
           <a href="index.html" class="flex-shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
-              <span class="text-2xl font-bold text-secondary">
+              <span class="text-2xl font-bold text-foreground">
                 MiauApoio
               </span>
             </div>
@@ -80,29 +107,53 @@
 
           <!-- Navegação (Semântico: <nav>) -->
           <nav class="hidden md:flex md:items-center md:space-x-2">
-            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Home
             </a>
-            <a href="projetos.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
-              Projetos
-            </a>
-            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            
+            <!-- ATUALIZAÇÃO: Dropdown (Entrega 2) -->
+            <div class="relative">
+              <a href="projetos.html" id="dropdown-toggle" aria-expanded="false" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+                Projetos
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <div id="dropdown-menu" class="dropdown-menu">
+                <a href="projetos.html">Ver Projetos</a>
+                <a href="cadastro.html">Seja Voluntário</a>
+              </div>
+            </div>
+            
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Blog
             </a>
-            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Transparência
             </a>
-            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Login
             </a>
+            
+            <!-- ATUALIZAÇÃO: Botão Modo Escuro (Entrega 4) -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle ml-4" aria-label="Alternar modo escuro">
+                <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
+                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+            </button>
+            
             <a href="cadastro.html" class="ml-4 btn btn-primary">
               Cadastre-se
             </a>
           </nav>
 
-          <!-- Menu Mobile -->
+          <!-- Menu Mobile (JS lidará com o clique) -->
           <div class="flex md:hidden">
-            <button id="mobile-menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-secondary-light hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-2" aria-label="Alternar modo escuro">
+                <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
+                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+            </button>
+            
+            <button id="mobile-menu-button" aria-expanded="false" class="inline-flex items-center justify-center rounded-md p-2 text-foreground-muted hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
               <span class="sr-only">Abrir menu principal</span>
               <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -113,34 +164,35 @@
       </div>
 
       <!-- Menu Mobile (Dropdown) -->
-      <div id="mobile-menu" class="hidden border-t border-stone-200 md:hidden">
+      <div id="mobile-menu" class="hidden border-t border-border-color md:hidden">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Home</a>
-          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Projetos</a>
-          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Blog</a>
-          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Transparência</a>
-          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-secondary-light transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
           <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
         </div>
       </div>
     </header>
 
     <!-- Conteúdo Principal do Post -->
-    <main class="flex-grow bg-white py-16 sm:py-24">
+    <main class="flex-grow bg-background py-16 sm:py-24">
         <div class="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <article>
                 <header class="mb-12 text-center">
                     <span class="text-base font-semibold text-primary">Histórias de Adoção</span>
                     <!-- h1: Título principal da página -->
-                    <h1 class="mt-4 text-4xl font-bold text-secondary sm:text-5xl">
+                    <h1 class="mt-4 text-4xl font-bold text-foreground sm:text-5xl">
                         O Final Feliz de Frajola
                     </h1>
-                    <p class="mt-6 text-lg text-secondary-light">
+                    <p class="mt-6 text-lg text-foreground-muted">
                         Por Equipe MiauApoio | 5 de Novembro, 2025
                     </p>
                 </header>
-
-                <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="h-auto w-full rounded-2xl shadow-lg">
+                
+                <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
+                <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="h-auto w-full rounded-2xl shadow-lg shadow-[var(--color-shadow)]">
 
                 <div class="post-content mt-12">
                     <p>
@@ -167,7 +219,7 @@
                     <blockquote>
                         "No momento em que o vimos no site, sabíamos que ele era 
                         especial. Trazê-lo para casa foi a melhor decisão que tomamos."
-                        <cite class="mt-2 block text-base not-italic text-secondary">- Nova família do Frajola</cite>
+                        <cite class="mt-2 block text-base not-italic text-secondary-light dark:text-stone-400">- Nova família do Frajola</cite>
                     </blockquote>
 
                     <h2>Um Novo Lar</h2>
@@ -186,7 +238,7 @@
                 </div>
             </article>
 
-            <div class="mt-16 border-t pt-8 text-center">
+            <div class="mt-16 border-t border-border-color pt-8 text-center">
                 <a href="blog.html" class="text-lg font-medium text-primary hover:text-primary-dark">
                     &larr; Voltar para o Blog
                 </a>

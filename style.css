@@ -1,71 +1,122 @@
-/* Estilos customizados que complementam o Tailwind CSS */
+/* ARQUIVO: style.css
+  (Estilos customizados que complementam o Tailwind CSS)
+*/
+
+/* ENTREGA 2: Sistema de Design (Variáveis CSS Customizadas)
+  Definindo a paleta de cores primária como variáveis CSS
+  para fácil manutenção e para atender ao requisito.
+*/
+:root {
+  --color-primary: #f97316; /* orange-500 */
+  --color-primary-dark: #ea580c; /* orange-600 */
+  
+  --color-secondary: #292524; /* stone-800 */
+  --color-secondary-light: #44403c; /* stone-700 */
+  
+  --color-light: #f5f5f4; /* stone-100 */
+
+  /* Cores de Fundo (Claro/Escuro) */
+  --color-bg: #ffffff; /* white */
+  --color-bg-alt: #f5f5f4; /* stone-100 */
+  --color-text: #292524; /* stone-800 */
+  --color-text-muted: #44403c; /* stone-700 */
+  --color-border: #e7e5e4; /* stone-200 */
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* ENTREGA 4: Acessibilidade (Modo Escuro)
+  Definindo as variáveis quando a classe .dark está no <html>
+*/
+html.dark {
+  --color-primary: #f97316; /* Laranja permanece o mesmo */
+  --color-primary-dark: #ea580c;
+  
+  --color-secondary: #e7e5e4; /* stone-200 (texto claro) */
+  --color-secondary-light: #a8a29e; /* stone-400 (texto claro muted) */
+  
+  --color-light: #44403c; /* stone-700 (fundo alt escuro) */
+
+  /* Cores de Fundo (Claro/Escuro) */
+  --color-bg: #292524; /* stone-800 */
+  --color-bg-alt: #1c1917; /* stone-900 */
+  --color-text: #f5f5f4; /* stone-100 */
+  --color-text-muted: #a8a29e; /* stone-400 */
+  --color-border: #44403c; /* stone-700 */
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
+
 
 /* Estilos para o corpo e fontes */
 body {
   font-family: 'Inter', sans-serif; /* Uma boa fonte padrão limpa */
-  background-color: #f5f5f4; /* stone-100 */
-  color: #44403c; /* stone-700 */
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Melhoria de Acessibilidade: Foco visível */
+/* ENTREGA 4: Acessibilidade (Navegação por Teclado)
+  Melhoria de Acessibilidade: Foco visível
+*/
 :focus-visible {
-  outline: 3px solid #f97316;
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/*
-  As classes de componentes customizados com @apply
-  foram movidas para uma tag <style type="text/tailwindcss">
-  dentro de cada arquivo HTML para permitir o processamento
-  correto pelo Tailwind Play CDN.
+/* ENTREGA 2: Navegação Sofisticada (Dropdown)
+  Estilos base para o dropdown. O Tailwind cuidará do resto.
+  Oculto por padrão, JS o tornará visível.
 */
+.dropdown-menu {
+  display: none; /* Oculto por padrão */
+  position: absolute;
+  top: 100%; /* Abaixo do item pai */
+  left: 0;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 4px 6px var(--color-shadow);
+  z-index: 50;
+  min-width: 200px;
+}
 
-/*
-  Classes de componentes customizados que são
-  usadas pelo JavaScript (ex: alerts, validação).
+/* Estilos para os itens dentro do dropdown */
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem; /* 12px 16px */
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.dropdown-menu a:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-primary);
+}
+
+/* ENTREGA 4: Acessibilidade (Modo Escuro)
+  Estilos para o seletor de modo escuro
 */
+.dark-mode-toggle {
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px; /* rounded-full */
+  padding: 0.25rem; /* p-1 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.dark-mode-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+.toggle-icon {
+  width: 1.5rem; /* w-6 */
+  height: 1.5rem; /* h-6 */
+  color: var(--color-text-muted);
+}
+/* Ocultar um ícone e mostrar o outro com base no modo */
+.dark .icon-sun { display: none; }
+.icon-moon { display: none; }
+.dark .icon-moon { display: block; }
 
-/* Validação de Formulário: :invalid */
-/* Aplica uma borda vermelha sutil a inputs inválidos */
-input:invalid:focus,
-textarea:invalid:focus {
-  @apply ring-red-500 border-red-500;
-}
-input:invalid,
-textarea:invalid {
-   @apply border-red-400;
-}
-
-/* Alertas de Feedback (para JS) */
-.alert {
-  @apply rounded-md p-4;
-}
-.alert-success {
-  @apply bg-green-100 text-green-700;
-}
-.alert-error {
-  @apply bg-red-100 text-red-700;
-}
-
-/* Badges e Tags (para blog, projetos) */
-.tag {
-  @apply inline-block rounded-full px-3 py-1 text-xs font-semibold;
-}
-.tag-blue {
-  @apply bg-blue-100 text-blue-700;
-}
-.tag-pink {
-  @apply bg-pink-100 text-pink-700;
-}
-.tag-green {
-  @apply bg-green-100 text-green-700;
-}
-
-/* Modal (para JS) */
-.modal-backdrop {
-  @apply fixed inset-0 z-50 bg-secondary/70 backdrop-blur-sm transition-opacity;
-}
-.modal-content {
-  @apply fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg rounded-2xl bg-white p-8 shadow-2xl transition-all;
-}
+/* As classes .btn foram movidas para dentro de uma tag <style>
+  nos arquivos HTML para serem processadas pelo Play CDN.
+*/

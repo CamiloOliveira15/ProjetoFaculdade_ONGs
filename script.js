@@ -1,10 +1,12 @@
 /*
   ARQUIVO: script.js
-  (Lógica para todas as páginas públicas: menu mobile, máscaras, API)
+  (Lógica para todas as páginas públicas)
 */
+
+// Espera o DOM estar totalmente carregado para executar os scripts
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- LÓGICA 1: Menu Mobile (Hamburguer) ---
+    // --- LÓGICA 1: Menu Mobile (Hamburguer) (Entrega 2) ---
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -12,10 +14,67 @@ document.addEventListener('DOMContentLoaded', () => {
         menuButton.addEventListener('click', () => {
             // Alterna a classe 'hidden' para mostrar/esconder o menu
             mobileMenu.classList.toggle('hidden');
+            // Altera o atributo de acessibilidade
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', !isExpanded);
         });
     }
 
-    // --- LÓGICA 2: Máscaras de Formulário (Página de Cadastro) ---
+    // --- LÓGICA 2: Dropdown da Navegação (Entrega 2) ---
+    const dropdownToggle = document.getElementById('dropdown-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    
+    if (dropdownToggle && dropdownMenu) {
+        // Mostrar/Ocultar com clique
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault(); // Impede a navegação do link pai
+            const isHidden = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '';
+            dropdownMenu.style.display = isHidden ? 'block' : 'none';
+            
+            // Acessibilidade
+            dropdownToggle.setAttribute('aria-expanded', isHidden);
+        });
+        
+        // Ocultar se clicar fora
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // --- LÓGICA 3: Modo Escuro (Dark Mode) (Entrega 4) ---
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const htmlElement = document.documentElement; // A tag <html>
+
+    // Função para aplicar o modo (dark/light)
+    const applyDarkMode = (isDark) => {
+        if (isDark) {
+            htmlElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            htmlElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    // Verifica a preferência do usuário no localStorage ou no sistema
+    const preferredTheme = localStorage.getItem('theme') || 
+                           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    // Aplica o tema ao carregar a página
+    applyDarkMode(preferredTheme === 'dark');
+
+    // Adiciona o evento de clique no botão
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            const isCurrentlyDark = htmlElement.classList.contains('dark');
+            applyDarkMode(!isCurrentlyDark);
+        });
+    }
+
+    // --- LÓGICA 4: Máscaras de Formulário (Entrega 1) ---
     const cpfField = document.getElementById('cpf');
     const telefoneField = document.getElementById('telefone');
     const cepField = document.getElementById('cep');
@@ -47,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- LÓGICA 3: Envio do Formulário de Cadastro para API AWS ---
+    // --- LÓGICA 5: Envio do Formulário de Cadastro (Entrega 3) ---
+    // (Sistema de verificação de consistência de dados)
     const cadastroForm = document.getElementById('cadastro-form');
     
     if (cadastroForm) {
@@ -70,7 +130,9 @@ async function handleCadastroFormSubmit(event) {
     // Desativa o botão e mostra "Enviando..."
     submitButton.disabled = true;
     submitButton.textContent = 'Enviando...';
-    statusMessage.innerHTML = ''; // Limpa mensagens antigas
+    // Limpa mensagens antigas e define cor base
+    statusMessage.innerHTML = ''; 
+    statusMessage.className = 'mt-8 text-center';
 
     // 1. Coleta os dados do formulário
     const form = event.target;
@@ -92,11 +154,11 @@ async function handleCadastroFormSubmit(event) {
 
         const result = await response.json();
 
-        // 3. Lida com a resposta da API
+        // 3. Lida com a resposta da API (Componente de Feedback - Entrega 2)
         if (response.ok) {
             // Sucesso (Status 200)
             statusMessage.innerHTML = `
-                <div class="rounded-md bg-green-100 p-4 text-green-700">
+                <div class="rounded-md bg-green-100 p-4 text-green-700 dark:bg-green-900 dark:text-green-200">
                     <strong>Sucesso!</strong> ${result.message}
                 </div>
             `;
@@ -104,7 +166,7 @@ async function handleCadastroFormSubmit(event) {
         } else {
             // Erro vindo da Lambda (Status 400 ou 500)
             statusMessage.innerHTML = `
-                <div class="rounded-md bg-red-100 p-4 text-red-700">
+                <div class="rounded-md bg-red-100 p-4 text-red-700 dark:bg-red-900 dark:text-red-200">
                     <strong>Erro no cadastro:</strong> ${result.message}
                 </div>
             `;
@@ -113,7 +175,7 @@ async function handleCadastroFormSubmit(event) {
         // Erro de rede (API fora do ar, sem internet, etc.)
         console.error('Erro de rede ao enviar formulário:', error);
         statusMessage.innerHTML = `
-            <div class="rounded-md bg-red-100 p-4 text-red-700">
+            <div class="rounded-md bg-red-100 p-4 text-red-700 dark:bg-red-900 dark:text-red-200">
                 <strong>Erro de conexão.</strong> Não foi possível enviar seu cadastro. 
                 Por favor, tente novamente mais tarde.
             </div>
