@@ -225,6 +225,7 @@ Componentes (Feedback)
 
 ✅
 
+<<<<<<< HEAD
 Mensagem de status (sucesso/erro) em cadastro.html.
 
 Componentes (Badges/Tags)
@@ -346,3 +347,6 @@ Para este projeto, utilizamos o Tailwind CSS Play CDN (<script src="https://cdn.
 Para que as classes customizadas (como .btn) funcionem com a diretiva @apply, o Tailwind CDN exige que a tag <style> tenha o atributo type="text/tailwindcss".
 
 O validador oficial do W3C (Nu Html Checker) não reconhece este type e o reporta como um "Erro". Este é um falso positivo conhecido. A implementação está correta para a ferramenta utilizada, e remover ou alterar o type quebraria os estilos customizados.
+=======
+Fotos de Gatos: As imagens utilizadas nas páginas públicas são cortesia da Vecteezy.
+>>>>>>> 012e5b7247c7216f9e76adb65aeb6bc6d4110af2
