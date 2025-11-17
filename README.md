@@ -36,7 +36,7 @@ Solução: Um "Dashboard" (dashboard.html e sub-páginas) com autenticação sim
 
 A plataforma é dividida em três componentes principais que se comunicam:
 
-Front-End (Site Público): Construído com HTML5 Semântico, Tailwind CSS e JavaScript (ES6+) puro. Todos os assets (CSS, JS, imagens) são organizados em pastas para manutenção.
+Front-End (Site Público): Construído com HTML5 Semântico, Tailwind CSS e JavaScript (ES6+) puro. Todos os assets (CSS, JS) são organizados em pastas para manutenção. As interações, como o envio do formulário de cadastro.html, são conectadas a um back-end funcional.
 
 Front-End (Dashboard Admin): Uma Single Page Application (SPA) simulada, protegida por localStorage (assets/js/login.js, assets/js/dashboard-auth.js) e que renderiza conteúdo dinamicamente usando Templates JavaScript (assets/js/dashboard.js).
 
@@ -63,7 +63,7 @@ Back-End (Serverless)
 
 AWS API Gateway: Criação do endpoint REST (POST) para receber os dados do formulário.
 
-AWS Lambda: Função Python (lambda_function.py) que recebe os dados, valida e os insere no banco.
+AWS Lambda: Função Python (assets/lambda_function.py) que recebe os dados, valida e os insere no banco.
 
 AWS DynamoDB: Banco de dados NoSQL para armazenar os cadastros de voluntários.
 
@@ -75,7 +75,7 @@ GitHub Actions: Workflow (.github/workflows/static.yml) para deploy automático 
 
 4. Estrutura de Pastas
 
-O projeto segue uma estrutura de pastas organizada, separando os arquivos HTML dos seus assets (CSS, JS, Imagens), conforme o requisito da "Entrega 1".
+O projeto segue uma estrutura de pastas organizada, separando os arquivos HTML de seus assets (CSS, JS, Imagens), conforme o requisito da "Entrega 1".
 
 ProjetoFaculdade_ONGs/
 │
@@ -93,10 +93,12 @@ ProjetoFaculdade_ONGs/
 │   │   ├── login.js           # (JS) Lógica de simulação de login
 │   │   └── script.js          # (JS) Lógica do Site Público (Menu, Modo Escuro, API)
 │   │
-│   └── images/
-│       ├── vecteezy_lovely-cat-sitting_23027565.jpg
-│       ├── vecteezy_portrait-head-black-cat...jpg
-│       └── ... (todas as outras imagens)
+│   └── lambda_function.py     # (Python) Código do Back-end Serverless
+│
+├── images/
+│   ├── vecteezy_lovely-cat-sitting_23027565.jpg
+│   ├── vecteezy_portrait-head-black-cat...jpg
+│   └── ... (todas as outras imagens)
 │
 ├── index.html                 # Página Home
 ├── projetos.html              # Página de Projetos e Doações
@@ -113,13 +115,43 @@ ProjetoFaculdade_ONGs/
 ├── dashboard-blog.html
 ├── dashboard-blog-novo.html
 │
-├── lambda_function.py         # (Python) Back-end Serverless (AWS Lambda)
+├── PROXIMOS_PASSOS.md         # Documentação de evolução do projeto
 └── README.md                  # Esta documentação
 
 
+5. Atendimento aos Requisitos do Estudo de Caso
 
+Esta seção valida o projeto finalizado contra os requisitos das 4 entregas do estudo de caso.
 
-5. Como Executar
+[✔] HTML5 Semântico (Entrega 1): Atendido. Estrutura semântica (<main>, <nav>), hierarquia de títulos, páginas obrigatórias (index, projetos, cadastro), formulário complexo com validação e máscaras JS.
+
+[✔] Estrutura de Pastas (Entrega 1): Atendido. Os assets (css, js) e images estão em pastas separadas, com todos os links HTML atualizados.
+
+[✔] CSS3 Avançado (Entrega 2): Atendido. O assets/css/style.css usa variáveis (:root) para um Design System. Layouts usam Flexbox/Grid e são responsivos.
+
+[✔] Componentes CSS (Entrega 2): Atendido. Todos os componentes (Dropdown, Menu Hambúrguer, Cards, Botões, Formulários, Feedback e Tags) estão implementados e funcionais.
+
+[✔] JavaScript Avançado (Entrega 3): Atendido. O Dashboard (assets/js/dashboard.js) usa Templates JS para renderização dinâmica (simulando uma SPA).
+
+[✔] Validação de Formulário JS (Entrega 3): Atendido. O assets/js/script.js usa form.checkValidity() e a classe .form-submitted para uma validação moderna sem alert().
+
+[✔] Práticas Profissionais (Entrega 4): Atendido. O projeto demonstra:
+
+Controle de Versão: Repositório Git com workflow de CI/CD (.github/workflows/static.yml).
+
+Acessibilidade: Navegação por teclado (:focus-visible), atributos ARIA, contraste e Modo Escuro.
+
+Performance: loading="lazy" foi implementado nas imagens "abaixo da dobra".
+
+Documentação: O projeto contém este README.md e um PROXIMOS_PASSOS.md.
+
+6. Próximos Passos
+
+A documentação detalhada sobre a evolução deste projeto (como otimização de produção, autenticação real com Cognito e APIs avançadas) foi movida para um arquivo separado.
+
+Consulte o arquivo PROXIMOS_PASSOS.md para a análise completa.
+
+7. Como Executar
 
 1. Site Público e Dashboard (Front-End)
 
