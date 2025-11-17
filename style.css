@@ -1,6 +1,4 @@
-/* ARQUIVO: style.css
-  (Estilos customizados que complementam o Tailwind CSS)
-*/
+/* Estilos customizados que complementam o Tailwind CSS */
 
 /* Estilos para o corpo e fontes */
 body {
@@ -16,6 +14,58 @@ body {
   border-radius: 4px;
 }
 
-/* As classes .btn foram movidas para dentro de uma tag <style>
-  nos arquivos HTML para serem processadas pelo Play CDN.
+/*
+  As classes de componentes customizados com @apply
+  foram movidas para uma tag <style type="text/tailwindcss">
+  dentro de cada arquivo HTML para permitir o processamento
+  correto pelo Tailwind Play CDN.
 */
+
+/*
+  Classes de componentes customizados que são
+  usadas pelo JavaScript (ex: alerts, validação).
+*/
+
+/* Validação de Formulário: :invalid */
+/* Aplica uma borda vermelha sutil a inputs inválidos */
+input:invalid:focus,
+textarea:invalid:focus {
+  @apply ring-red-500 border-red-500;
+}
+input:invalid,
+textarea:invalid {
+   @apply border-red-400;
+}
+
+/* Alertas de Feedback (para JS) */
+.alert {
+  @apply rounded-md p-4;
+}
+.alert-success {
+  @apply bg-green-100 text-green-700;
+}
+.alert-error {
+  @apply bg-red-100 text-red-700;
+}
+
+/* Badges e Tags (para blog, projetos) */
+.tag {
+  @apply inline-block rounded-full px-3 py-1 text-xs font-semibold;
+}
+.tag-blue {
+  @apply bg-blue-100 text-blue-700;
+}
+.tag-pink {
+  @apply bg-pink-100 text-pink-700;
+}
+.tag-green {
+  @apply bg-green-100 text-green-700;
+}
+
+/* Modal (para JS) */
+.modal-backdrop {
+  @apply fixed inset-0 z-50 bg-secondary/70 backdrop-blur-sm transition-opacity;
+}
+.modal-content {
+  @apply fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg rounded-2xl bg-white p-8 shadow-2xl transition-all;
+}
