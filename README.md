@@ -75,7 +75,7 @@ GitHub Actions: Workflow (.github/workflows/static.yml) para deploy automático 
 
 4. Estrutura de Pastas
 
-O projeto agora segue uma estrutura de pastas organizada, separando os arquivos HTML dos seus assets (CSS, JS, Imagens), conforme o requisito da "Entrega 1".
+O projeto segue uma estrutura de pastas organizada, separando os arquivos HTML dos seus assets (CSS, JS, Imagens), conforme o requisito da "Entrega 1".
 
 ProjetoFaculdade_ONGs/
 │
@@ -117,45 +117,9 @@ ProjetoFaculdade_ONGs/
 └── README.md                  # Esta documentação
 
 
-5. Atendimento aos Requisitos do Estudo de Caso
 
-O projeto foi estruturado para atender a todos os requisitos solicitados nas 4 entregas:
 
-HTML5 Semântico: Estrutura completa, hierarquia de títulos, tags semânticas e alt-text em imagens.
-
-Design System & CSS3: style.css centraliza as variáveis de cor (Design System) consumidas pelo Tailwind. Layouts usam Flexbox e Grid.
-
-Responsividade: O design é mobile-first e se adapta a todos os breakpoints.
-
-JavaScript Avançado:
-
-DOM: Manipulação para menu mobile, dropdown e modo escuro.
-
-Templates JS: O dashboard.js renderiza dinamicamente as tabelas.
-
-Validação e API: script.js implementa validação de formulário (sem alert) e envia dados via fetch para a AWS.
-
-Acessibilidade (WCAG AA): Navegação por teclado (:focus-visible), contraste de cores, Modo Escuro e atributos ARIA estão implementados.
-
-Consistência Visual: As telas login.html e cadastro.html foram padronizadas com o mesmo layout de "card" centralizado.
-
-6. Próximos Passos (Gaps de Produção)
-
-Para que este projeto fosse considerado 100% "pronto para produção", os seguintes requisitos da "Entrega 4" precisariam ser implementados (geralmente com ferramentas de build como Vite ou Webpack):
-
-Otimização de Produção:
-
-Minificação: Os arquivos style.css e script.js deveriam ser minificados.
-
-Compressão: As imagens (.jpg) são grandes e deveriam ser comprimidas e convertidas para formatos web (.webp).
-
-Funcionalidades Avançadas de Persona:
-
-Implementar um back-end de autenticação real (ex: Firebase Auth, JWT) para o "Portal do Voluntário".
-
-Integrar um gateway de pagamento (ex: Stripe, PagSeguro) para a funcionalidade de "Doações On-line".
-
-7. Como Executar
+5. Como Executar
 
 1. Site Público e Dashboard (Front-End)
 
