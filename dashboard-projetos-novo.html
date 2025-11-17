@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Post | Dashboard</title>
+    <!-- CORREÇÃO: Título da página -->
+    <title>Novo Projeto | Dashboard</title>
     <meta name="robots" content="noindex">
 
     <!-- Tailwind CSS -->
@@ -31,9 +32,8 @@
     </script>
     
     <!-- CSS Customizado -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <!-- BLOCO <style> REMOVIDO DAQUI -->
 </head>
 
 <body class="flex h-screen bg-light">
@@ -48,13 +48,13 @@
             <span class="text-2xl font-bold">MiauApoio</span>
         </div>
         
-        <!-- Navegação -->
+        <!-- CORREÇÃO: Navegação com o item correto (Projetos) ativo -->
         <nav class="flex-1 space-y-2 p-4">
             <a href="dashboard.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
                 <span>📊</span>
                 <span>Visão Geral</span>
             </a>
-            <a href="dashboard-projetos.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
+            <a href="dashboard-projetos.html" class="flex items-center gap-3 rounded-lg bg-primary/20 px-4 py-3 font-semibold text-primary transition-all">
                 <span>📁</span>
                 <span>Gerenciar Projetos</span>
             </a>
@@ -62,7 +62,7 @@
                 <span>👥</span>
                 <span>Gerenciar Voluntários</span>
             </a>
-            <a href="dashboard-blog.html" class="flex items-center gap-3 rounded-lg bg-primary/20 px-4 py-3 font-semibold text-primary transition-all">
+            <a href="dashboard-blog.html" class="flex items-center gap-3 rounded-lg px-4 py-3 text-stone-300 transition-all hover:bg-stone-700 hover:text-white">
                 <span>📝</span>
                 <span>Gerenciar Blog</span>
             </a>
@@ -84,9 +84,11 @@
         
         <!-- Cabeçalho Superior -->
         <header class="flex h-20 items-center justify-between border-b bg-white px-6">
-            <h1 class="text-2xl font-bold text-secondary">Adicionar Novo Post</h1>
+            <!-- CORREÇÃO: Título H1 -->
+            <h1 class="text-2xl font-bold text-secondary">Adicionar Novo Projeto</h1>
             <div>
-                 <a href="dashboard-blog.html" class="btn btn-secondary">
+                 <!-- CORREÇÃO: Link de "Voltar" -->
+                 <a href="dashboard-projetos.html" class="btn btn-secondary">
                     &larr; Voltar
                 </a>
             </div>
@@ -96,31 +98,42 @@
         <main class="flex-1 overflow-y-auto p-8">
             
             <div class="max-w-2xl mx-auto rounded-2xl bg-white p-8 shadow-lg">
-                <!-- O formulário simula o salvamento e redireciona de volta -->
-                <form id="novo-post-form" class="space-y-6" onsubmit="alert('Novo post salvo (simulação)!'); window.location.href='dashboard-blog.html'; return false;">
+                
+                <!-- CORREÇÃO: Formulário de Projeto -->
+                <form id="novo-projeto-form" class="space-y-6" onsubmit="alert('Novo projeto salvo (simulação)!'); window.location.href='dashboard-projetos.html'; return false;">
                     
-                    <!-- Título -->
+                    <!-- Título do Projeto -->
                     <div>
-                        <label for="titulo" class="block text-sm font-medium text-secondary-light">Título do Post</label>
-                        <input type="text" id="titulo" name="titulo" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
+                        <label for="titulo" class="block text-sm font-medium text-secondary-light">Título do Projeto</label>
+                        <input type="text" id="titulo" name="titulo" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Ex: Campanha de Castração">
                     </div>
                     
-                    <!-- Categoria -->
+                    <!-- Status -->
                     <div>
-                        <label for="categoria" class="block text-sm font-medium text-secondary-light">Categoria</label>
-                        <input type="text" id="categoria" name="categoria" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Ex: Dicas de Saúde">
+                        <label for="status" class="block text-sm font-medium text-secondary-light">Status</label>
+                        <select id="status" name="status" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
+                            <option value="Ativo">Ativo</option>
+                            <option value="Planejamento">Planejamento</option>
+                            <option value="Concluído">Concluído</option>
+                        </select>
                     </div>
 
-                    <!-- Conteúdo do Post -->
-                    <div>
-                        <label for="conteudo" class="block text-sm font-medium text-secondary-light">Conteúdo (HTML Básico)</label>
-                        <textarea id="conteudo" name="conteudo" rows="10" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="<p>Escreva seu post aqui...</p>"></textarea>
+                    <!-- Voluntários -->
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                         <div>
+                            <label for="vagas" class="block text-sm font-medium text-secondary-light">Vagas (Total)</label>
+                            <input type="number" id="vagas" name="vagas" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Ex: 10" min="1">
+                        </div>
+                        <div>
+                            <label for="inscritos" class="block text-sm font-medium text-secondary-light">Inscritos (Atual)</label>
+                            <input type="number" id="inscritos" name="inscritos" required class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="0" min="0">
+                        </div>
                     </div>
                     
                     <!-- Botão de Envio -->
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary text-lg px-10 py-3">
-                          Publicar Post
+                          Salvar Projeto
                         </button>
                     </div>
                 </form>
@@ -130,6 +143,6 @@
     </div>
 
     <!-- Script de Proteção do Dashboard -->
-    <script src="dashboard-auth.js" defer></script>
+    <script src="assets/js/dashboard-auth.js" defer></script>
 </body>
 </html>

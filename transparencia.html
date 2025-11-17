@@ -35,9 +35,8 @@
     </script>
     
     <!-- CSS Customizado -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <!-- BLOCO <style> REMOVIDO DAQUI -->
 </head>
 
 <!-- ATUALIZAÇÃO: Classes de body consistentes -->
@@ -82,6 +81,8 @@
               </div>
             </div>
             
+            <!-- ATUALIZAÇÃO: Link da Galeria removido -->
+            
             <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Blog
             </a>
@@ -92,8 +93,8 @@
               Login
             </a>
             
-            <!-- ATUALIZAÇÃO: Botão Modo Escuro (Entrega 4) -->
-            <button id="dark-mode-toggle" class="dark-mode-toggle ml-4" aria-label="Alternar modo escuro">
+            <!-- CORREÇÃO: Margem do botão de tema aumentada (ml-4 para ml-8) -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle ml-8" aria-label="Alternar modo escuro">
                 <!-- Sol -->
                 <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
                 <!-- Lua -->
@@ -107,8 +108,8 @@
 
           <!-- Menu Mobile (JS lidará com o clique) -->
           <div class="flex md:hidden">
-             <!-- Botão Modo Escuro (Mobile) -->
-            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-2" aria-label="Alternar modo escuro">
+             <!-- CORREÇÃO: Margem do botão de tema aumentada (mr-2 para mr-4) -->
+            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-4" aria-label="Alternar modo escuro">
                 <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
                 <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
             </button>
@@ -129,6 +130,9 @@
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
           <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
+          
+          <!-- ATUALIZAÇÃO: Link da Galeria removido -->
+          
           <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
           <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
           <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
@@ -270,6 +274,6 @@
     </footer>
 
     <!-- Link para o JavaScript -->
-    <script src="script.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>

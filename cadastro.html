@@ -37,146 +37,77 @@
     </script>
     
     <!-- Link para o CSS Customizado -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <!-- CSS com @apply (processado pelo Play CDN) -->
-    <style type="text/tailwindcss">
-      .btn {
-        @apply px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all duration-300 ease-in-out;
-      }
-      .btn-primary {
-        @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
-      }
-      .btn-secondary {
-        @apply bg-secondary text-white hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
-      }
-      
-      /* Estilos para o formulário inválido (Entrega 2) */
-      input:invalid:not(:placeholder-shown),
-      select:invalid:not(:placeholder-shown) {
-         @apply border-red-500 ring-red-500;
-      }
-    </style>
 </head>
 
-<body class="flex min-h-screen flex-col bg-background text-foreground-muted">
+<!-- 
+  CORREÇÃO: 
+  Layout do body atualizado para centralizar o conteúdo, 
+  seguindo o padrão da tela de login.html para consistência.
+-->
+<body class="flex min-h-screen flex-col items-center justify-center bg-background-alt p-4 text-foreground-muted">
 
-    <!-- =============================================== -->
-    <!-- COMPONENTE: HEADER (Atualizado)                 -->
-    <!-- =============================================== -->
-    <header class="sticky top-0 z-50 w-full bg-background shadow-md shadow-[var(--color-shadow)]">
-      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-20 items-center justify-between">
-          
-          <!-- Logo (Link para Home) -->
-          <a href="index.html" class="flex-shrink-0">
-            <div class="flex items-center gap-2">
+    <!-- 
+      CORREÇÃO: 
+      Header removido para uma tela de cadastro focada.
+    -->
+
+    <!-- 
+      CORREÇÃO: 
+      Estrutura do main atualizada para o formato de "card" centralizado,
+      seguindo o padrão de login.html.
+      Usado max-w-2xl por ser um formulário maior.
+    -->
+    <main class="w-full max-w-2xl my-12">
+        <div class="bg-background p-8 sm:p-10 rounded-2xl shadow-xl shadow-[var(--color-shadow)]">
+            
+            <!-- Logo (Como em login.html) -->
+            <a href="index.html" class="flex-shrink-0 flex justify-center items-center gap-2 mb-6">
               <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
               <span class="text-2xl font-bold text-foreground">
                 MiauApoio
               </span>
-            </div>
-          </a>
+            </a>
 
-          <!-- Navegação (Semântico: <nav>) -->
-          <nav class="hidden md:flex md:items-center md:space-x-2">
-            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
-              Home
-            </a>
-            
-            <!-- ATUALIZAÇÃO: Dropdown (Entrega 2) -->
-            <div class="relative">
-              <a href="projetos.html" id="dropdown-toggle" aria-expanded="false" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
-                Projetos
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                </svg>
-              </a>
-              <div id="dropdown-menu" class="dropdown-menu">
-                <a href="projetos.html">Ver Projetos</a>
-                <a href="cadastro.html">Seja Voluntário</a>
-              </div>
-            </div>
-            
-            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
-              Blog
-            </a>
-            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
-              Transparência
-            </a>
-            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
-              Login
-            </a>
-            
-            <!-- ATUALIZAÇÃO: Botão Modo Escuro (Entrega 4) -->
-            <button id="dark-mode-toggle" class="dark-mode-toggle ml-4" aria-label="Alternar modo escuro">
-                <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
-                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
-            </button>
-            
-            <a href="cadastro.html" class="ml-4 btn btn-primary">
-              Cadastre-se
-            </a>
-          </nav>
-
-          <!-- Menu Mobile (JS lidará com o clique) -->
-          <div class="flex md:hidden">
-            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-2" aria-label="Alternar modo escuro">
-                <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
-                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
-            </button>
-            
-            <button id="mobile-menu-button" aria-expanded="false" class="inline-flex items-center justify-center rounded-md p-2 text-foreground-muted hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
-              <span class="sr-only">Abrir menu principal</span>
-              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Mobile (Dropdown) -->
-      <div id="mobile-menu" class="hidden border-t border-border-color md:hidden">
-        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
-          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
-          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
-          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
-          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
-          <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Conteúdo Principal de Cadastro -->
-    <main class="flex-grow bg-background py-16 sm:py-24">
-        <div class="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            
+            <!-- Títulos -->
             <div class="text-center">
-                <!-- h1: Título principal da página -->
-                <h1 class="text-4xl font-bold text-foreground sm:text-5xl">
+                <h1 class="text-3xl font-bold text-foreground">
                     Seja um Voluntário
                 </h1>
-                <p class="mt-6 text-lg text-foreground-muted">
-                    Faça a diferença na vida de centenas de animais. Preencha o 
-                    formulário abaixo para iniciar seu cadastro.
+                <p class="mt-2 text-foreground-muted">
+                    Faça a diferença na vida de centenas de animais.
+                </p>
+                <p class="mt-1 text-sm text-foreground-muted">
+                    <span class="text-red-500">*</span> Os campos sinalizados são de preenchimento obrigatório.
                 </p>
             </div>
             
-            <!-- Formulário (Semântico: <form>) -->
-            <!-- Inputs estilizados com cores do modo escuro -->
-            <form id="cadastro-form" class="mt-16 space-y-8">
+            <!-- 
+              CORREÇÃO: 
+              Área de status movida para cima, como na tela de login.
+            -->
+            <div id="status-message" class="mt-6 text-center" role="alert">
+                <!-- O JavaScript (script.js) inserirá as mensagens aqui -->
+            </div>
+
+            <!-- 
+              CORREÇÃO: 
+              - Atributo 'novalidate' adicionado para impedir a validação padrão do navegador.
+              - Fieldsets simplificados (sem borda/legenda) para um visual mais limpo.
+              - Asteriscos de campo obrigatório adicionados aos labels.
+            -->
+            <form id="cadastro-form" class="mt-8 space-y-8" novalidate>
                 
-                <!-- Agrupamento (Requisito) -->
-                <fieldset class="space-y-6 rounded-lg border border-border-color p-6 shadow-sm shadow-[var(--color-shadow)]">
-                    <legend class="px-2 text-lg font-semibold text-foreground">
-                        Dados Pessoais
-                    </legend>
+                <fieldset class="space-y-6">
+                    <legend class="sr-only">Dados Pessoais</legend>
                     
                     <!-- Linha 1: Nome -->
                     <div>
-                        <label for="nome" class="block text-sm font-medium text-foreground-muted">Nome Completo</label>
+                        <label for="nome" class="block text-sm font-medium text-foreground-muted">
+                            Nome Completo
+                            <span class="text-red-500 ml-1">*</span>
+                        </label>
                         <input type="text" id="nome" name="nome"
                                required autocomplete="name"
                                class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
@@ -185,13 +116,19 @@
                     <!-- Linha 2: E-mail e CPF -->
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div>
-                            <label for="email" class="block text-sm font-medium text-foreground-muted">E-mail</label>
+                            <label for="email" class="block text-sm font-medium text-foreground-muted">
+                                E-mail
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="email" id="email" name="email"
                                    required autocomplete="email"
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
                         </div>
                         <div>
-                            <label for="cpf" class="block text-sm font-medium text-foreground-muted">CPF</label>
+                            <label for="cpf" class="block text-sm font-medium text-foreground-muted">
+                                CPF
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="text" id="cpf" name="cpf"
                                    required autocomplete="off"
                                    placeholder="000.000.000-00"
@@ -204,7 +141,10 @@
                     <!-- Linha 3: Telefone e Nascimento -->
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div>
-                            <label for="telefone" class="block text-sm font-medium text-foreground-muted">Telefone / Celular</label>
+                            <label for="telefone" class="block text-sm font-medium text-foreground-muted">
+                                Telefone / Celular
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="tel" id="telefone" name="telefone"
                                    required autocomplete="tel"
                                    placeholder="(00) 00000-0000"
@@ -213,7 +153,10 @@
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
                         </div>
                         <div>
-                            <label for="nascimento" class="block text-sm font-medium text-foreground-muted">Data de Nascimento</label>
+                            <label for="nascimento" class="block text-sm font-medium text-foreground-muted">
+                                Data de Nascimento
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="date" id="nascimento" name="nascimento"
                                    required autocomplete="bday"
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm dark:[color-scheme:dark]">
@@ -221,16 +164,16 @@
                     </div>
                 </fieldset>
                 
-                <!-- Agrupamento (Requisito) -->
-                <fieldset class="space-y-6 rounded-lg border border-border-color p-6 shadow-sm shadow-[var(--color-shadow)]">
-                    <legend class="px-2 text-lg font-semibold text-foreground">
-                        Endereço
-                    </legend>
+                <fieldset class="space-y-6">
+                    <legend class="sr-only">Endereço</legend>
                     
                     <!-- Linha 4: CEP e Endereço -->
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
                         <div class="sm:col-span-1">
-                            <label for="cep" class="block text-sm font-medium text-foreground-muted">CEP</label>
+                            <label for="cep" class="block text-sm font-medium text-foreground-muted">
+                                CEP
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="text" id="cep" name="cep"
                                    required autocomplete="postal-code"
                                    placeholder="00000-000"
@@ -239,7 +182,10 @@
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
                         </div>
                         <div class="sm:col-span-2">
-                            <label for="endereco" class="block text-sm font-medium text-foreground-muted">Endereço (Rua, N°, Bairro)</label>
+                            <label for="endereco" class="block text-sm font-medium text-foreground-muted">
+                                Endereço (Rua, N°, Bairro)
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="text" id="endereco" name="endereco"
                                    required autocomplete="address-line1"
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
@@ -249,13 +195,19 @@
                     <!-- Linha 5: Cidade e Estado -->
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div>
-                            <label for="cidade" class="block text-sm font-medium text-foreground-muted">Cidade</label>
+                            <label for="cidade" class="block text-sm font-medium text-foreground-muted">
+                                Cidade
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="text" id="cidade" name="cidade"
                                    required autocomplete="address-level2"
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
                         </div>
                         <div>
-                            <label for="estado" class="block text-sm font-medium text-foreground-muted">Estado</label>
+                            <label for="estado" class="block text-sm font-medium text-foreground-muted">
+                                Estado
+                                <span class="text-red-500 ml-1">*</span>
+                            </label>
                             <input type="text" id="estado" name="estado"
                                    required autocomplete="address-level1"
                                    class="mt-1 block w-full rounded-md border-border-color bg-background text-foreground shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
@@ -263,72 +215,34 @@
                     </div>
                 </fieldset>
                 
-                <!-- Botão de Envio -->
-                <div class="text-right">
-                    <button type="submit" id="submit-button" class="btn btn-primary text-lg px-12 py-4">
+                <!-- 
+                  CORREÇÃO: 
+                  Botão atualizado para 'w-full' e padding 'px-10 py-3',
+                  seguindo o padrão de login.html.
+                -->
+                <div class="pt-4">
+                    <button type="submit" id="submit-button" class="w-full btn btn-primary text-lg px-10 py-3">
                         Enviar Cadastro
                     </button>
                 </div>
             </form>
             
-            <!-- =============================================== -->
-            <!--   ÁREA DE MENSAGEM DA API (SUCESSO/ERRO)    -->
-            <!-- =============================================== -->
-            <div id="status-message" class="mt-8 text-center" role="alert">
-                <!-- O JavaScript (script.js) inserirá as mensagens aqui -->
+            <!-- Link para Voltar (Como em login.html) -->
+            <div class="mt-6 text-center">
+                <a href="index.html" class="text-sm font-medium text-primary hover:text-primary-dark">
+                    &larr; Voltar para o site
+                </a>
             </div>
 
         </div>
     </main>
 
-    <!-- =============================================== -->
-    <!-- COMPONENTE: FOOTER (Reutilizável)               -->
-    <!-- =============================================== -->
-    <footer class="mt-auto w-full bg-secondary text-stone-300">
-      <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        
-        <!-- Seção Newsletter ADICIONADA -->
-        <div class="mb-12 rounded-2xl bg-stone-700 p-8 md:p-12">
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-                <div>
-                    <h2 class="text-3xl font-bold text-white">Assine nossa Newsletter</h2>
-                    <p class="mt-2 text-stone-300">Receba histórias de adoção e atualizações mensais no seu e-mail.</p>
-                </div>
-                <form class="flex w-full flex-col items-end gap-3 sm:flex-row" onsubmit="alert('Obrigado por se inscrever!'); return false;">
-                    <div class="w-full">
-                        <label for="email-newsletter" class="sr-only">E-mail</label>
-                        <input type="email" id="email-newsletter" required placeholder="Digite seu e-mail"
-                               class="w-full rounded-md border-stone-500 bg-stone-600 px-4 py-3 text-white shadow-sm focus:border-primary focus:ring-primary">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-full sm:w-auto">Inscrever</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Rodapé Principal -->
-        <div class="flex flex-col items-center justify-between md:flex-row">
-          <div class="mb-6 flex items-center gap-2 md:mb-0">
-            <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
-            <span class="text-2xl font-bold text-white">MiauApoio</span>
-          </div>
-          <div class="mb-6 flex space-x-6 md:mb-0" role="navigation" aria-label="Redes sociais">
-            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Instagram">Instagram</a>
-            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Facebook">Facebook</a>
-            <a href="#" class="transition-all hover:text-primary" aria-label="Nosso Twitter">Twitter</a>
-          </div>
-        </div>
-        <div class="mt-8 border-t border-stone-700 pt-8 text-center text-base text-stone-400">
-          <p>&copy; 2025 MiauApoio. Todos os direitos reservados.</p>
-          <p class="mt-1">CNPJ: 12.345.678/0001-99 | Organização Fictícia</p>
-          <!-- Atribuição de Imagem Adicionada -->
-          <p class="mt-2 text-xs text-stone-500">
-            Fotos de gatos gentilmente cedidas por <a href="https://pt.vecteezy.com/fotos-gratis/gato" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-300">Vecteezy</a>
-          </p>
-        </div>
-      </div>
-    </footer>
+    <!-- 
+      CORREÇÃO: 
+      Footer removido para uma tela de cadastro focada.
+    -->
 
     <!-- Link para o JavaScript -->
-    <script src="script.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>

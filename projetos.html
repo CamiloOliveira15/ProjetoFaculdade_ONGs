@@ -37,9 +37,8 @@
     </script>
     
     <!-- Link para o CSS Customizado -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <!-- BLOCO <style> REMOVIDO DAQUI -->
 </head>
 
 <body class="flex min-h-screen flex-col bg-background-alt text-foreground-muted">
@@ -81,6 +80,8 @@
               </div>
             </div>
             
+            <!-- ATUALIZAÇÃO: Link da Galeria removido -->
+            
             <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Blog
             </a>
@@ -91,8 +92,8 @@
               Login
             </a>
             
-            <!-- ATUALIZAÇÃO: Botão Modo Escuro (Entrega 4) -->
-            <button id="dark-mode-toggle" class="dark-mode-toggle ml-4" aria-label="Alternar modo escuro">
+            <!-- CORREÇÃO: Margem do botão de tema aumentada (ml-4 para ml-8) -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle ml-8" aria-label="Alternar modo escuro">
                 <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
                 <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
             </button>
@@ -104,7 +105,8 @@
 
           <!-- Menu Mobile (JS lidará com o clique) -->
           <div class="flex md:hidden">
-            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-2" aria-label="Alternar modo escuro">
+            <!-- CORREÇÃO: Margem do botão de tema aumentada (mr-2 para mr-4) -->
+            <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-4" aria-label="Alternar modo escuro">
                 <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
                 <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
             </button>
@@ -124,6 +126,9 @@
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
           <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
+          
+          <!-- ATUALIZAÇÃO: Link da Galeria removido -->
+          
           <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
           <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
           <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
@@ -160,7 +165,7 @@
                     <!-- Artigo 1 -->
                     <article class="flex flex-col overflow-hidden rounded-2xl bg-background shadow-lg shadow-[var(--color-shadow)]">
                         <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
-                        <img src="vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg" alt="[Imagem de um gato preto com olhos amarelos]" class="h-64 w-full object-cover">
+                        <img src="images/vecteezy_portrait-head-black-cat-on-black-background_11375006.jpg" alt="[Imagem de um gato preto com olhos amarelos]" class="h-64 w-full object-cover" loading="lazy"> <!-- ATUALIZAÇÃO: Lazy loading adicionado -->
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-foreground">Projeto Resgate e Reabilitação</h3>
                             <p class="mt-4 text-base text-foreground-muted">
@@ -173,7 +178,7 @@
                     <!-- Artigo 2 -->
                     <article class="flex flex-col overflow-hidden rounded-2xl bg-background shadow-lg shadow-[var(--color-shadow)]">
                         <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
-                        <img src="https://placehold.co/600x400/166534/white?text=Feira+de+Adoção" alt="[Imagem de uma feira de adoção com voluntários e famílias]" class="h-64 w-full object-cover">
+                        <img src="images/vecteezy_uplifting-volunteer-with-nature-background-organizing_48614918.jpg" alt="[Imagem de uma feira de adoção com voluntários e famílias]" class="h-64 w-full object-cover" loading="lazy"> <!-- ATUALIZAÇÃO: Lazy loading adicionado -->
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-foreground">Feiras de Adoção Responsável</h3>
                             <p class="mt-4 text-base text-foreground-muted">
@@ -196,7 +201,7 @@
                         <!-- h2: Título da seção -->
                         <h2 class="text-3xl font-bold text-foreground sm:text-4xl">Seja um Voluntário</h2>
                         <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
-                        <img src="vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md shadow-[var(--color-shadow)]">
+                        <img src="images/vecteezy_lovely-cat-sitting_23027565.jpg" alt="[Imagem de um gato rajado sentado]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md shadow-[var(--color-shadow)]" loading="lazy"> <!-- ATUALIZAÇÃO: Lazy loading adicionado -->
                         <p class="text-lg text-foreground-muted">
                             Doe seu tempo! Precisamos de ajuda com limpeza do abrigo,
                             feiras de adoção, transporte de animais e, o mais importante,
@@ -212,7 +217,7 @@
                         <!-- h2: Título da seção -->
                         <h2 class="text-3xl font-bold text-foreground sm:text-4xl">Como Doar</h2>
                          <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
-                         <img src="https://placehold.co/600x400/fdba74/444?text=Itens+para+Doação" alt="[Imagem de sacos de ração, areia e medicamentos]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md shadow-[var(--color-shadow)]">
+                         <img src="https://placehold.co/600x400/fdba74/444?text=Itens+para+Doação" alt="[Imagem de sacos de ração, areia e medicamentos]" class="my-6 h-64 w-full rounded-lg object-cover shadow-md shadow-[var(--color-shadow)]" loading="lazy"> <!-- ATUALIZAÇÃO: Lazy loading adicionado -->
                         <p class="text-lg text-foreground-muted">
                             Nossa ONG depende 100% de doações. Cada contribuição faz
                             uma enorme diferença para cobrir custos de veterinário,
@@ -282,6 +287,6 @@
     </footer>
 
     <!-- Link para o JavaScript -->
-    <script src="script.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>
