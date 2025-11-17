@@ -172,7 +172,7 @@ ProjetoFaculdade_ONGs/
 
 A evolução futura (como Cognito, otimização e APIs avançadas) está documentada em:
 
-**PROXIMOS_PASSOS.md**
+[PROXIMOS_PASSOS.md](https://github.com/CamiloOliveira15/ProjetoFaculdade_ONGs/blob/main/PROXIMOS_PASSOS.md)
 
 ---
 
