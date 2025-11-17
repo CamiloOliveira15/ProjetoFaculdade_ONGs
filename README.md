@@ -4,7 +4,7 @@ Este repositório contém o código-fonte do projeto "MiauApoio", uma plataforma
 
 O projeto foi desenvolvido como avaliação para a disciplina de Desenvolvimento Front-End Para Web - Turma_004.
 
-Está disponível no site: https://pinheirotecnologia.com/index.html
+Está disponível no site: https://pinheirotecnologia.com/index.html (Nota: O link fornecido pode ser do ambiente de produção do desenvolvedor).
 
 Contexto do Projeto
 
@@ -31,24 +31,25 @@ Estrutura de Arquivos do Projeto
 /
 ├── .github/workflows/static.yml # (Infra) GitHub Action para deploy no GH Pages
 ├── dashboard-auth.js            # (JS) Proteção e logout do dashboard
-├── dashboard-blog-novo.html       # (HTML) Formulário de novo post
-├── dashboard-blog.html            # (HTML) Gerenciador de posts
-├── dashboard-projetos-novo.html    # (HTML) Formulário de novo projeto
-├── dashboard-projetos.html        # (HTML) Gerenciador de projetos
-├── dashboard-voluntarios.html     # (HTML) Gerenciador de voluntários (com Template JS)
-├── dashboard.html                 # (HTML) Página principal do admin
-├── index.html                     # (HTML) Página principal (Home)
-├── login.html                     # (HTML) Página de login do admin
-├── login.js                       # (JS) Lógica de simulação de login
-├── projetos.html                  # (HTML) Página de projetos e doações
-├── blog.html                      # (HTML) Página de listagem do blog
-├── blog-post.html                 # (HTML) Página de um post individual
-├── transparencia.html             # (HTML) Página de prestação de contas
-├── cadastro.html                  # (HTML) Formulário de cadastro (com API)
-├── script.js                      # (JS) Lógica do site público (Menu, Máscaras, API, Dark Mode)
-├── style.css                      # (CSS) Variáveis CSS, estilos customizados e @apply
-├── lambda_function.py             # (Python) Código da função AWS Lambda
-└── README.md                      # (MD) Esta documentação
+├── dashboard.js                 # (JS) Lógica de templates do dashboard (Entrega 3)
+├── dashboard-blog-novo.html     # (HTML) Formulário de novo post
+├── dashboard-blog.html          # (HTML) Gerenciador de posts (usa dashboard.js)
+├── dashboard-projetos-novo.html # (HTML) Formulário de novo projeto
+├── dashboard-projetos.html      # (HTML) Gerenciador de projetos (usa dashboard.js)
+├── dashboard-voluntarios.html   # (HTML) Gerenciador de voluntários (usa dashboard.js)
+├── dashboard.html               # (HTML) Página principal do admin
+├── index.html                   # (HTML) Página principal (Home)
+├── login.html                   # (HTML) Página de login do admin
+├── login.js                     # (JS) Lógica de simulação de login
+├── projetos.html                # (HTML) Página de projetos e doações
+├── blog.html                    # (HTML) Página de listagem do blog
+├── blog-post.html               # (HTML) Página de um post individual
+├── transparencia.html           # (HTML) Página de prestação de contas
+├── cadastro.html                # (HTML) Formulário de cadastro (com API)
+├── script.js                    # (JS) Lógica do site público (Menu, Máscaras, API, Dark Mode)
+├── style.css                    # (CSS) Variáveis CSS, estilos customizados
+├── lambda_function.py           # (Python) Código da função AWS Lambda
+└── README.md                    # (MD) Esta documentação
 
 
 Checklist de Requisitos Atendidos
@@ -225,7 +226,6 @@ Componentes (Feedback)
 
 ✅
 
-<<<<<<< HEAD
 Mensagem de status (sucesso/erro) em cadastro.html.
 
 Componentes (Badges/Tags)
@@ -246,19 +246,19 @@ Manipulação do DOM
 
 ✅
 
-Implementado. Menu, Modo Escuro e o sistema de templates manipulam o DOM.
+Menu, Modo Escuro e o sistema de templates manipulam o DOM.
 
 SPA Básico
 
 ✅
 
-Implementado. A página dashboard-voluntarios.html agora carrega e renderiza dados dinamicamente usando JS, simulando uma SPA.
+As páginas do dashboard carregam e renderizam dados dinamicamente usando JS, simulando uma SPA.
 
 Sistema de Templates JS
 
 ✅
 
-Implementado. dashboard-voluntarios.html usa template literals de JS para criar as linhas da tabela.
+dashboard.js usa template literals de JS para criar as linhas das tabelas.
 
 Verificação (Formulários)
 
@@ -340,13 +340,8 @@ Documentação Técnica
 
 Este README.md serve como documentação.
 
-⚠️ Nota Técnica: Tailwind CSS e Validação W3C
+Notas Técnicas
 
-Para este projeto, utilizamos o Tailwind CSS Play CDN (<script src="https://cdn.tailwindcss.com">).
+Tailwind CSS e Validação W3C: Para este projeto, utilizamos o Tailwind CSS Play CDN (<script src="https://cdn.tailwindcss.com">). Para que as classes customizadas (como .btn) funcionem com a diretiva @apply, o Tailwind CDN exige que a tag <style> tenha o atributo type="text/tailwindcss". O validador oficial do W3C (Nu Html Checker) não reconhece este type e o reporta como um "Erro". Este é um falso positivo conhecido. A implementação está correta para a ferramenta utilizada.
 
-Para que as classes customizadas (como .btn) funcionem com a diretiva @apply, o Tailwind CDN exige que a tag <style> tenha o atributo type="text/tailwindcss".
-
-O validador oficial do W3C (Nu Html Checker) não reconhece este type e o reporta como um "Erro". Este é um falso positivo conhecido. A implementação está correta para a ferramenta utilizada, e remover ou alterar o type quebraria os estilos customizados.
-=======
-Fotos de Gatos: As imagens utilizadas nas páginas públicas são cortesia da Vecteezy.
->>>>>>> 012e5b7247c7216f9e76adb65aeb6bc6d4110af2
+Imagens: Fotos de Gatos: As imagens utilizadas nas páginas públicas são cortesia da Vecteezy.

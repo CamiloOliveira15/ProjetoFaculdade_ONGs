@@ -12,18 +12,22 @@
     <!-- Configuração de Cores do Tema -->
     <script>
       tailwind.config = {
+        darkMode: 'class', // Habilitado para consistência
         theme: {
           extend: {
+            // Mapeia as variáveis CSS para o Tailwind
             colors: {
-              primary: {
-                DEFAULT: '#f97316', // orange-500
-                dark: '#ea580c',  // orange-600
-              },
-              secondary: {
-                DEFAULT: '#292524', // stone-800
-                light: '#44403c',  // stone-700
-              },
-              light: '#f5f5f4', // stone-100
+              primary: 'var(--color-primary)',
+              'primary-dark': 'var(--color-primary-dark)',
+              secondary: 'var(--color-secondary)',
+              'secondary-light': 'var(--color-secondary-light)',
+              light: 'var(--color-light)',
+              // Mapeia as cores de fundo e texto
+              background: 'var(--color-bg)',
+              'background-alt': 'var(--color-bg-alt)',
+              foreground: 'var(--color-text)',
+              'foreground-muted': 'var(--color-text-muted)',
+              'border-color': 'var(--color-border)',
             }
           }
         }
@@ -42,12 +46,12 @@
         @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
       }
       .btn-secondary {
-        @apply bg-secondary hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
+        @apply bg-secondary text-white hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
       }
     </style>
 </head>
 
-<body class="flex h-screen bg-light">
+<body class="flex h-screen bg-background-alt text-foreground-muted">
 
     <!-- =============================================== -->
     <!-- BARRA LATERAL DO DASHBOARD                      -->
@@ -94,8 +98,8 @@
     <div class="flex-1 flex flex-col overflow-hidden">
         
         <!-- Cabeçalho Superior -->
-        <header class="flex h-20 items-center justify-between border-b bg-white px-6">
-            <h1 class="text-2xl font-bold text-secondary">Gerenciar Blog</h1>
+        <header class="flex h-20 items-center justify-between border-b border-border-color bg-background px-6">
+            <h1 class="text-2xl font-bold text-foreground">Gerenciar Blog</h1>
             <div>
                  <a href="dashboard-blog-novo.html" class="btn btn-primary">
                     + Adicionar Post
@@ -106,47 +110,24 @@
         <!-- Conteúdo da Página (Tabela) -->
         <main class="flex-1 overflow-y-auto p-8">
             
-            <div class="overflow-x-auto rounded-2xl bg-white shadow-lg">
+            <div class="overflow-x-auto rounded-2xl bg-background shadow-lg shadow-[var(--color-shadow)]">
                 <table class="w-full text-left">
-                    <thead class="border-b bg-light">
+                    <thead class="border-b border-border-color bg-background-alt">
                         <tr>
-                            <th class="px-6 py-4 text-sm font-semibold text-secondary">Título do Post</th>
-                            <th class="px-6 py-4 text-sm font-semibold text-secondary">Categoria</th>
-                            <th class="px-6 py-4 text-sm font-semibold text-secondary">Data</th>
-                            <th class="px-6 py-4 text-sm font-semibold text-secondary">Ações</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-foreground-muted">Título do Post</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-foreground-muted">Categoria</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-foreground-muted">Data</th>
+                            <th class="px-6 py-4 text-sm font-semibold text-foreground-muted">Ações</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y">
-                        <!-- Linha 1 -->
-                        <tr class="hover:bg-light/50">
-                            <td class="px-6 py-4 font-medium text-secondary">O Final Feliz de Frajola</td>
-                            <td class="px-6 py-4 text-secondary-light">Histórias de Adoção</td>
-                            <td class="px-6 py-4 text-secondary-light">05/11/2025</td>
-                            <td class="px-6 py-4 space-x-2">
-                                <button class="font-medium text-primary hover:text-primary-dark">Editar</button>
-                                <button class="font-medium text-red-500 hover:text-red-700">Excluir</button>
-                            </td>
-                        </tr>
-                        <!-- Linha 2 -->
-                        <tr class="hover:bg-light/50">
-                            <td class="px-6 py-4 font-medium text-secondary">5 Dicas para Manter seu Gato Saudável no Inverno</td>
-                            <td class="px-6 py-4 text-secondary-light">Dicas de Saúde</td>
-                            <td class="px-6 py-4 text-secondary-light">01/11/2025</td>
-                            <td class="px-6 py-4 space-x-2">
-                                <button class="font-medium text-primary hover:text-primary-dark">Editar</button>
-                                <button class="font-medium text-red-500 hover:text-red-700">Excluir</button>
-                            </td>
-                        </tr>
-                        <!-- Linha 3 -->
-                        <tr class="hover:bg-light/50">
-                            <td class="px-6 py-4 font-medium text-secondary">Sucesso no Bazar Beneficente!</td>
-                            <td class="px-6 py-4 text-secondary-light">Eventos</td>
-                            <td class="px-6 py-4 text-secondary-light">28/10/2025</td>
-                            <td class="px-6 py-4 space-x-2">
-                                <button class="font-medium text-primary hover:text-primary-dark">Editar</button>
-                                <button class="font-medium text-red-500 hover:text-red-700">Excluir</button>
-                            </td>
-                        </tr>
+                    <!-- 
+                      ATUALIZAÇÃO (Entrega 3): 
+                      O conteúdo estático foi removido.
+                      O ID "blog-table-body" foi adicionado para
+                      que o 'dashboard.js' possa popular esta tabela.
+                    -->
+                    <tbody id="blog-table-body" class="divide-y divide-border-color">
+                        <!-- O JavaScript irá inserir as linhas aqui -->
                     </tbody>
                 </table>
             </div>
@@ -156,5 +137,7 @@
 
     <!-- Script de Proteção do Dashboard -->
     <script src="dashboard-auth.js" defer></script>
+    <!-- ATUALIZAÇÃO: Script do template JS adicionado -->
+    <script src="dashboard.js" defer></script>
 </body>
 </html>
