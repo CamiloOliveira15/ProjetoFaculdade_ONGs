@@ -15,16 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
 
             // --- SIMULAÇÃO DE AUTENTICAÇÃO ---
-            // Em um app real, isso seria uma chamada de API (fetch)
             if (email === 'admin@miauapoio.org' && password === 'admin123') {
                 
                 // 1. Armazena o "token" de sessão no localStorage
-                // Isso simula que o usuário está logado
                 localStorage.setItem('userLoggedIn', 'true');
                 localStorage.setItem('userName', 'Admin');
 
-                // 2. Redireciona para o dashboard
-                window.location.href = 'dashboard.html';
+                // 2. Redireciona para o dashboard (com caminho relativo)
+                window.location.href = './dashboard.html';
 
             } else {
                 // Exibe a mensagem de erro
