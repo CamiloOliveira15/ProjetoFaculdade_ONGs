@@ -36,54 +36,8 @@
     
     <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Estilos específicos para o conteúdo do post */
-        /* Tailwind não processa @apply em <style> sem type */
-        .post-content h2 {
-            font-size: 1.875rem; /* text-3xl */
-            font-weight: 700; /* font-bold */
-            color: var(--color-text);
-            margin-top: 3rem; /* mt-12 */
-            margin-bottom: 1rem; /* mb-4 */
-        }
-        .post-content p {
-            font-size: 1.125rem; /* text-lg */
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem; /* mb-6 */
-            line-height: 1.75; /* leading-relaxed */
-        }
-        .post-content blockquote {
-            border-left-width: 4px;
-            border-color: var(--color-primary);
-            padding-left: 1.5rem; /* pl-6 */
-            padding-top: 1rem; /* py-4 */
-            padding-bottom: 1rem; /* py-4 */
-            margin-top: 2rem; /* my-8 */
-            margin-bottom: 2rem; /* my-8 */
-            font-size: 1.25rem; /* text-xl */
-            font-style: italic;
-            color: var(--color-text-muted);
-        }
-    </style>
     
-    <!-- CSS com @apply (processado pelo Play CDN) -->
-    <style type="text/tailwindcss">
-      .btn {
-        @apply px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all duration-300 ease-in-out;
-      }
-      .btn-primary {
-        @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
-      }
-      .btn-secondary {
-        @apply bg-secondary text-white hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
-      }
-      
-      /* Estilos para o formulário inválido (Entrega 2) */
-      input:invalid:not(:placeholder-shown),
-      select:invalid:not(:placeholder-shown) {
-         @apply border-red-500 ring-red-500;
-      }
-    </style>
+    <!-- BLOCOS <style> REMOVIDOS DAQUI -->
 </head>
 
 <body class="flex min-h-screen flex-col bg-background text-foreground-muted">

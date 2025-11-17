@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Título e Meta Tags (Requisito de SEO) -->
     <title>MiauApoio - Salve Vidas, Adote um Gatinho</title>
     <meta name="description" content="MiauApoio - ONG dedicada ao resgate, cuidado e adoção de gatos em situação de risco. Conheça nossos projetos, seja um voluntário ou doe.">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Para atender 'CSS3 avançado' e 'Responsividade') -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Configuração de Cores do Tema (Seguindo a paleta da MiauApoio) -->
     <script>
       tailwind.config = {
-        darkMode: 'class', 
+        darkMode: 'class', // Habilita o modo escuro via classe
         theme: {
           extend: {
             colors: {
+              // Mapeia as variáveis CSS para o Tailwind
               primary: 'var(--color-primary)',
               'primary-dark': 'var(--color-primary-dark)',
               secondary: 'var(--color-secondary)',
               'secondary-light': 'var(--color-secondary-light)',
               light: 'var(--color-light)',
+              // Mapeia as cores de fundo e texto
               background: 'var(--color-bg)',
               'background-alt': 'var(--color-bg-alt)',
               foreground: 'var(--color-text)',
@@ -32,34 +36,24 @@
       }
     </script>
     
-    <!-- ATUALIZAÇÃO DE CAMINHO: "./" garante que o navegador procure na pasta atual -->
-    <link rel="stylesheet" href="./style.css">
+    <!-- Link para o CSS Customizado -->
+    <link rel="stylesheet" href="style.css">
     
-    <style type="text/tailwindcss">
-      .btn {
-        @apply px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all duration-300 ease-in-out;
-      }
-      .btn-primary {
-        @apply bg-primary hover:bg-primary-dark focus:ring-4 focus:ring-primary/50;
-      }
-      .btn-secondary {
-        @apply bg-secondary text-white hover:bg-secondary-light focus:ring-4 focus:ring-secondary/50;
-      }
-      input:invalid:not(:placeholder-shown),
-      select:invalid:not(:placeholder-shown) {
-         @apply border-red-500 ring-red-500;
-      }
-    </style>
+    <!-- BLOCO <style> REMOVIDO DAQUI -->
 </head>
 
+<!-- O body usa as variáveis de cor de fundo e texto -->
 <body class="flex min-h-screen flex-col bg-background-alt text-foreground-muted">
 
+    <!-- =============================================== -->
+    <!-- COMPONENTE: HEADER (Atualizado)                 -->
+    <!-- =============================================== -->
     <header class="sticky top-0 z-50 w-full bg-background shadow-md shadow-[var(--color-shadow)]">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-20 items-center justify-between">
           
-          <!-- ATUALIZAÇÃO DE CAMINHO -->
-          <a href="./index.html" class="flex-shrink-0">
+          <!-- Logo (Link para Home) -->
+          <a href="index.html" class="flex-shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
               <span class="text-2xl font-bold text-foreground">
@@ -68,50 +62,54 @@
             </div>
           </a>
 
+          <!-- Navegação (Semântico: <nav>) -->
           <nav class="hidden md:flex md:items-center md:space-x-2">
-            <!-- ATUALIZAÇÃO DE CAMINHO -->
-            <a href="./index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+            <a href="index.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Home
             </a>
             
+            <!-- ATUALIZAÇÃO: Dropdown (Entrega 2) -->
             <div class="relative">
-              <!-- ATUALIZAÇÃO DE CAMINHO -->
-              <a href="./projetos.html" id="dropdown-toggle" aria-expanded="false" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+              <a href="projetos.html" id="dropdown-toggle" aria-expanded="false" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
                 Projetos
+                <!-- Ícone de seta -->
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                 </svg>
               </a>
+              <!-- Menu Dropdown -->
               <div id="dropdown-menu" class="dropdown-menu">
-                <!-- ATUALIZAÇÃO DE CAMINHO -->
-                <a href="./projetos.html">Ver Projetos</a>
-                <a href="./cadastro.html">Seja Voluntário</a>
+                <a href="projetos.html">Ver Projetos</a>
+                <a href="cadastro.html">Seja Voluntário</a>
               </div>
             </div>
             
-            <!-- ATUALIZAÇÃO DE CAMINHO -->
-            <a href="./blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+            <a href="blog.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Blog
             </a>
-            <a href="./transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+            <a href="transparencia.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Transparência
             </a>
-            <a href="./login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
+            <a href="login.html" class="flex items-center gap-1.5 rounded-md px-4 py-2 text-lg font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">
               Login
             </a>
             
+            <!-- ATUALIZAÇÃO: Botão Modo Escuro (Entrega 4) -->
             <button id="dark-mode-toggle" class="dark-mode-toggle ml-4" aria-label="Alternar modo escuro">
+                <!-- Sol -->
                 <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
+                <!-- Lua -->
                 <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
             </button>
             
-            <!-- ATUALIZAÇÃO DE CAMINHO -->
-            <a href="./cadastro.html" class="ml-4 btn btn-primary">
+            <a href="cadastro.html" class="ml-4 btn btn-primary">
               Cadastre-se
             </a>
           </nav>
 
+          <!-- Menu Mobile (JS lidará com o clique) -->
           <div class="flex md:hidden">
+             <!-- Botão Modo Escuro (Mobile) -->
             <button id="dark-mode-toggle-mobile" class="dark-mode-toggle mr-2" aria-label="Alternar modo escuro">
                 <svg class="toggle-icon icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591" /></svg>
                 <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
@@ -119,6 +117,7 @@
             
             <button id="mobile-menu-button" aria-expanded="false" class="inline-flex items-center justify-center rounded-md p-2 text-foreground-muted hover:bg-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
               <span class="sr-only">Abrir menu principal</span>
+              <!-- Ícone Hamburguer -->
               <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
@@ -127,29 +126,34 @@
         </div>
       </div>
 
+      <!-- Menu Mobile (Dropdown) -->
       <div id="mobile-menu" class="hidden border-t border-border-color md:hidden">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-          <!-- ATUALIZAÇÃO DE CAMINHO -->
-          <a href="./index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
-          <a href="./projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
-          <a href="./blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
-          <a href="./transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
-          <a href="./login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
-          <a href="./cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
+          <a href="index.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Home</a>
+          <a href="projetos.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Projetos</a>
+          <a href="blog.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Blog</a>
+          <a href="transparencia.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Transparência</a>
+          <a href="login.html" class="block rounded-md px-3 py-3 text-base font-medium text-foreground-muted transition-all hover:bg-light hover:text-primary">Login</a>
+          <a href="cadastro.html" class="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-dark">Cadastre-se</a>
         </div>
       </div>
     </header>
 
+    <!-- Conteúdo Principal da Home -->
     <main id="page-home" class="flex-grow">
             
+        <!-- Seção 1: Hero (Semântico: <section>) -->
+        <!-- Esta seção corresponde ao topo da sua imagem -->
         <section class="relative bg-secondary-light">
           <div class="absolute inset-0">
+            <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
             <img 
               src="vecteezy_silver-tabby-cat-sitting-on-green-background_2098203.jpg" 
               alt="[Imagem de um gato filhote branco e cinza em fundo verde]" 
               class="h-full w-full object-cover opacity-30">
           </div>
           <div class="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:px-8">
+            <!-- h1: Título principal da página -->
             <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Encontre seu novo <span class="text-primary">melhor amigo</span>
             </h1>
@@ -157,17 +161,19 @@
               Centenas de gatinhos resgatados esperam por um lar amoroso.
               Adoção responsável transforma vidas, a sua e a deles.
             </p>
-            <!-- ATUALIZAÇÃO DE CAMINHO -->
-            <a href="./projetos.html" class="mt-10 inline-block btn btn-primary text-xl px-10 py-4">
+            <a href="projetos.html" class="mt-10 inline-block btn btn-primary text-xl px-10 py-4">
               Conheça os Gatinhos
             </a>
           </div>
         </section>
 
+        <!-- Seção 2: Sobre Nós (Semântico: <section>) -->
+        <!-- Esta é a seção de 2 colunas da sua imagem -->
         <section class="bg-background py-20 sm:py-28">
           <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
               <div>
+                <!-- h2: Título da seção -->
                 <h2 class="text-base font-semibold uppercase tracking-wide text-primary">
                   Nossa Missão
                 </h2>
@@ -182,8 +188,12 @@
                 </p>
               </div>
               <div class="h-80 w-full overflow-hidden rounded-2xl shadow-xl shadow-[var(--color-shadow)]">
+                <!-- ATUALIZAÇÃO: Removida a barra final (/) (Entrega 4) -->
+                <!-- Este placeholder gera o bloco laranja da sua imagem -->
                 <img 
-                  src="https://placehold.co/600x400/fdba74/444?text=Equipe+Cuidando+de+Gatos" 
+
+                  
+                  src="vecteezy_uplifting-volunteer-brushing-group-of-shelter-cats-purrs-and_48614925.jpg"
                   alt="[Imagem da equipe de voluntários da MiauApoio cuidando de filhotes de gato no abrigo]" 
                   class="h-full w-full object-cover">
               </div>
@@ -191,13 +201,16 @@
           </div>
         </section>
         
+        <!-- Seção 3: Contato (Requisito da Página Home) -->
         <section class="bg-background-alt py-20 sm:py-28">
             <div class="container mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+                <!-- h2: Título da seção -->
                 <h2 class="text-3xl font-bold text-foreground sm:text-4xl">Entre em Contato</h2>
                 <p class="mt-4 text-lg text-foreground-muted">
                     Temos o prazer de ajudar. Envie-nos um e-mail ou ligue para nós.
                 </p>
                 <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+                    <!-- Informação de Contato 1 -->
                     <div class="rounded-lg bg-background p-6 shadow-md shadow-[var(--color-shadow)]">
                         <h3 class="text-xl font-semibold text-foreground">E-mail</h3>
                         <p class="mt-2 text-foreground-muted">Precisa de ajuda ou tem perguntas?</p>
@@ -205,6 +218,7 @@
                             contato@miauapoio.org.br
                         </a>
                     </div>
+                    <!-- Informação de Contato 2 -->
                     <div class="rounded-lg bg-background p-6 shadow-md shadow-[var(--color-shadow)]">
                         <h3 class="text-xl font-semibold text-foreground">Telefone</h3>
                         <p class="mt-2 text-foreground-muted">Para adoções e emergências.</p>
@@ -217,9 +231,13 @@
         </section>
     </main>
 
+    <!-- =============================================== -->
+    <!-- COMPONENTE: FOOTER (Reutilizável)               -->
+    <!-- =============================================== -->
     <footer class="mt-auto w-full bg-secondary text-stone-300">
       <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         
+        <!-- Seção Newsletter ADICIONADA -->
         <div class="mb-12 rounded-2xl bg-stone-700 p-8 md:p-12">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div>
@@ -237,6 +255,7 @@
             </div>
         </div>
 
+        <!-- Rodapé Principal -->
         <div class="flex flex-col items-center justify-between md:flex-row">
           <div class="mb-6 flex items-center gap-2 md:mb-0">
             <span class="text-3xl" role="img" aria-label="Pata de gato">🐾</span>
@@ -251,6 +270,7 @@
         <div class="mt-8 border-t border-stone-700 pt-8 text-center text-base text-stone-400">
           <p>&copy; 2025 MiauApoio. Todos os direitos reservados.</p>
           <p class="mt-1">CNPJ: 12.345.678/0001-99 | Organização Fictícia</p>
+          <!-- Atribuição de Imagem Adicionada -->
           <p class="mt-2 text-xs text-stone-500">
             Fotos de gatos gentilmente cedidas por <a href="https://pt.vecteezy.com/fotos-gratis/gato" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-300">Vecteezy</a>
           </p>
@@ -258,7 +278,7 @@
       </div>
     </footer>
 
-    <!-- ATUALIZAÇÃO DE CAMINHO -->
-    <script src="./script.js" defer></script>
+    <!-- Link para o JavaScript -->
+    <script src="script.js" defer></script>
 </body>
 </html>
