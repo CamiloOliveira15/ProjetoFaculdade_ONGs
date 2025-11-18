@@ -198,3 +198,6 @@ O formulário envia dados para um endpoint AWS API Gateway.
 
 Para testar:
 Preencha `cadastro.html` e envie. A resposta será JSON indicando sucesso se Lambda + DynamoDB estiverem operacionais.
+
+Observação: O cadastro funcional está disponível temporariamente em [https://pinheirotecnologia.com/]
+Os dados são salvos na AWS. Use apenas com informações de testes.
